@@ -1,0 +1,56 @@
+{
+  "name": "coboldoc",
+  "version": "1.0.0",
+  "description": "CLI tool to generate Markdown documentation for COBOL",
+  "main": "./lib/index.js",
+  "bin": {
+    "coboldoc": "./bin/coboldoc"
+  },
+  "scripts": {
+    "start": "npm run build && npm run global",
+    "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "test": "npm run lint && npm run test:unit",
+    "test:unit": "mocha src/**/*.spec.ts",
+    "lint": "tslint -p . --fix",
+    "build": "npm run clean:some && tsc -p .",
+    "global": "npm i -g && cgx",
+    "clean:some": "rm -rf ./lib ./docs",
+    "clean:all": "rm -rf ./node_modules ./package-lock.json ./lib ./docs",
+    "refresh": "npm run clean:all && npm install",
+    "tscov": "tscov --min-coverage 90",
+    "tscov:d": "tscov --details",
+    "publish-package": "npm run build && npm publish",
+    "docs": "typedoc --out docs ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunopacheco1/coboldoc.git"
+  },
+  "keywords": [
+    "COBOL"
+  ],
+  "author": "brunopacheco1",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/brunopacheco1/coboldoc/issues"
+  },
+  "homepage": "https://github.com/brunopacheco1/coboldoc#readme",
+  "devDependencies": {
+    "@liftr/tscov": "^1.4.7",
+    "@types/figlet": "^1.2.0",
+    "@types/node": "^14.0.26",
+    "mocha": "^8.0.1",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typedoc": "^0.17.8",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "clear": "^0.1.0",
+    "figlet": "^1.5.0",
+    "inversify": "^5.0.1",
+    "kleur": "^4.0.2",
+    "tslib": "^2.0.0"
+  }
+}
