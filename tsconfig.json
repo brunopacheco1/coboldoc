@@ -7,6 +7,10 @@
             "ES2015",
             "ESNext"
         ],
+        "types": [
+            "reflect-metadata",
+            "node"
+        ],
         "outDir": "lib",
         "rootDir": "src",
         "strict": true,
@@ -15,7 +19,8 @@
         "resolveJsonModule": true,
         "importHelpers": true,
         "removeComments": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "exclude": [
         "node_modules",
