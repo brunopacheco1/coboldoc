@@ -7,6 +7,8 @@ const pkg = require('../package.json');
 @injectable()
 export class Main {
 
+    private _MINIMUM_ARG_SIZE = 2;
+
     constructor() { }
 
     public main(argv: string[]): void {
@@ -14,8 +16,8 @@ export class Main {
 
         console.log(
             kleur.red(
-                figlet.textSync('coboldoc', { horizontalLayout: 'full' })
-            )
+                figlet.textSync('coboldoc', { horizontalLayout: 'full' }),
+            ),
         );
 
         command.version(pkg.version, '-v, --version')
@@ -29,7 +31,7 @@ export class Main {
 
         command.parse(argv);
 
-        if (argv.length <= 2) {
+        if (argv.length <= this._MINIMUM_ARG_SIZE) {
             command.help();
         }
     }

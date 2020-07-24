@@ -1,5 +1,5 @@
 const TYPES = {
-    Main: Symbol.for('Main')
+    Main: Symbol.for('Main'),
 };
 
 export { TYPES };

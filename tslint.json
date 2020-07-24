@@ -1,0 +1,14 @@
+{
+    "rules": {
+        "no-magic-numbers": true,
+        "no-unused-expression": true,
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "always",
+                "singleline": "never"
+            }
+        ],
+        "no-any": true
+    }
+}
