@@ -1,15 +1,17 @@
 import { Command } from 'commander';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
 import kleur from 'kleur';
 import figlet from 'figlet';
+import { FileParser } from './file-parser';
+import { TYPES } from './types';
 const pkg = require('../package.json');
 
 @injectable()
-export class Main {
+export class Cli {
 
     private _MINIMUM_ARG_SIZE = 2;
 
-    constructor() { }
+    constructor(@inject(TYPES.FileParser) private _fileParser: FileParser) { }
 
     public main(argv: string[]): void {
         const command = new Command();
@@ -23,10 +25,10 @@ export class Main {
         command.version(pkg.version, '-v, --version')
             .usage('<command> [options]');
 
-        command.command('generate <files>')
+        command.command('generate <files...>')
             .description('generate the documentation')
             .action((files) => {
-                console.log(files);
+                this._fileParser.parse(files);
             });
 
         command.parse(argv);

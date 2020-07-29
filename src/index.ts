@@ -1,16 +1,18 @@
 import 'reflect-metadata';
 import { Container } from 'inversify';
-import { Main } from './cli';
+import { Cli } from './cli';
 import { TYPES } from './types';
+import { FileParser, FileParserImpl } from './file-parser';
 
-export function init(): Main {
+export function init(): Cli {
     const container: Container = new Container();
 
-    container.bind<Main>(TYPES.Main).to(Main).inSingletonScope();
+    container.bind<FileParser>(TYPES.FileParser).to(FileParserImpl).inSingletonScope();
+    container.bind<Cli>(TYPES.Cli).to(Cli).inSingletonScope();
 
-    return container.get<Main>(TYPES.Main);
+    return container.get<Cli>(TYPES.Cli);
 }
 
-const app: Main = init();
+const app: Cli = init();
 
 app.main(process.argv);

@@ -1,5 +1,6 @@
 const TYPES = {
-    Main: Symbol.for('Main'),
+    Cli: Symbol.for('Cli'),
+    FileParser: Symbol.for('FileParser'),
 };
 
 export { TYPES };
