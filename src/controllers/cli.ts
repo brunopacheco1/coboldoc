@@ -5,6 +5,7 @@ import figlet from 'figlet';
 import { FileParser } from '../services/file-parser';
 import { TYPES } from '../types';
 import { Format } from '../model/format';
+import { Dialect } from '../model/dialect';
 const pkg = require('../../package.json');
 
 @injectable()
@@ -24,7 +25,8 @@ export class Cli {
 
         const command = new Command();
 
-        command.option('-o, --output <outputDirectory>', 'The output directory', './')
+        command.option('-d, --dialect <dialect>', 'The suported dialects are FREE', 'FREE')
+            .option('-o, --output <outputDirectory>', 'The output directory', './')
             .option('-f, --format <fileFormat>', 'The suported output format are MD or HTML', 'MD')
             .option('-v, --verbose', 'For extra logs to help on debugging');
 
@@ -34,7 +36,7 @@ export class Cli {
         command.command('generate <files...>')
             .description('generate the documentation')
             .action((files) => {
-                this._fileParser.parse(files, command.output, Format[command.format as keyof typeof Format]);
+                this._fileParser.parse(files, Dialect[command.dialect as keyof typeof Dialect], command.output, Format[command.format as keyof typeof Format]);
             });
 
         command.parse(argv);

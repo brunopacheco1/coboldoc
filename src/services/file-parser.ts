@@ -7,26 +7,38 @@ import { MdParser } from './md-parser';
 import { HtmlParser } from './html-parser';
 import { Parser } from './parser';
 import { DocumentationOutputStream } from './documentation-output-stream';
+import { Dialect } from '../model/dialect';
+import { FreeDialectExtractor } from './free-dialect-extractor';
 
 export interface FileParser {
-    parse(files: string[], outputDirectory: string, format: Format): void;
+    parse(files: string[], dialect: Dialect, outputDirectory: string, format: Format): void;
 }
 
 @injectable()
 export class FileParserImpl implements FileParser {
 
     constructor(
-        @inject(TYPES.DocumentationExtractor) private _documentationExtractor: DocumentationExtractor,
+        @inject(TYPES.FreeDialectExtractor) private _freeDialectExtractor: FreeDialectExtractor,
         @inject(TYPES.MdParser) private _mdParser: MdParser,
         @inject(TYPES.HtmlParser) private _htmlParser: HtmlParser,
         @inject(TYPES.DocumentationOutputStream) private _outputStream: DocumentationOutputStream,
     ) { }
 
-    public parse(files: string[], outputDirectory: string, format: Format): void {
+    public parse(files: string[], dialect: Dialect, outputDirectory: string, format: Format): void {
+        const extractor = this._getExtractor(dialect);
         const parser = this._getParser(format);
         files.forEach(file => {
-            this._parseFile(file, outputDirectory, this._documentationExtractor, parser);
+            this._parseFile(file, outputDirectory, extractor, parser);
         });
+    }
+
+    private _getExtractor(dialect: Dialect): DocumentationExtractor {
+        switch (dialect) {
+            case Dialect.FREE:
+                return this._freeDialectExtractor;
+            default:
+                throw new Error(`Not supported dialect: ${dialect}`);
+        }
     }
 
     private _getParser(format: Format): Parser {
