@@ -28,7 +28,7 @@ export class Cli {
         command.option('-d, --dialect <dialect>', 'The suported dialects are FREE', 'FREE')
             .option('-o, --output <outputDirectory>', 'The output directory', './')
             .option('-f, --format <fileFormat>', 'The suported output format are MD or HTML', 'MD')
-            .option('-v, --verbose', 'For extra logs to help on debugging');
+            .option('-V, --verbose', 'For extra logs to help on debugging');
 
         command.version(pkg.version, '-v, --version')
             .usage('<command> [options]');

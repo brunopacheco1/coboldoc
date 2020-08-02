@@ -27,7 +27,7 @@ Options:
   -d, --dialect <dialect>         The suported dialects are FREE (default: "FREE")
   -o, --output <outputDirectory>  The output directory (default: "./")
   -f, --format <fileFormat>       The suported output format are MD or HTML (default: "MD")
-  -v, --verbose                   For extra logs to help on debugging
+  -V, --verbose                   For extra logs to help on debugging
   -v, --version                   output the version number
   -h, --help                      display help for command
 
