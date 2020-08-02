@@ -4,7 +4,8 @@ import kleur from 'kleur';
 import figlet from 'figlet';
 import { FileParser } from '../services/file-parser';
 import { TYPES } from '../types';
-const pkg = require('../package.json');
+import { Format } from '../model/format';
+const pkg = require('../../package.json');
 
 @injectable()
 export class Cli {
@@ -23,8 +24,8 @@ export class Cli {
 
         const command = new Command();
 
-        command.option('-o, --output <outputDirectory>', 'the output directory, if it is empty or this option is missing, the working directory will be the output', './')
-            .option('-f, --format <fileFormat>', 'Currently MD or HTML are possible output format (md is the default)', 'MD')
+        command.option('-o, --output <outputDirectory>', 'The output directory', './')
+            .option('-f, --format <fileFormat>', 'The suported output format are MD or HTML', 'MD')
             .option('-v, --verbose', 'For extra logs to help on debugging');
 
         command.version(pkg.version, '-v, --version')
@@ -33,7 +34,7 @@ export class Cli {
         command.command('generate <files...>')
             .description('generate the documentation')
             .action((files) => {
-                this._fileParser.parse(files, command.output, command.format);
+                this._fileParser.parse(files, command.output, Format[command.format as keyof typeof Format]);
             });
 
         command.parse(argv);
