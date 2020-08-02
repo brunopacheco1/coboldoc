@@ -55,6 +55,7 @@ export class FileParserImpl implements FileParser {
     private _parseFile(file: string, outputDirectory: string, extractor: DocumentationExtractor, parser: Parser): void {
         const filePath = this._defineFilePath(file);
         const documentation = extractor.extract(filePath);
+        console.log(documentation);
         const parsedDocumentation = parser.parse(documentation);
         this._outputStream.write(outputDirectory, documentation.fileName, parsedDocumentation);
     }
