@@ -24,6 +24,12 @@ export interface CobolFunction {
     line: number,
 }
 
+export interface ChangeLog {
+    date: string,
+    changedBy: string,
+    description: string,
+}
+
 export interface Documentation {
     fileName: string,
     license: string,
@@ -33,4 +39,5 @@ export interface Documentation {
     programDescription: string,
     paragraphs: Paragraph[],
     functions: CobolFunction[],
+    changeLogs: ChangeLog[],
 }
