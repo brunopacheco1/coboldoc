@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-    <img src="https://github.com/OlegKunitsyn/cobolget/blob/master/icon.png?raw=true" alt="logo" width="200">
+    <img src="https://github.com/brunopacheco1/coboldoc/blob/master/icon.png?raw=true" alt="logo" width="200">
   <br>
   COBOL Documentation CLI
   <br>
