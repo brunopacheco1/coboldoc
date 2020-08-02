@@ -87,8 +87,8 @@
       ******************************************************************
       * This is the initial paragraph, where all the paragraphs are    *
       * called.                                                        *
-	  * CALLED BY:  	                                               *
-	  *	CALLS: 0002, 0003, 0004, 0005                                  *
+      * CALLED BY:  	                                               *
+      *	CALLS: 0002, 0003, 0004, 0005                                  *
       ******************************************************************
        0001-START.
            PERFORM 0002-WELCOME-USER.
@@ -101,8 +101,8 @@
       ******************************************************************
       * This paragraph is responsible to print initial                 *
       * welcoming message to the user. It requires any variable.       *
-	  * CALLED BY: 0001                                                *
-	  *	CALLS:                                                         *
+      * CALLED BY: 0001                                                *
+      *	CALLS:                                                         *
       ******************************************************************
        0002-WELCOME-USER.
            DISPLAY 'Hi, welcome to the petstore cash register system!'.
@@ -118,7 +118,7 @@
       * At Each new item, the system computes the final item cost,     *
       * that is the price and multiplies by the quantity.              *
       * CALLED BY: 0001                                                *
-	  *	CALLS:                                                         *
+      *	CALLS:                                                         *
       ******************************************************************
        0003-ASK-FOR-ITEM.
            DISPLAY 'Item description:'.
@@ -145,7 +145,7 @@
       * the total cost is $200. The total discounted cost will be      *
       * $200 * 0.9 = $18                                               *
       * CALLED BY: 0001                                                *
-	  *	CALLS:                                                         *
+      *	CALLS:                                                         *
       ******************************************************************
        0004-CALCULATE-DISCOUNT.
            IF TOTAL-COST IS GREATER THAN MINIMUM-FOR-DISCOUNT THEN
@@ -161,7 +161,7 @@
       * end, the system presents the total quantity, total cost and    *
       * the total discounted cost, if a discount applies.              *
       * CALLED BY: 0001                                                *
-	  *	CALLS:                                                         *
+      *	CALLS:                                                         *
       ******************************************************************
        0005-DISPLAY-BILL.
            DISPLAY ' '.

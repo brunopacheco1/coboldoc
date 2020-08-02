@@ -25,7 +25,7 @@ export class FileParserImpl implements FileParser {
     public parse(files: string[], outputDirectory: string, format: Format): void {
         const parser = this._getParser(format);
         files.forEach(file => {
-            this._parseFile(file, outputDirectory, parser);
+            this._parseFile(file, outputDirectory, this._documentationExtractor, parser);
         });
     }
 
@@ -40,11 +40,11 @@ export class FileParserImpl implements FileParser {
         }
     }
 
-    private _parseFile(file: string, outputDirectory: string, parser: Parser): void {
+    private _parseFile(file: string, outputDirectory: string, extractor: DocumentationExtractor, parser: Parser): void {
         const filePath = this._defineFilePath(file);
-        const documentation = this._documentationExtractor.extract(filePath);
+        const documentation = extractor.extract(filePath);
         const parsedDocumentation = parser.parse(documentation);
-        this._outputStream.write(parsedDocumentation);
+        this._outputStream.write(outputDirectory, documentation.fileName, parsedDocumentation);
     }
 
     private _defineFilePath(file: string): string {
