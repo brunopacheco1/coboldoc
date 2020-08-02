@@ -7,10 +7,33 @@
   <br>
 </h1>
 
-<h4 align="center">Command-line tool for generation documentation for COBOL in Markdown</h4>
+<h4 align="center">Command-line tool for generating COBOL documentation</h4>
 
 #### Features
-- generate COBOL documentation in Markdown
+- Generate documentation in Markdown;
+- Generate documentation in HTML;
+
+```
+$ coboldoc 
+                 _               _       _                
+   ___    ___   | |__     ___   | |   __| |   ___     ___ 
+  / __|  / _ \  | '_ \   / _ \  | |  / _` |  / _ \   / __|
+ | (__  | (_) | | |_) | | (_) | | | | (_| | | (_) | | (__ 
+  \___|  \___/  |_.__/   \___/  |_|  \__,_|  \___/   \___|
+                                                          
+Usage: coboldoc <command> [options]
+
+Options:
+  -o, --output <outputDirectory>  The output directory (default: "./")
+  -f, --format <fileFormat>       The suported output format are MD or HTML (default: "MD")
+  -v, --verbose                   For extra logs to help on debugging
+  -v, --version                   output the version number
+  -h, --help                      display help for command
+
+Commands:
+  generate <files...>             generate the documentation
+  help [command]                  display help for command
+```
 
 #### Requirements
 - NodeJS 8+
