@@ -1,3 +1,5 @@
+import { Dialect } from './dialect';
+
 export interface Paragraph {
     name: string,
     line: number,
@@ -17,6 +19,7 @@ export interface Return {
     type?: string,
 }
 
+//Do functions have paragraphs?
 export interface CobolFunction {
     name: string,
     description: string,
@@ -29,6 +32,7 @@ export interface CobolModule {
     name: string,
     description: string,
     line: number,
+    paragraphs?: Paragraph[],
 }
 
 export interface ChangeLog {
@@ -39,11 +43,10 @@ export interface ChangeLog {
 
 export interface Documentation {
     fileName: string,
-    dialect: string,
+    dialect: Dialect,
     license?: string,
     author?: string,
     fileDescription?: string,
-    paragraphs?: Paragraph[],
     functions?: CobolFunction[],
     modules?: CobolModule[],
     changeLogs?: ChangeLog[],

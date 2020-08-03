@@ -3,6 +3,7 @@ import { Documentation, CobolFunction, CobolModule } from '../model/documentatio
 import * as fs from 'fs';
 import { DocumentationExtractor } from './documentation-extractor';
 import * as path from 'path';
+import { Dialect } from '../model/dialect';
 
 export interface FreeDialectExtractor extends DocumentationExtractor {
 }
@@ -24,21 +25,20 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
         let modules: CobolModule[] = [];
         let lineCounter = 1;
         lines.forEach((line) => {
-            if (line.startsWith("*>**")) {
+            if (/\*\>\*+/.test(line) && !isCobolDoc) {
+                isCobolDoc = true;
+                comments.push(line);
+            } else if (/\*\>[^\*]/.test(line) && isCobolDoc) {
+                comments.push(line);
+            } else if (/\*\>\*+/.test(line) && isCobolDoc) {
+                isCobolDoc = false;
+                comments.push(line);
+                
                 if (firstCobolDoc) {
                     firstCobolDoc = false;
                     fileComments = [...comments];
                     comments = [];
                 }
-
-                isCobolDoc = true;
-                comments.push(line);
-            } else if (line.startsWith("*>*")) {
-                isCobolDoc = false;
-                comments.push(line);
-            } else if (isCobolDoc && line.startsWith("*>")) {
-                isCobolDoc = true;
-                comments.push(line);
             } else if (line.toLowerCase().startsWith("function-id.")) {
                 const cobolFunction: CobolFunction = {
                     description: comments.join('\n'),
@@ -60,7 +60,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
         });
 
         return {
-            dialect: 'FREE',
+            dialect: Dialect.FREE,
             fileDescription: fileComments.join('\n'),
             fileName: path.basename(filePath),
             functions: functions,
