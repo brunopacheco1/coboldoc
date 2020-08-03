@@ -1,12 +1,12 @@
        >>SOURCE FORMAT FREE
 *>**
 *>  Short sample.
-*>  @author Bruno Pacheco
+*>  @author Bruno Pacheco (https://brunopacheco1.github.io/)
 *>  @license LGPL-3.0
 *>**
 
 *>*
-*>  First module
+*>  The first module
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. first-module.
@@ -100,6 +100,8 @@
 
 *>******************************************************************************
 *> First module function
+*> @param     firstarg    {PIC 9} First arg
+*> @return    firstresult {PIC 9} First return
 *>******************************************************************************
 IDENTIFICATION DIVISION.
 FUNCTION-ID. firstmodulefunction.
@@ -115,6 +117,8 @@ END FUNCTION firstmodulefunction.
 
 *>******************************************************************************
 *> second module function
+*> @param      secondarg    {PIC 9} Second arg
+*> @return    secondresult {PIC 9} Second return
 *>******************************************************************************
 IDENTIFICATION DIVISION.
 FUNCTION-ID. secondmodulefunction.
@@ -130,6 +134,8 @@ END FUNCTION secondmodulefunction.
 
 *>******************************************************************************
 *> third module function
+*> @param      thirdarg    {PIC 9} Third arg
+*> @return    thirdresult {PIC 9} Third return
 *>******************************************************************************
 IDENTIFICATION DIVISION.
 FUNCTION-ID. thirdmodulefunction.
