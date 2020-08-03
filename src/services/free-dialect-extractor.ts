@@ -33,7 +33,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
             } else if (/\*\>\*+/.test(line) && isCobolDoc) {
                 isCobolDoc = false;
                 comments.push(line);
-                
+
                 if (firstCobolDoc) {
                     firstCobolDoc = false;
                     fileComments = [...comments];
@@ -43,7 +43,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
                 const cobolFunction: CobolFunction = {
                     description: comments.join('\n'),
                     line: lineCounter,
-                    name: line.substring(12).trim()
+                    name: line.substring("function-id.".length).trim(),
                 };
                 functions.push(cobolFunction);
                 comments = [];
@@ -51,7 +51,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
                 const cobolModule: CobolModule = {
                     description: comments.join('\n'),
                     line: lineCounter,
-                    name: line.substring(11).trim()
+                    name: line.substring("program-id.".length).trim(),
                 };
                 modules.push(cobolModule);
                 comments = [];

@@ -10,7 +10,7 @@
     "start": "npm run build && npm run global",
     "watch": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "mocha src/**/*.spec.ts",
+    "test:unit": "mocha -r ts-node/register tests/**/*.spec.ts",
     "lint": "tslint -p . --fix",
     "build": "npm run clean:some && tsc -p .",
     "global": "npm i -g && coboldoc",
@@ -43,6 +43,7 @@
   "devDependencies": {
     "@liftr/tscov": "^1.4.7",
     "@types/figlet": "^1.2.0",
+    "@types/mocha": "^8.0.1",
     "@types/node": "^14.0.26",
     "mocha": "^8.0.1",
     "nodemon": "^2.0.4",
