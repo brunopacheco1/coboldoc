@@ -6,7 +6,8 @@
 *>**
 
 *>*
-*>  The first module
+*>  The first module.
+*>  Trying to see what happens to    huge text.
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. first-module.
@@ -35,9 +36,9 @@
     END-CALL.
  END PROGRAM first-module.
  
-*>******************************************************************************
+*>*
 *> The second module
-*>******************************************************************************
+*>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. second-module.
 
@@ -68,9 +69,9 @@
 
  END PROGRAM second-module.
  
-*>******************************************************************************
+*>*
 *> The third module
-*>******************************************************************************
+*>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. third-module.
 
@@ -98,11 +99,11 @@
     DISPLAY "Third Module: ", WS-THIRDMODULE.
  END PROGRAM third-module.
 
-*>******************************************************************************
-*> First module function
+*>*
+*> first module function
 *> @param     firstarg    {PIC 9} First arg
 *> @return    firstresult {PIC 9} First return
-*>******************************************************************************
+*>*
 IDENTIFICATION DIVISION.
 FUNCTION-ID. firstmodulefunction.
 
@@ -115,11 +116,11 @@ PROCEDURE DIVISION USING firstarg RETURNING firstresult.
     COMPUTE firstresult = firstarg + 1.
 END FUNCTION firstmodulefunction.
 
-*>******************************************************************************
+*>*
 *> second module function
 *> @param      secondarg    {PIC 9} Second arg
 *> @return    secondresult {PIC 9} Second return
-*>******************************************************************************
+*>*
 IDENTIFICATION DIVISION.
 FUNCTION-ID. secondmodulefunction.
 
@@ -132,11 +133,11 @@ PROCEDURE DIVISION USING secondarg RETURNING secondresult.
     COMPUTE secondresult = secondarg + 2.
 END FUNCTION secondmodulefunction.
 
-*>******************************************************************************
+*>*
 *> third module function
 *> @param      thirdarg    {PIC 9} Third arg
 *> @return    thirdresult {PIC 9} Third return
-*>******************************************************************************
+*>*
 IDENTIFICATION DIVISION.
 FUNCTION-ID. thirdmodulefunction.
 

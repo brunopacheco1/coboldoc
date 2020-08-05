@@ -22,17 +22,17 @@ export interface Return {
 //Do functions have paragraphs?
 export interface CobolFunction {
     name: string,
-    description: string,
     line: number,
+    description?: string,
     params?: Parameter[],
     return?: Return,
 }
 
 export interface CobolModule {
     name: string,
-    description: string,
     line: number,
     paragraphs?: Paragraph[],
+    description?: string,
 }
 
 export interface ChangeLog {

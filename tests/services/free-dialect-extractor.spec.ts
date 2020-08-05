@@ -16,13 +16,13 @@ describe('FreeDialectExtractor', () => {
         const actual: Documentation = service.extract('./tests/resources/freedialectsample.cbl');
         const expected: Documentation = {
             dialect: Dialect.FREE,
-            fileName: 'freedialectsample',
+            fileName: 'freedialectsample.cbl',
             author: 'Bruno Pacheco (https://brunopacheco1.github.io/)',
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module',
-                line: 12,
+                description: 'The first module. Trying to see what happens to huge text.',
+                line: 13,
                 name: 'first-module',
                 paragraphs: [
                     { name: '0001-FIRSTMODULE-MAIN', line: 26 },
@@ -31,7 +31,7 @@ describe('FreeDialectExtractor', () => {
             },
             {
                 description: 'The second module',
-                line: 42,
+                line: 43,
                 name: 'second-module',
                 paragraphs: [
                     { name: '0001-SECONDMODULE-MAIN', line: 58 },
@@ -40,7 +40,7 @@ describe('FreeDialectExtractor', () => {
             },
             {
                 description: 'The third module',
-                line: 75,
+                line: 76,
                 name: 'third-module',
                 paragraphs: [
                     { name: '0001-THIRDMODULE-MAIN', line: 91 },
@@ -49,8 +49,8 @@ describe('FreeDialectExtractor', () => {
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 107,
-                description: 'First module function',
+                line: 108,
+                description: 'first module function',
                 params: [{
                     name: 'firstarg',
                     description: 'First arg',
@@ -62,8 +62,8 @@ describe('FreeDialectExtractor', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 124,
-                description: 'Second module function',
+                line: 125,
+                description: 'second module function',
                 params: [{
                     name: 'secondarg',
                     description: 'Second arg',
@@ -75,8 +75,8 @@ describe('FreeDialectExtractor', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 141,
-                description: 'Third module function',
+                line: 142,
+                description: 'third module function',
                 params: [{
                     name: 'thirdarg',
                     description: 'Third arg',
