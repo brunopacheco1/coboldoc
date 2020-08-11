@@ -70,7 +70,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
             lineCounter++;
         });
 
-        let fileDescription: string = '';
+        let fileDescription: string | undefined;
         let author: string | undefined;
         let license: string | undefined;
         [fileDescription, author, license] = this._extractFileDetails(fileComments);
@@ -86,48 +86,74 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
         };
     }
 
-    private _extractFunctionDetails(comments: string[]): [string, Parameter[], Return | undefined] {
+    private _extractFunctionDetails(comments: string[]): [string | undefined, Parameter[], Return | undefined] {
+        let rawText = this._cleanComments(comments);
+        let pieces = rawText.split('@');
         const params: Parameter[] = [];
-        const returnObj: Return | undefined = undefined;
-        let rawDescription = '';
-        comments.forEach(line => {
-            if (/@param/.test(line)) {
-
-            } else if (/@return/.test(line)) {
-
-            } else {
-                rawDescription += '\n' + line;
+        let returnObj: Return | undefined = undefined;
+        let description: string | undefined = undefined;
+        pieces.forEach((piece, index) => {
+            if (index === 0) {
+                description = piece.trim();
+            } else if (/^param/.test(piece)) {
+                piece = piece.substring(piece.indexOf(' ') + 1);
+                let paramType: string | undefined = undefined;
+                let match = piece.match(/\{(.+)\}/);
+                if (!!match) {
+                    paramType = match[1];
+                    piece = piece.replace(/\{(.+)\}/, '').trim();
+                }
+                const paramName = piece.substring(0, piece.indexOf(' ')).trim();
+                const paramDescription = piece.substring(piece.indexOf(' ') + 1).trim();
+                params.push({
+                    name: paramName,
+                    description: paramDescription,
+                    type: paramType
+                });
+            } else if (/^return/.test(piece)) {
+                let returnType: string | undefined = undefined;
+                let match = piece.match(/\{(.+)\}/);
+                if (!!match) {
+                    returnType = match[1];
+                    piece = piece.replace(/\{(.+)\}/, '').trim();
+                }
+                const returnDescription = piece.substring(piece.indexOf(' ') + 1).trim();
+                returnObj = {
+                    description: returnDescription,
+                    type: returnType
+                };
             }
         });
 
-        return [this._extractDescription(rawDescription, /\*\>\*/g), params, returnObj];
+        return [description, params, returnObj];
     }
 
     private _extractModuleDetails(comments: string[]): [string] {
-        return [this._extractDescription(comments.join('\n'), /\*\>\*/g)];
+        return [this._cleanComments(comments)];
     }
 
-    private _extractFileDetails(comments: string[]): [string, string | undefined, string | undefined] {
+    private _extractFileDetails(comments: string[]): [string | undefined, string | undefined, string | undefined] {
+        let rawText = this._cleanComments(comments);
+        let pieces = rawText.split('@');
         let author: string | undefined = undefined;
         let license: string | undefined = undefined;
-        let rawDescription = '';
-        comments.forEach(line => {
-            if (/@license/.test(line)) {
-                license = line.split('@license')[1].trim();
-            } else if (/@author/.test(line)) {
-                author = line.split('@author')[1].trim();
-            } else {
-                rawDescription += '\n' + line;
+        let description: string | undefined = undefined;
+        pieces.forEach((piece, index) => {
+            if (index === 0) {
+                description = piece.trim();
+            } else if (/^license/.test(piece)) {
+                license = piece.substring(piece.indexOf(' ')).trim();
+            } else if (/^author/.test(piece)) {
+                author = piece.substring(piece.indexOf(' ')).trim();
             }
         });
 
-        return [this._extractDescription(rawDescription, /\*\>\*\*/g), author, license];
+        return [description, author, license];
     }
 
-    private _extractDescription(rawText: string, commentDelimiterRegex: RegExp): string {
-        return rawText
-            .replace(commentDelimiterRegex, '')
-            .replace(/\*\>/g, '')
+    private _cleanComments(comments: string[]): string {
+        return comments.join('\n')
+            .replace(/\*\>\**/g, '')
             .replace(/\n/g, ' ')
             .replace(/\s\s+/g, ' ')
             .trim();

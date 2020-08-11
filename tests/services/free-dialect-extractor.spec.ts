@@ -52,7 +52,7 @@ describe('FreeDialectExtractor', () => {
                 line: 108,
                 description: 'first module function',
                 params: [{
-                    name: 'firstarg',
+                    name: 'first-arg',
                     description: 'First arg',
                     type: 'PIC 9'
                 }],

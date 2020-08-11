@@ -24,7 +24,7 @@ export interface CobolFunction {
     name: string,
     line: number,
     description?: string,
-    params?: Parameter[],
+    params: Parameter[],
     return?: Return,
 }
 

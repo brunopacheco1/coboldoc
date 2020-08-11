@@ -101,8 +101,8 @@
 
 *>*
 *> first module function
-*> @param     firstarg    {PIC 9} First arg
-*> @return    firstresult {PIC 9} First return
+*> @param   {PIC 9}  first-arg   First arg
+*> @return {PIC 9} First return
 *>*
 IDENTIFICATION DIVISION.
 FUNCTION-ID. firstmodulefunction.
@@ -110,16 +110,16 @@ FUNCTION-ID. firstmodulefunction.
 DATA DIVISION.
 WORKING-STORAGE SECTION.
 LINKAGE SECTION.
-   01 firstarg PIC 9.
+   01 first-arg PIC 9.
    01 firstresult PIC 9.
-PROCEDURE DIVISION USING firstarg RETURNING firstresult.
+PROCEDURE DIVISION USING first-arg RETURNING firstresult.
     COMPUTE firstresult = firstarg + 1.
 END FUNCTION firstmodulefunction.
 
 *>*
 *> second module function
-*> @param      secondarg    {PIC 9} Second arg
-*> @return    secondresult {PIC 9} Second return
+*> @param {PIC 9} secondarg    Second arg
+*> @return  {PIC 9}   Second return
 *>*
 IDENTIFICATION DIVISION.
 FUNCTION-ID. secondmodulefunction.
@@ -135,8 +135,8 @@ END FUNCTION secondmodulefunction.
 
 *>*
 *> third module function
-*> @param      thirdarg    {PIC 9} Third arg
-*> @return    thirdresult {PIC 9} Third return
+*> @param  {PIC 9}   thirdarg   Third arg
+*> @return   {PIC 9}            Third return
 *>*
 IDENTIFICATION DIVISION.
 FUNCTION-ID. thirdmodulefunction.
