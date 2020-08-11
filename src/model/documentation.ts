@@ -31,7 +31,7 @@ export interface CobolFunction {
 export interface CobolModule {
     name: string,
     line: number,
-    paragraphs?: Paragraph[],
+    paragraphs: Paragraph[],
     description?: string,
 }
 

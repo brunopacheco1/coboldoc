@@ -63,6 +63,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
                     description: description,
                     line: lineCounter,
                     name: moduleName,
+                    paragraphs: []
                 };
                 modules.push(cobolModule);
                 comments = [];
