@@ -5,14 +5,14 @@ import { FreeDialectExtractor, FreeDialectExtractorImpl } from '../../src/servic
 import { Documentation } from '../../src/model/documentation';
 import { Dialect } from '../../src/model/dialect';
 
-describe('FreeDialectExtractor', () => {
+describe('freedialectsample.cbl documentation', () => {
     let service: FreeDialectExtractor;
 
     beforeEach(() => {
         service = new FreeDialectExtractorImpl();
     });
 
-    it('should extract documention from freedialectsample.cbl', async () => {
+    it('should extract', async () => {
         const actual: Documentation = service.extract('./tests/resources/freedialectsample.cbl');
         const expected: Documentation = {
             dialect: Dialect.FREE,
@@ -24,28 +24,19 @@ describe('FreeDialectExtractor', () => {
                 description: 'The first module. Trying to see what happens to huge text.',
                 line: 13,
                 name: 'first-module',
-                paragraphs: [
-                    { name: '0001-FIRSTMODULE-MAIN', line: 26 },
-                    { name: '0002-FIRSTMODULE-NEWPARA', line: 30 }
-                ]
+                paragraphs: []
             },
             {
                 description: 'The second module',
                 line: 43,
                 name: 'second-module',
-                paragraphs: [
-                    { name: '0001-SECONDMODULE-MAIN', line: 58 },
-                    { name: '0002-SECONDMODULE-NEWPARA', line: 62 }
-                ]
+                paragraphs: []
             },
             {
                 description: 'The third module',
                 line: 76,
                 name: 'third-module',
-                paragraphs: [
-                    { name: '0001-THIRDMODULE-MAIN', line: 91 },
-                    { name: '0002-THIRDMODULE-NEWPARA', line: 95 }
-                ]
+                paragraphs: []
             }],
             functions: [{
                 name: 'firstmodulefunction',
@@ -88,6 +79,6 @@ describe('FreeDialectExtractor', () => {
                 }
             }]
         };
-        expect(actual).to.be.equal(expected);
+        expect(actual).to.deep.equal(expected);
     });
 });
