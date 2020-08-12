@@ -26,7 +26,7 @@ export class Cli {
         const command = new Command();
 
         command.option('-d, --dialect <dialect>', 'The suported dialects are FREE', 'FREE')
-            .option('-o, --output <outputDirectory>', 'The output directory', './')
+            .option('-o, --output <outputDirectory>', 'The output directory', process.cwd())
             .option('-f, --format <fileFormat>', 'The suported output format are MD or HTML', 'MD')
             .option('-V, --verbose', 'For extra logs to help on debugging');
 

@@ -1,4 +1,4 @@
 export enum Format {
-    HTML,
-    MD,
+    HTML = 'html',
+    MD = 'md',
 }

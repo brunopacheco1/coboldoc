@@ -1,3 +1,3 @@
 export enum Dialect {
-    FREE,
+    FREE = 'free',
 }

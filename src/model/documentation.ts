@@ -51,3 +51,8 @@ export interface Documentation {
     modules?: CobolModule[],
     changeLogs?: ChangeLog[],
 }
+
+export interface ParsedDocumentation {
+    fileName: string,
+    text: string,
+}
