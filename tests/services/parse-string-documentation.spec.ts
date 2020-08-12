@@ -1,20 +1,21 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { FreeDialectExtractor, FreeDialectExtractorImpl } from '../../src/services/free-dialect-extractor';
+import { TemplateEngine, TemplateEngineImpl } from '../../src/services/template-engine';
 import { Documentation } from '../../src/model/documentation';
 import { Dialect } from '../../src/model/dialect';
+import { Format } from '../../src/model/format';
+import * as fs from 'fs';
 
-describe('string.cbl to documentation', () => {
-    let service: FreeDialectExtractor;
+describe('string.cbl to string.cbl.md', () => {
+    let service: TemplateEngine;
 
     beforeEach(() => {
-        service = new FreeDialectExtractorImpl();
+        service = new TemplateEngineImpl();
     });
 
-    it('should extract', async () => {
-        const actual: Documentation = service.extract('./tests/resources/string.cbl');
-        const expected: Documentation = {
+    it('should parse', async () => {
+        const doc: Documentation = {
             dialect: Dialect.FREE,
             fileName: 'string.cbl',
             author: 'Olegs Kunicins',
@@ -182,6 +183,9 @@ describe('string.cbl to documentation', () => {
                 }
             }]
         };
-        expect(actual).to.deep.equal(expected);
+
+        const actual = service.parse(Format.MD, doc);
+        const expected = fs.readFileSync('./tests/resources/string.cbl.expected.md', 'utf8');
+        expect(actual.text).to.deep.equal(expected);
     });
 });
