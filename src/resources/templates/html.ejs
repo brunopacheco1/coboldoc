@@ -1,2 +1,2 @@
-<h1>{{=it.fileName}}</h1>
-<p>{{=it.fileDescription}}</p>
+<h1><%= fileName %></h1>
+<%= !!fileDescription ? `<p>${fileDescription}</p>` : '' %>
