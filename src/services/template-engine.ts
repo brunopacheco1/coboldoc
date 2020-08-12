@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { Documentation, ParsedDocumentation } from '../model/documentation';
-import * as doT from 'dot';
+import * as ejs from 'ejs';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Format } from '../model/format';
@@ -12,13 +12,14 @@ export interface TemplateEngine {
 @injectable()
 export class TemplateEngineImpl implements TemplateEngine {
 
-    private _templateFunctions: Map<string, doT.RenderFunction> = new Map();
+    private _templateFunctions: Map<string, ejs.TemplateFunction> = new Map();
 
     constructor() {
         Object.values(Format).forEach(format => {
-            const templatePath = path.join(__dirname, `../resources/templates/${format}.template`);
+            const templatePath = path.join(__dirname, `../resources/templates/${format}.ejs`);
+            
             const template = fs.readFileSync(templatePath, 'utf8');
-            this._templateFunctions.set(format, doT.template(template));
+            this._templateFunctions.set(format, ejs.compile(template));
         });
     }
 
