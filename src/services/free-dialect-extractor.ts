@@ -51,7 +51,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
                     line: lineCounter,
                     name: functionName,
                     params: params,
-                    return: returnObj
+                    return: returnObj,
                 };
                 functions.push(cobolFunction);
                 comments = [];
@@ -63,7 +63,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
                     description: description,
                     line: lineCounter,
                     name: moduleName,
-                    paragraphs: []
+                    paragraphs: [],
                 };
                 modules.push(cobolModule);
                 comments = [];
@@ -109,7 +109,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
                 params.push({
                     name: paramName,
                     description: paramDescription,
-                    type: paramType
+                    type: paramType,
                 });
             } else if (/^return/.test(piece)) {
                 let returnType: string | undefined = undefined;
@@ -121,7 +121,7 @@ export class FreeDialectExtractorImpl implements FreeDialectExtractor {
                 const returnDescription = piece.substring(piece.indexOf(' ') + 1).trim();
                 returnObj = {
                     description: returnDescription,
-                    type: returnType
+                    type: returnType,
                 };
             }
         });
