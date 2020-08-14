@@ -10,10 +10,10 @@ const pkg = require('../../package.json');
 @injectable()
 export class Cli {
 
-    private _MINIMUM_ARG_SIZE = 2;
+    private readonly _MINIMUM_ARG_SIZE = 2;
 
     constructor(
-        @inject(TYPES.FileParser) private _fileParser: FileParser) { }
+        @inject(TYPES.FileParser) private readonly _fileParser: FileParser) { }
 
     public main(argv: string[]): void {
         console.log(

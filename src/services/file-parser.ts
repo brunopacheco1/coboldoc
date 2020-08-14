@@ -15,9 +15,9 @@ export interface FileParser {
 export class FileParserImpl implements FileParser {
 
     constructor(
-        @inject(TYPES.DocumentationExtractor) private _documentationExtractor: DocumentationExtractor,
-        @inject(TYPES.TemplateEngine) private _templateEngine: TemplateEngine,
-        @inject(TYPES.DocumentationOutputStream) private _outputStream: DocumentationOutputStream,
+        @inject(TYPES.DocumentationExtractor) private readonly _documentationExtractor: DocumentationExtractor,
+        @inject(TYPES.TemplateEngine) private readonly _templateEngine: TemplateEngine,
+        @inject(TYPES.DocumentationOutputStream) private readonly _outputStream: DocumentationOutputStream,
     ) { }
 
     public parse(files: string[], outputDirectory: string, format: Format): void {

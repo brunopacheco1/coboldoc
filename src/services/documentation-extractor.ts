@@ -17,11 +17,11 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         const lines = data.split(/\r?\n/);
 
         let comments: string[] = [];
-        let fileComments: string[] = [];
+        const fileComments: string[] = [];
         let isFileComments = false;
         let isComments = false;
-        let functions: CobolFunction[] = [];
-        let modules: CobolModule[] = [];
+        const functions: CobolFunction[] = [];
+        const modules: CobolModule[] = [];
         let lineCounter = 1;
         lines.forEach((line) => {
             if (/^\s*\*\>[^*].*/.test(line)) {
@@ -70,10 +70,7 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
             lineCounter++;
         });
 
-        let fileDescription: string | undefined;
-        let author: string | undefined;
-        let license: string | undefined;
-        [fileDescription, author, license] = this._extractFileDetails(fileComments);
+        const [fileDescription, author, license] = this._extractFileDetails(fileComments);
 
         return {
             fileName: path.basename(filePath),
@@ -86,8 +83,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
     }
 
     private _extractFunctionDetails(comments: string[]): [string | undefined, Parameter[], Return | undefined] {
-        let rawText = this._cleanComments(comments);
-        let pieces = rawText.split('@');
+        const rawText = this._cleanComments(comments);
+        const pieces = rawText.split('@');
         const params: Parameter[] = [];
         let returnObj: Return | undefined = undefined;
         let description: string | undefined = undefined;
@@ -97,7 +94,7 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
             } else if (/^param/.test(piece)) {
                 piece = piece.substring(piece.indexOf(' ') + 1);
                 let paramType: string | undefined = undefined;
-                let match = piece.match(/\{(.+)\}/);
+                const match = piece.match(/\{(.+)\}/);
                 if (!!match) {
                     paramType = match[1];
                     piece = piece.replace(/\{(.+)\}/, '').trim();
@@ -111,7 +108,7 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
                 });
             } else if (/^return/.test(piece)) {
                 let returnType: string | undefined = undefined;
-                let match = piece.match(/\{(.+)\}/);
+                const match = piece.match(/\{(.+)\}/);
                 if (!!match) {
                     returnType = match[1];
                     piece = piece.replace(/\{(.+)\}/, '').trim();
@@ -132,8 +129,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
     }
 
     private _extractFileDetails(comments: string[]): [string | undefined, string | undefined, string | undefined] {
-        let rawText = this._cleanComments(comments);
-        let pieces = rawText.split('@');
+        const rawText = this._cleanComments(comments);
+        const pieces = rawText.split('@');
         let author: string | undefined = undefined;
         let license: string | undefined = undefined;
         let description: string | undefined = undefined;
