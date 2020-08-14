@@ -1,0 +1,92 @@
+<html>
+
+<head>
+
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #dee3e9;
+            padding: 7px;
+        }
+
+        td {
+            padding: 7px;
+        }
+
+        tr:nth-child(even) {
+            background: #FFF
+        }
+
+        tr:nth-child(odd) {
+            background: #CCC
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        keccak.cbl
+    </h1>
+    
+    <p>
+        author: Laszlo Erdos - https://www.facebook.com/wortfee
+    </p>
+    <p>
+        License: LGPL-3.0 This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 3.0 of the License, or (at your option) any later version. This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License along with this library.
+    </p>
+    <h2>Module Summary</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><a href="#KECCAK">KECCAK</a></td>
+            <td>The KECCAK module, that uses the Keccak-f[1600] permutation. Date-Written: 2016-05-17 Fields in LINKAGE SECTION: - LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation. - LNK-KECCAK-CAPACITY: The value of the capacity c. The rate and capacity must have r+c=1600. - LNK-KECCAK-INPUT: The input message. - LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message. - LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain separation. - LNK-KECCAK-OUTPUT: The buffer where to store the output. - LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</td>
+        </tr>
+        <tr>
+            <td><a href="#STATE-PERMUTE">STATE-PERMUTE</a></td>
+            <td>Module that computes the Keccak-f[1600] permutation on the given state.</td>
+        </tr>
+        <tr>
+            <td><a href="#READ-LANE">READ-LANE</a></td>
+            <td>Module to load a 64-bit value from STATE.</td>
+        </tr>
+        <tr>
+            <td><a href="#WRITE-LANE">WRITE-LANE</a></td>
+            <td>Module to write a 64-bit value in STATE.</td>
+        </tr>
+        <tr>
+            <td><a href="#XOR-LANE">XOR-LANE</a></td>
+            <td>Module to xor and write a 64-bit value in STATE.</td>
+        </tr>
+        <tr>
+            <td><a href="#ROL-LANE">ROL-LANE</a></td>
+            <td>Module to rotate a 64-bit value.</td>
+        </tr>
+        <tr>
+            <td><a href="#LFSR86540">LFSR86540</a></td>
+            <td>Module that computes the linear feedback shift register (LFSR) used to define the round constants (see [Keccak Reference, Section 1.2]).</td>
+        </tr>
+    </table>
+    <h2>Module Details</h2>
+    <h3 id="KECCAK">KECCAK</h3>
+    <p>The KECCAK module, that uses the Keccak-f[1600] permutation. Date-Written: 2016-05-17 Fields in LINKAGE SECTION: - LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation. - LNK-KECCAK-CAPACITY: The value of the capacity c. The rate and capacity must have r+c=1600. - LNK-KECCAK-INPUT: The input message. - LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message. - LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain separation. - LNK-KECCAK-OUTPUT: The buffer where to store the output. - LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</p>
+    <h3 id="STATE-PERMUTE">STATE-PERMUTE</h3>
+    <p>Module that computes the Keccak-f[1600] permutation on the given state.</p>
+    <h3 id="READ-LANE">READ-LANE</h3>
+    <p>Module to load a 64-bit value from STATE.</p>
+    <h3 id="WRITE-LANE">WRITE-LANE</h3>
+    <p>Module to write a 64-bit value in STATE.</p>
+    <h3 id="XOR-LANE">XOR-LANE</h3>
+    <p>Module to xor and write a 64-bit value in STATE.</p>
+    <h3 id="ROL-LANE">ROL-LANE</h3>
+    <p>Module to rotate a 64-bit value.</p>
+    <h3 id="LFSR86540">LFSR86540</h3>
+    <p>Module that computes the linear feedback shift register (LFSR) used to define the round constants (see [Keccak Reference, Section 1.2]).</p>
+</body>
+
+</html>

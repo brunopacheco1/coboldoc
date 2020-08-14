@@ -1,40 +1,40 @@
-# <%= fileName %>
-<%= !!fileDescription ? `\n${fileDescription}\n` : '' %>
-author: <%= author %>
+# <%- fileName %>
+<%- !!fileDescription ? `\n${fileDescription}\n` : '' %>
+author: <%- author %>
 
-License: <%= license %>
+License: <%- license %>
 <% if(modules.length > 0) { %>
 ## Module Summary
 
 | Name | Description |
 | ----------- | ----------- | <% modules.forEach((module) => { %>
-| [<%= module.name %>](#<%= module.name %>) | <%= module.description %> | <% }); %>
+| [<%- module.name %>](#<%- module.name %>) | <%- module.description %> | <% }); %>
 <% } if(functions.length > 0) { %>
 ## Function Summary
 
 | Name | Description |
 | ----------- | ----------- | <% functions.forEach((cobolFunction) => { %>
-| [<%= cobolFunction.name %>](#<%= cobolFunction.name %>) | <%= cobolFunction.description %> | <% }); %>
+| [<%- cobolFunction.name %>](#<%- cobolFunction.name %>) | <%- cobolFunction.description %> | <% }); %>
 <% } if(modules.length > 0) { %>
 ## Module Details
 <% modules.forEach((module) => { %>
-### <%= module.name %>
+### <%- module.name %>
 
-<%= module.description %>
+<%- module.description %>
 <% }); } if(functions.length > 0) { %>
 ## Function Details
 <% functions.forEach((cobolFunction) => { %>
-### <%= cobolFunction.name %>
+### <%- cobolFunction.name %>
 
-*<%= !!cobolFunction.return.type ? `{${cobolFunction.return.type}} ` : '' %><%= cobolFunction.name %>(<%= cobolFunction.params.map(p => p.name).join(', ') %>)*
+*<%- !!cobolFunction.return.type ? `{${cobolFunction.return.type}} ` : '' %><%- cobolFunction.name %>(<%- cobolFunction.params.map(p => p.name).join(', ') %>)*
 
-<%= cobolFunction.description %>
+<%- cobolFunction.description %>
 
 #### Parameters
 <% cobolFunction.params.forEach((param) => { %>
-> <%= !!param.type ? `*{${param.type}}* ` : '' %>**<%= param.name %>** <%= param.description %> <% }); %>
+> <%- !!param.type ? `*{${param.type}}* ` : '' %>**<%- param.name %>** <%- param.description %> <% }); %>
 
 #### Returns
 
-> <%= !!cobolFunction.return.type ? `*{${cobolFunction.return.type}}* ` : '' %><%= cobolFunction.return.description %>
+> <%- !!cobolFunction.return.type ? `*{${cobolFunction.return.type}}* ` : '' %><%- cobolFunction.return.description %>
 <% }); } %>

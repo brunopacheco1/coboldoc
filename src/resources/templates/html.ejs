@@ -1,2 +1,87 @@
-<h1><%= fileName %></h1>
-<%= !!fileDescription ? `<p>${fileDescription}</p>` : '' %>
+<html>
+
+<head>
+
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #dee3e9;
+            padding: 7px;
+        }
+
+        td {
+            padding: 7px;
+        }
+
+        tr:nth-child(even) {
+            background: #FFF
+        }
+
+        tr:nth-child(odd) {
+            background: #CCC
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <%- fileName %>
+    </h1>
+    <% if(!!fileDescription) { %><p>
+        <%- fileDescription %>
+    </p><% } %>
+    <p>
+        author: <%- author %>
+    </p>
+    <p>
+        License: <%- license %>
+    </p><% if(modules.length > 0) { %>
+    <h2>Module Summary</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr><% modules.forEach((module) => { %>
+        <tr>
+            <td><a href="#<%- module.name %>"><%- module.name %></a></td>
+            <td><%- module.description %></td>
+        </tr><% }); %>
+    </table><% } if(functions.length > 0) { %>
+    <h2>Function Summary</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr><% functions.forEach((cobolFunction) => { %>
+        <tr>
+            <td><a href="#<%- cobolFunction.name %>"><%- cobolFunction.name %></a></td>
+            <td><%- cobolFunction.description %></td>
+        </tr><% }); %>
+    </table><% } if(modules.length > 0) { %>
+    <h2>Module Details</h2><% modules.forEach((module) => { %>
+    <h3 id="<%- module.name %>"><%- module.name %></h3>
+    <p><%- module.description %></p><% }); } if(functions.length > 0) { %>
+    <h2>Function Details</h2><% functions.forEach((cobolFunction) => { %>
+    <h3 id="<%- cobolFunction.name %>"><%- cobolFunction.name %></h3>
+    <p>
+        <i><%- !!cobolFunction.return.type ? `{${cobolFunction.return.type}} ` : '' %><%- cobolFunction.name %>(<%- cobolFunction.params.map(p => p.name).join(', ') %>)</i>
+    </p>
+    <p><%- cobolFunction.description %></p>
+    <h4>Parameters</h4>
+    <ul><% cobolFunction.params.forEach((param) => { %>
+        <li>
+            <%- !!param.type ? `<i>{${param.type}}</i> ` : '' %><strong><%- param.name %></strong><%- param.description %>
+        </li><% }); %>
+    </ul>
+    <h4>Returns</h4>
+    <ul>
+        <li>
+            <%- !!cobolFunction.return.type ? `<i>{${cobolFunction.return.type}}</i> ` : '' %><%- cobolFunction.return.description %>
+        </li>
+    </ul><% }); } %>
+</body>
+
+</html>
