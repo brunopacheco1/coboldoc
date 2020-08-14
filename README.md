@@ -24,10 +24,8 @@ $ coboldoc
 Usage: coboldoc <command> [options]
 
 Options:
-  -d, --dialect <dialect>         The suported dialects are FREE (default: "FREE")
   -o, --output <outputDirectory>  The output directory (default: "./")
-  -f, --format <fileFormat>       The suported output format are MD or HTML (default: "MD")
-  -V, --verbose                   For extra logs to help on debugging
+  -f, --format <fileFormat>       Suported output format: md, html (default: "md")
   -v, --version                   output the version number
   -h, --help                      display help for command
 

@@ -1,5 +1,3 @@
-import { Dialect } from './dialect';
-
 export interface Paragraph {
     name: string,
     line: number,
@@ -43,7 +41,6 @@ export interface ChangeLog {
 
 export interface Documentation {
     fileName: string,
-    dialect: Dialect,
     license?: string,
     author?: string,
     fileDescription?: string,

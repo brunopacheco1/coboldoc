@@ -1,21 +1,19 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { FreeDialectExtractor, FreeDialectExtractorImpl } from '../../src/services/free-dialect-extractor';
+import { DocumentationExtractor, DocumentationExtractorImpl } from '../../src/services/documentation-extractor';
 import { Documentation } from '../../src/model/documentation';
-import { Dialect } from '../../src/model/dialect';
 
 describe('freedialectsample.cbl to documentation', () => {
-    let service: FreeDialectExtractor;
+    let service: DocumentationExtractor;
 
     beforeEach(() => {
-        service = new FreeDialectExtractorImpl();
+        service = new DocumentationExtractorImpl();
     });
 
     it('should extract', async () => {
         const actual: Documentation = service.extract('./tests/resources/freedialectsample.cbl');
         const expected: Documentation = {
-            dialect: Dialect.FREE,
             fileName: 'freedialectsample.cbl',
             author: 'Bruno Pacheco (https://brunopacheco1.github.io/)',
             license: 'LGPL-3.0',

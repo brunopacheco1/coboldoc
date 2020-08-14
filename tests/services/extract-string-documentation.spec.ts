@@ -1,21 +1,19 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { FreeDialectExtractor, FreeDialectExtractorImpl } from '../../src/services/free-dialect-extractor';
+import { DocumentationExtractor, DocumentationExtractorImpl } from '../../src/services/documentation-extractor';
 import { Documentation } from '../../src/model/documentation';
-import { Dialect } from '../../src/model/dialect';
 
 describe('string.cbl to documentation', () => {
-    let service: FreeDialectExtractor;
+    let service: DocumentationExtractor;
 
     beforeEach(() => {
-        service = new FreeDialectExtractorImpl();
+        service = new DocumentationExtractorImpl();
     });
 
     it('should extract', async () => {
         const actual: Documentation = service.extract('./tests/resources/string.cbl');
         const expected: Documentation = {
-            dialect: Dialect.FREE,
             fileName: 'string.cbl',
             author: 'Olegs Kunicins',
             license: 'LGPL-3.0 This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 3.0 of the License, or (at your option) any later version. This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License along with this library.',

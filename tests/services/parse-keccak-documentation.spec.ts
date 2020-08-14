@@ -3,13 +3,11 @@ import 'mocha';
 import { expect } from 'chai';
 import { TemplateEngine, TemplateEngineImpl } from '../../src/services/template-engine';
 import { Documentation } from '../../src/model/documentation';
-import { Dialect } from '../../src/model/dialect';
 import { Format } from '../../src/model/format';
 import * as fs from 'fs';
 
 describe('Parsing keccak.cbl to doc file', () => {
     const doc: Documentation = {
-        dialect: Dialect.FREE,
         fileName: 'keccak.cbl',
         fileDescription: '',
         author: 'Laszlo Erdos - https://www.facebook.com/wortfee',

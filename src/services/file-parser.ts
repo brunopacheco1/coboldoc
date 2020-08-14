@@ -5,41 +5,34 @@ import { TYPES } from '../types';
 import { Format } from '../model/format';
 import { TemplateEngine } from './template-engine';
 import { DocumentationOutputStream } from './documentation-output-stream';
-import { Dialect } from '../model/dialect';
-import { FreeDialectExtractor } from './free-dialect-extractor';
+import kleur from 'kleur';
 
 export interface FileParser {
-    parse(files: string[], dialect: Dialect, outputDirectory: string, format: Format): void;
+    parse(files: string[], outputDirectory: string, format: Format): void;
 }
 
 @injectable()
 export class FileParserImpl implements FileParser {
 
     constructor(
-        @inject(TYPES.FreeDialectExtractor) private _freeDialectExtractor: FreeDialectExtractor,
+        @inject(TYPES.DocumentationExtractor) private _documentationExtractor: DocumentationExtractor,
         @inject(TYPES.TemplateEngine) private _templateEngine: TemplateEngine,
         @inject(TYPES.DocumentationOutputStream) private _outputStream: DocumentationOutputStream,
     ) { }
 
-    public parse(files: string[], dialect: Dialect, outputDirectory: string, format: Format): void {
-        const extractor = this._getExtractor(dialect);
+    public parse(files: string[], outputDirectory: string, format: Format): void {
+        console.log(`Output directory: ${outputDirectory}`);
+        console.log(`Selected format: ${format}`);
         files.forEach(file => {
-            this._parseFile(extractor, file, outputDirectory, format);
+            process.stdout.write(`Generating ${file} documentation... `);
+            this._parseFile(file, outputDirectory, format);
+            console.log(kleur.green('DONE'));
         });
     }
 
-    private _getExtractor(dialect: Dialect): DocumentationExtractor {
-        switch (dialect) {
-            case Dialect.FREE:
-                return this._freeDialectExtractor;
-            default:
-                throw new Error(`Not supported dialect: ${dialect}`);
-        }
-    }
-
-    private _parseFile(extractor: DocumentationExtractor, file: string, outputDirectory: string, format: Format): void {
+    private _parseFile(file: string, outputDirectory: string, format: Format): void {
         const filePath = this._defineFilePath(file);
-        const documentation = extractor.extract(filePath);
+        const documentation = this._documentationExtractor.extract(filePath);
         const parsedDocumentation = this._templateEngine.parse(format, documentation);
         this._outputStream.write(outputDirectory, parsedDocumentation);
     }

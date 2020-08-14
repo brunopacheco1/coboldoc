@@ -1,21 +1,19 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { FreeDialectExtractor, FreeDialectExtractorImpl } from '../../src/services/free-dialect-extractor';
+import { DocumentationExtractor, DocumentationExtractorImpl } from '../../src/services/documentation-extractor';
 import { Documentation } from '../../src/model/documentation';
-import { Dialect } from '../../src/model/dialect';
 
 describe('keccak.cbl to documentation', () => {
-    let service: FreeDialectExtractor;
+    let service: DocumentationExtractor;
 
     beforeEach(() => {
-        service = new FreeDialectExtractorImpl();
+        service = new DocumentationExtractorImpl();
     });
 
     it('should extract', async () => {
         const actual: Documentation = service.extract('./tests/resources/keccak.cbl');
         const expected: Documentation = {
-            dialect: Dialect.FREE,
             fileName: 'keccak.cbl',
             fileDescription: '',
             author: 'Laszlo Erdos - https://www.facebook.com/wortfee',
