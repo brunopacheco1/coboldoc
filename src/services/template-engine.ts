@@ -12,7 +12,7 @@ export interface TemplateEngine {
 @injectable()
 export class TemplateEngineImpl implements TemplateEngine {
 
-    private _templateFunctions: Map<string, ejs.TemplateFunction> = new Map();
+    private readonly _templateFunctions: Map<string, ejs.TemplateFunction> = new Map();
 
     constructor() {
         Object.values(Format).forEach(format => {
