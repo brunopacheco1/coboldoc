@@ -9,7 +9,9 @@
 
 <h4 align="center">A Command-line tool to generate documentation for COBOL.</h4>
 <p align="center">
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=brunopacheco1_coboldoc&metric=alert_status)](https://sonarcloud.io/dashboard?id=brunopacheco1_coboldoc) ![nodejs-ci](https://github.com/brunopacheco1/coboldoc/workflows/nodejs-ci/badge.svg) ![NPM downloads](https://img.shields.io/npm/dm/coboldoc.svg)
+<span><a href="https://sonarcloud.io/dashboard?id=brunopacheco1_coboldoc"><img src="https://sonarcloud.io/api/project_badges/measure?project=brunopacheco1_coboldoc&metric=alert_status" alt="Quality Gate Status" /></a></span>
+<span><img src="https://github.com/brunopacheco1/coboldoc/workflows/nodejs-ci/badge.svg" alt="NPM downloads" /></span>
+<span><a href="https://npmjs.com/package/coboldoc" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/coboldoc.svg" alt="NPM downloads" /></a></span>
 </p>
 
 #### Features
