@@ -77,7 +77,7 @@
     <h4>Parameters</h4>
     <ul><% cobolFunction.params.forEach((param) => { %>
         <li>
-            <%- !!param.type ? `<em>{${param.type}}</em> ` : '' %><strong> <%- param.name %></strong><%- param.description %>
+            <%- !!param.type ? `<em>{${param.type}}</em> ` : '' %><strong><%- param.name %></strong> <%- param.description %>
         </li><% }); %>
     </ul>
     <h4>Returns</h4>
