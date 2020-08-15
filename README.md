@@ -8,6 +8,9 @@
 </h1>
 
 <h4 align="center">A Command-line tool to generate documentation for COBOL.</h4>
+<p align="center">
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=brunopacheco1_coboldoc&metric=alert_status)](https://sonarcloud.io/dashboard?id=brunopacheco1_coboldoc) ![nodejs-ci](https://github.com/brunopacheco1/coboldoc/workflows/nodejs-ci/badge.svg) ![NPM downloads](https://img.shields.io/npm/dm/coboldoc.svg)
+</p>
 
 #### Features
 - Generate documentation in Markdown;
@@ -172,5 +175,10 @@ Output in MD:
 ```
 > *{Any Type}* A description of this function return.
 ```
+
+#### Roadmap
+- List of paragraphs in the module details view;
+- Scan and display changelog (if present);
+- Support for small and long descriptions;
 
 Your contribution is always welcome!
