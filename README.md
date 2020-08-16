@@ -61,9 +61,10 @@ $ coboldoc generate resources/string.cbl resources/keccak.cbl resources/freedial
 
 Output directory: ./doc/
 Selected format: md
-Generating resources/string.cbl documentation... DONE
-Generating resources/keccak.cbl documentation... DONE
-Generating resources/freedialectsample.cbl documentation... DONE
+Generating string.cbl documentation... DONE
+Generating keccak.cbl documentation... DONE
+Generating freedialectsample.cbl documentation... DONE
+Generating README.md... DONE
 ```
 
 #### Code Blocks
