@@ -79,14 +79,14 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
     });
 
     it('should parse to md', async () => {
-        const actual = service.parse(Format.MD, doc);
+        const actual = service.parseDocumentation(Format.MD, doc);
         const expected = fs.readFileSync('./tests/resources/freedialectsample.cbl.expected.md', 'utf8');
-        expect(actual.text).to.deep.equal(expected);
+        expect(actual).to.deep.equal(expected);
     });
 
     it('should parse to html', async () => {
-        const actual = service.parse(Format.HTML, doc);
+        const actual = service.parseDocumentation(Format.HTML, doc);
         const expected = fs.readFileSync('./tests/resources/freedialectsample.cbl.expected.html', 'utf8');
-        expect(actual.text).to.deep.equal(expected);
+        expect(actual).to.deep.equal(expected);
     });
 });
