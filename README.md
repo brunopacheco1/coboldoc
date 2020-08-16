@@ -49,10 +49,27 @@ Commands:
   help [command]                  display help for command
 ```
 
+##### Usage sample
+
+```
+$ coboldoc generate resources/string.cbl resources/keccak.cbl resources/freedialectsample.cbl -o ./doc/
+                 _               _       _
+   ___    ___   | |__     ___   | |   __| |   ___     ___
+  / __|  / _ \  | '_ \   / _ \  | |  / _` |  / _ \   / __|
+ | (__  | (_) | | |_) | | (_) | | | | (_| | | (_) | | (__
+  \___|  \___/  |_.__/   \___/  |_|  \__,_|  \___/   \___|
+
+Output directory: ./doc/
+Selected format: md
+Generating resources/string.cbl documentation... DONE
+Generating resources/keccak.cbl documentation... DONE
+Generating resources/freedialectsample.cbl documentation... DONE
+```
+
 #### Code Blocks
 COBOLDoc supports the following comment blocks in order to build the documentation.
 
-In essence, COBOLDoc has been tested against free-format COBOL source files only, but there shouldn't be restrictions on others COBOL coding styles, if you follow the standards of this tool, as COBOLDoc ignores leading blank spaces before comment lines.
+In essence, COBOLDoc has been tested against COBOL source files written in free-format only, but there shouldn't be restrictions on other COBOL coding formats, if you follow the standards of this tool. During the scanning phase, COBOLDoc ignores leading blank spaces of each line of code.
 
 ##### File Comment Block
 Anything that describes the file as a whole, will scanned in this kind of comment block, starting and ending with `*>**` and all internal line starting with `*> `.
