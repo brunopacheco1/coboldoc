@@ -22,13 +22,13 @@
 - NodeJS 8+
 
 #### Installation
-```
+```console
 $ npm install -g coboldoc
 ```
 
 #### Usage
 
-```
+```console
 $ coboldoc 
                  _               _       _                
    ___    ___   | |__     ___   | |   __| |   ___     ___ 
@@ -59,7 +59,7 @@ Anything that describes the file as a whole, will scanned in this kind of commen
 
 File comment block can be anywhere in the source file, but ideally it should be in the beginning of it.
 
-```
+```cobol
 *>**
 *>  Short sample.
 *>  @author Bruno Pacheco (https://brunopacheco1.github.io/)
@@ -72,7 +72,7 @@ Anything that describes the following module or function, will scanned in this k
 
 Module/Function comment blocks have to preceed a `FUNCTION-ID` or `PROGRAM-ID` definition.
 
-```
+```cobol
 ...
 
 *>*
@@ -100,7 +100,7 @@ FUNCTION-ID. anyfunction.
 Defines the author(s) of the source file. This tag will be scanned in a File Comment Block.
 
 Input:
-```
+```cobol
 *>**
 *> @author Frodo, Sam, Pippin, Merry, Aragorn,
 *> Legolas, Gandalf, Gimli, Boromir
@@ -109,7 +109,7 @@ Input:
 
 Output in MD:
 
-```
+```markdown
 author: Frodo, Sam, Pippin, Merry, Aragorn, Legolas, Gandalf, Gimli, Boromir
 ```
 
@@ -117,7 +117,7 @@ author: Frodo, Sam, Pippin, Merry, Aragorn, Legolas, Gandalf, Gimli, Boromir
 Defines the license of the source file. This tag will be scanned in a File Comment Block.
 
 Input:
-```
+```cobol
 *>**
 *>  @license LGPL-3.0
 *>
@@ -138,7 +138,7 @@ Input:
 
 Output in MD:
 
-```
+```markdown
 license: LGPL-3.0 This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 3.0 of the License, or (at your option) any later version. This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License along with this library.
 ```
 
@@ -147,7 +147,7 @@ Defines the parameter or argument of function. This tag will be scanned in a Mod
 The type is not mandatory and accepts anything.
 
 Input:
-```
+```cobol
 *>*
 *> @param {Any Type}   l-myparameter1  A description of l-myparameter1
 *> @param {Any Type 2} l-myparameter2  A description of l-myparameter2
@@ -156,7 +156,7 @@ Input:
 
 Output in MD:
 
-```
+```markdown
 > *{Any Type}* **l-myparameter1** A description of l-myparameter1
 > *{Any Type 2}* **l-myparameter2** A description of l-myparameter2
 ```
@@ -166,7 +166,7 @@ Defines the return of function. This tag will be scanned in a Module/Function Co
 The type is not mandatory and accepts anything.
 
 Input:
-```
+```cobol
 *>*
 *> @return {Any Type}  A description of this function return.
 *>*
@@ -174,7 +174,7 @@ Input:
 
 Output in MD:
 
-```
+```markdown
 > *{Any Type}* A description of this function return.
 ```
 
