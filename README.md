@@ -197,6 +197,36 @@ Output in MD:
 > *{Any Type}* A description of this function return.
 ```
 
+##### @summary \<summary>
+If you need to add a short text into the Module or Function Summary tables, you can make use of this tag. When it is missing, the general description will be added into Summary table.
+
+Input:
+```
+*>*
+*> The description of anyfunction1 perhaps is quite too long to be added into the summary table.
+*> @summary Short summary of anyfunction1.
+*>*
+IDENTIFICATION DIVISION.
+FUNCTION-ID. anyfunction1.
+
+...
+
+*>*
+*> The description of anyfunction2 is not that long.
+*>*
+IDENTIFICATION DIVISION.
+FUNCTION-ID. anyfunction2.
+```
+
+Output in MD:
+
+```
+| Name | Description |
+| ----------- | ----------- | 
+| [anyfunction1](#anyfunction1) | Short summary of anyfunction1. | 
+| [anyfunction2](#anyfunction2) | The description of anyfunction2 is not that long. | 
+```
+
 #### Support of HTML
 COBOLDoc support HTML content. If you need any special formating, it should work correctly if it respects HTML syntax.
 
@@ -233,6 +263,5 @@ The KECCAK module, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2
 #### Roadmap
 - List of paragraphs in the module details view;
 - Scan and display changelog (if present);
-- Support for small and long descriptions;
 
 Your contribution is always welcome!

@@ -8,13 +8,13 @@ License: <%- license %>
 
 | Name | Description |
 | ----------- | ----------- | <% modules.forEach((module) => { %>
-| [<%- module.name %>](#<%- module.name %>) | <%- module.description %> | <% }); %>
+| [<%- module.name %>](#<%- module.name %>) | <%- module.summary || module.description %> | <% }); %>
 <% } if(functions.length > 0) { %>
 ## Function Summary
 
 | Name | Description |
 | ----------- | ----------- | <% functions.forEach((cobolFunction) => { %>
-| [<%- cobolFunction.name %>](#<%- cobolFunction.name %>) | <%- cobolFunction.description %> | <% }); %>
+| [<%- cobolFunction.name %>](#<%- cobolFunction.name %>) | <%- cobolFunction.summary || cobolFunction.description %> | <% }); %>
 <% } if(modules.length > 0) { %>
 ## Module Details
 <% modules.forEach((module) => { %>

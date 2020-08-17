@@ -21,6 +21,7 @@ export interface Return {
 export interface CobolFunction {
     name: string,
     line: number,
+    summary?: string,
     description?: string,
     params: Parameter[],
     return?: Return,
@@ -31,6 +32,7 @@ export interface CobolModule {
     line: number,
     paragraphs: Paragraph[],
     description?: string,
+    summary?: string,
 }
 
 export interface ChangeLog {

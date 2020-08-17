@@ -22,42 +22,49 @@ describe('keccak.cbl to documentation', () => {
                 name: 'KECCAK',
                 line: 41,
                 description: 'The KECCAK module, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2016-05-17<br> Fields in LINKAGE SECTION:<br> <ul> <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation.</li> <li>LNK-KECCAK-CAPACITY: The value of the capacity c. The rate and capacity must have r+c=1600.</li> <li>LNK-KECCAK-INPUT: The input message. </li> <li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message.</li> <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain separation.</li> <li>LNK-KECCAK-OUTPUT: The buffer where to store the output. </li> <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li> </ul>',
+                summary: undefined,
                 paragraphs: []
             },
             {
                 name: 'STATE-PERMUTE',
                 line: 198,
                 description: 'Module that computes the Keccak-f[1600] permutation on the given state.',
+                summary: undefined,
                 paragraphs: []
             },
             {
                 name: 'READ-LANE',
                 line: 605,
                 description: 'Module to load a 64-bit value from STATE.',
+                summary: undefined,
                 paragraphs: []
             },
             {
                 name: 'WRITE-LANE',
                 line: 642,
                 description: 'Module to write a 64-bit value in STATE.',
+                summary: undefined,
                 paragraphs: []
             },
             {
                 name: 'XOR-LANE',
                 line: 679,
                 description: 'Module to xor and write a 64-bit value in STATE.',
+                summary: undefined,
                 paragraphs: []
             },
             {
                 name: 'ROL-LANE',
                 line: 725,
                 description: 'Module to rotate a 64-bit value.',
+                summary: undefined,
                 paragraphs: []
             },
             {
                 name: 'LFSR86540',
                 line: 784,
                 description: 'Module that computes the linear feedback shift register (LFSR) used to define the round constants (see [Keccak Reference, Section 1.2]).',
+                summary: undefined,
                 paragraphs: []
             }],
             functions: []

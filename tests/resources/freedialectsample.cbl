@@ -8,6 +8,7 @@
 *>*
 *>  The first module.
 *>  Trying to see what happens to    huge text.
+*>  @summary the first module summary.
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. first-module.
@@ -101,6 +102,7 @@
 
 *>*
 *> first module function
+*> @summary the first function summary.
 *> @param   {PIC 9}  first-arg   First arg
 *> @return {PIC 9} First return
 *>*
