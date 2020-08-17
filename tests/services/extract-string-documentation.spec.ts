@@ -23,6 +23,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-pos',
                 line: 32,
                 description: 'Find the position of the first occurrence of a substring in a string. Case-sensitive.',
+                summary: undefined,
                 params: [{
                     name: 'l-haystack',
                     description: 'String to search in',
@@ -40,6 +41,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-pos-case',
                 line: 74,
                 description: 'Find the position of the first occurrence of a substring in a string. Case-insensitive.',
+                summary: undefined,
                 params: [{
                     name: 'l-haystack',
                     description: 'String to search in',
@@ -57,6 +59,7 @@ describe('string.cbl to documentation', () => {
                 name: 'byte-to-hex',
                 line: 97,
                 description: 'Convert one byte into hexadecimal representation.',
+                summary: undefined,
                 params: [{
                     name: 'l-byte',
                     description: 'Byte',
@@ -70,6 +73,7 @@ describe('string.cbl to documentation', () => {
                 name: 'hex-to-byte',
                 line: 123,
                 description: 'Convert one byte into hexadecimal representation.',
+                summary: undefined,
                 params: [{
                     name: 'l-hex',
                     description: '2 hexadecimal chars',
@@ -83,6 +87,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-count',
                 line: 155,
                 description: 'Count the number of substring occurrences. Case-sensitive.',
+                summary: undefined,
                 params: [{
                     name: 'l-haystack',
                     description: 'String to search in',
@@ -100,6 +105,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-count-case',
                 line: 193,
                 description: 'Count the number of substring occurrences. Case-insensitive.',
+                summary: undefined,
                 params: [{
                     name: 'l-haystack',
                     description: 'String to search in',
@@ -117,6 +123,7 @@ describe('string.cbl to documentation', () => {
                 name: 'sha3-256',
                 line: 216,
                 description: 'Generate SHA3-256 message digest',
+                summary: undefined,
                 params: [{
                     name: 'l-buffer',
                     description: 'Input bytes',
@@ -130,6 +137,7 @@ describe('string.cbl to documentation', () => {
                 name: 'sha3-512',
                 line: 254,
                 description: 'Generate SHA3-512 message digest',
+                summary: undefined,
                 params: [{
                     name: 'l-buffer',
                     description: 'Input bytes',
@@ -143,6 +151,7 @@ describe('string.cbl to documentation', () => {
                 name: 'urlencoded-to-byte',
                 line: 292,
                 description: 'Convert urlencoded symbol into one byte.',
+                summary: undefined,
                 params: [{
                     name: 'l-symbol',
                     description: 'Urlencoded symbol (3 bytes)',
@@ -156,6 +165,7 @@ describe('string.cbl to documentation', () => {
                 name: 'byte-to-urlencoded',
                 line: 318,
                 description: 'Convert one byte into urlencoded symbol.',
+                summary: undefined,
                 params: [{
                     name: 'l-byte',
                     description: 'Byte',
@@ -169,6 +179,7 @@ describe('string.cbl to documentation', () => {
                 name: 'csv-ecb-rates',
                 line: 340,
                 description: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs. https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html',
+                summary: undefined,
                 params: [{
                     name: 'l-byte',
                     description: 'CSV string',

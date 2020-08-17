@@ -20,26 +20,30 @@ describe('freedialectsample.cbl to documentation', () => {
             fileDescription: 'Short sample.',
             modules: [{
                 description: 'The first module. Trying to see what happens to huge text.',
-                line: 13,
+                summary: "the first module summary.",
+                line: 14,
                 name: 'first-module',
                 paragraphs: []
             },
             {
                 description: 'The second module',
-                line: 43,
+                summary: undefined,
+                line: 44,
                 name: 'second-module',
                 paragraphs: []
             },
             {
                 description: 'The third module',
-                line: 76,
+                summary: undefined,
+                line: 77,
                 name: 'third-module',
                 paragraphs: []
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 108,
+                line: 110,
                 description: 'first module function',
+                summary: "the first function summary.",
                 params: [{
                     name: 'first-arg',
                     description: 'First arg',
@@ -51,8 +55,9 @@ describe('freedialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 125,
+                line: 127,
                 description: 'second module function',
+                summary: undefined,
                 params: [{
                     name: 'secondarg',
                     description: 'Second arg',
@@ -64,8 +69,9 @@ describe('freedialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 142,
+                line: 144,
                 description: 'third module function',
+                summary: undefined,
                 params: [{
                     name: 'thirdarg',
                     description: 'Third arg',

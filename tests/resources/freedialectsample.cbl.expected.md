@@ -10,7 +10,7 @@ License: LGPL-3.0
 
 | Name | Description |
 | ----------- | ----------- | 
-| [first-module](#first-module) | The first module. Trying to see what happens to huge text. | 
+| [first-module](#first-module) | the first module summary. | 
 | [second-module](#second-module) | The second module | 
 | [third-module](#third-module) | The third module | 
 
@@ -18,7 +18,7 @@ License: LGPL-3.0
 
 | Name | Description |
 | ----------- | ----------- | 
-| [firstmodulefunction](#firstmodulefunction) | first module function | 
+| [firstmodulefunction](#firstmodulefunction) | the first function summary. | 
 | [secondmodulefunction](#secondmodulefunction) | second module function | 
 | [thirdmodulefunction](#thirdmodulefunction) | third module function | 
 

@@ -50,7 +50,7 @@
         </tr><% modules.forEach((module) => { %>
         <tr>
             <td><a href="#<%- module.name %>"><%- module.name %></a></td>
-            <td><%- module.description %></td>
+            <td><%- module.summary || module.description %></td>
         </tr><% }); %>
     </table><% } if(functions.length > 0) { %>
     <h2>Function Summary</h2>
@@ -62,7 +62,7 @@
         </tr><% functions.forEach((cobolFunction) => { %>
         <tr>
             <td><a href="#<%- cobolFunction.name %>"><%- cobolFunction.name %></a></td>
-            <td><%- cobolFunction.description %></td>
+            <td><%- cobolFunction.summary || cobolFunction.description %></td>
         </tr><% }); %>
     </table><% } if(modules.length > 0) { %>
     <h2>Module Details</h2><% modules.forEach((module) => { %>
