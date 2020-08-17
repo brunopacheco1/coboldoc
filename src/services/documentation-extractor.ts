@@ -149,7 +149,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
 
     private _cleanComments(comments: string[]): string {
         return comments.join('\n')
-            .replace(/\*\>\**/g, '')
+            .replace(/\*\>\**\s*/g, '')
+            .replace(/\r/g, ' ')
             .replace(/\n/g, ' ')
             .replace(/\s\s+/g, ' ')
             .trim();

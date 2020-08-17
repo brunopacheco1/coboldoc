@@ -18,22 +18,24 @@
 *>**
 
 *>*
-*>  The KECCAK module, that uses the Keccak-f[1600] permutation.
+*>  The KECCAK module, that uses the Keccak-f[1600] permutation.<br>
 *>
-*>  Date-Written: 2016-05-17
-*>  Fields in LINKAGE SECTION:
-*>    - LNK-KECCAK-RATE: The value of the rate r. The rate must be
-*>      a multiple of 8 bits in this implementation.           
-*>    - LNK-KECCAK-CAPACITY: The value of the capacity c. 
-*>      The rate and capacity must have r+c=1600.       
-*>    - LNK-KECCAK-INPUT: The input message.           
-*>    - LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided
-*>      in the input message.
-*>    - LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically
+*>  Date-Written: 2016-05-17<br>
+*>  Fields in LINKAGE SECTION:<br>
+*> <ul>
+*>    <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be
+*>      a multiple of 8 bits in this implementation.</li>           
+*>    <li>LNK-KECCAK-CAPACITY: The value of the capacity c. 
+*>      The rate and capacity must have r+c=1600.</li>        
+*>    <li>LNK-KECCAK-INPUT: The input message.   </li>         
+*>    <li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided
+*>      in the input message.</li> 
+*>    <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically
 *>      appended to the end of the input message, as in domain 
-*>      separation.
-*>    - LNK-KECCAK-OUTPUT: The buffer where to store the output.          
-*>    - LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.
+*>      separation.</li> 
+*>    <li>LNK-KECCAK-OUTPUT: The buffer where to store the output.   </li>        
+*>    <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li>
+*> </ul>
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. KECCAK.

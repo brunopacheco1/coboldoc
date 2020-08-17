@@ -17,6 +17,7 @@
 #### Features
 - Generate documentation in Markdown;
 - Generate documentation in HTML;
+- Accepts HTML content;
 
 #### Requirements
 - NodeJS 8+
@@ -194,6 +195,39 @@ Output in MD:
 
 ```
 > *{Any Type}* A description of this function return.
+```
+
+#### Support of HTML
+COBOLDoc support HTML content. If you need any special formating, it should work correctly if it respects HTML syntax.
+
+Input:
+```
+*>*
+*>  The KECCAK module, that uses the Keccak-f[1600] permutation.<br>
+*>
+*>  Date-Written: 2016-05-17<br>
+*>  Fields in LINKAGE SECTION:<br>
+*> <ul>
+*>    <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be
+*>      a multiple of 8 bits in this implementation.</li>           
+*>    <li>LNK-KECCAK-CAPACITY: The value of the capacity c. 
+*>      The rate and capacity must have r+c=1600.</li>        
+*>    <li>LNK-KECCAK-INPUT: The input message.   </li>         
+*>    <li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided
+*>      in the input message.</li> 
+*>    <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically
+*>      appended to the end of the input message, as in domain 
+*>      separation.</li> 
+*>    <li>LNK-KECCAK-OUTPUT: The buffer where to store the output.   </li>        
+*>    <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li>
+*> </ul>
+*>*
+```
+
+Output in MD:
+
+```
+The KECCAK module, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2016-05-17<br> Fields in LINKAGE SECTION:<br> <ul> <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation.</li> <li>LNK-KECCAK-CAPACITY: The value of the capacity c. The rate and capacity must have r+c=1600.</li> <li>LNK-KECCAK-INPUT: The input message. </li> <li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message.</li> <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain separation.</li> <li>LNK-KECCAK-OUTPUT: The buffer where to store the output. </li> <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li> </ul>
 ```
 
 #### Roadmap
