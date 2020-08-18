@@ -30,6 +30,8 @@ License along with this library.
 
 ### KECCAK
 
+*CALL "KECCAK".*
+
 The KECCAK module, that uses the Keccak-f[1600] permutation.<br>
 Date-Written: 2016-05-17<br>
 Fields in LINKAGE SECTION:<br>
@@ -48,27 +50,46 @@ separation.</li>
 <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li>
 </ul>
 
+
 ### STATE-PERMUTE
+
+*CALL "STATE-PERMUTE".*
 
 Module that computes the Keccak-f[1600] permutation on the given state.
 
+
 ### READ-LANE
+
+*CALL "READ-LANE".*
 
 Module to load a 64-bit value from STATE.
 
+
 ### WRITE-LANE
+
+*CALL "WRITE-LANE".*
 
 Module to write a 64-bit value in STATE.
 
+
 ### XOR-LANE
+
+*CALL "XOR-LANE".*
 
 Module to xor and write a 64-bit value in STATE.
 
+
 ### ROL-LANE
+
+*CALL "ROL-LANE".*
 
 Module to rotate a 64-bit value.
 
+
 ### LFSR86540
+
+*CALL "LFSR86540".*
 
 Module that computes the linear feedback shift register (LFSR) used to
 define the round constants (see [Keccak Reference, Section 1.2]).
+

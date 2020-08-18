@@ -18,6 +18,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 32,
             description: 'Find the position of the first occurrence of a substring in a string.\nCase-sensitive.\n',
             summary: 'Find the position of the first occurrence of a substring in a string. Case-sensitive.',
+            paragraphs: [],
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -36,6 +37,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 74,
             description: 'Find the position of the first occurrence of a substring in a string.\nCase-insensitive.\n',
             summary: 'Find the position of the first occurrence of a substring in a string. Case-insensitive.',
+            paragraphs: [],
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -54,6 +56,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 97,
             description: 'Convert one byte into hexadecimal representation.\n',
             summary: 'Convert one byte into hexadecimal representation.',
+            paragraphs: [],
             params: [{
                 name: 'l-byte',
                 description: 'Byte',
@@ -68,6 +71,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 123,
             description: 'Convert one byte into hexadecimal representation.\n',
             summary: 'Convert one byte into hexadecimal representation.',
+            paragraphs: [],
             params: [{
                 name: 'l-hex',
                 description: '2 hexadecimal chars',
@@ -82,6 +86,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 155,
             description: 'Count the number of substring occurrences. Case-sensitive.\n',
             summary: 'Count the number of substring occurrences. Case-sensitive.',
+            paragraphs: [],
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -100,6 +105,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 193,
             description: 'Count the number of substring occurrences. Case-insensitive.\n',
             summary: 'Count the number of substring occurrences. Case-insensitive.',
+            paragraphs: [],
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -118,6 +124,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 216,
             description: 'Generate SHA3-256 message digest\n',
             summary: 'Generate SHA3-256 message digest',
+            paragraphs: [],
             params: [{
                 name: 'l-buffer',
                 description: 'Input bytes',
@@ -132,6 +139,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 254,
             description: 'Generate SHA3-512 message digest\n',
             summary: 'Generate SHA3-512 message digest',
+            paragraphs: [],
             params: [{
                 name: 'l-buffer',
                 description: 'Input bytes',
@@ -146,6 +154,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 292,
             description: 'Convert urlencoded symbol into one byte.\n',
             summary: 'Convert urlencoded symbol into one byte.',
+            paragraphs: [],
             params: [{
                 name: 'l-symbol',
                 description: 'Urlencoded symbol (3 bytes)',
@@ -160,6 +169,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 318,
             description: 'Convert one byte into urlencoded symbol.\n',
             summary: 'Convert one byte into urlencoded symbol.',
+            paragraphs: [],
             params: [{
                 name: 'l-byte',
                 description: 'Byte',
@@ -174,6 +184,7 @@ describe('Parsing string.cbl to doc file', () => {
             line: 340,
             description: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs.\nhttps://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html\n',
             summary: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs. https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html',
+            paragraphs: [],
             params: [{
                 name: 'l-byte',
                 description: 'CSV string',

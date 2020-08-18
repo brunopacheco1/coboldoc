@@ -19,31 +19,38 @@ describe('freedialectsample.cbl to documentation', () => {
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module.  \nTrying to see **what** happens to    huge text.',
+                description: 'The first module.  \nTrying to see **what** happens to    huge text.\n',
                 summary: "the first module summary.",
                 line: 14,
                 name: 'first-module',
-                paragraphs: []
+                paragraphs: [],
+                return: undefined,
+                params: []
             },
             {
                 description: 'The second module',
                 summary: 'The second module',
                 line: 44,
                 name: 'second-module',
-                paragraphs: []
+                paragraphs: [],
+                return: undefined,
+                params: []
             },
             {
                 description: 'The third module',
                 summary: 'The third module',
                 line: 77,
                 name: 'third-module',
-                paragraphs: []
+                paragraphs: [],
+                return: undefined,
+                params: []
             }],
             functions: [{
                 name: 'firstmodulefunction',
                 line: 110,
                 description: 'first module function\n',
                 summary: "the first function summary.",
+                paragraphs: [],
                 params: [{
                     name: 'first-arg',
                     description: 'First arg',
@@ -58,6 +65,7 @@ describe('freedialectsample.cbl to documentation', () => {
                 line: 127,
                 description: 'second module function\n',
                 summary: 'second module function',
+                paragraphs: [],
                 params: [{
                     name: 'secondarg',
                     description: 'Second arg',
@@ -72,6 +80,7 @@ describe('freedialectsample.cbl to documentation', () => {
                 line: 144,
                 description: 'third module function\n',
                 summary: 'third module function',
+                paragraphs: [],
                 params: [{
                     name: 'thirdarg',
                     description: 'Third arg',

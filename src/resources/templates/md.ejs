@@ -20,8 +20,19 @@ License: <%- license %>
 <% modules.forEach((module) => { %>
 ### <%- module.name %>
 
+*<%- !!module.return && !!module.return.type ? `{${module.return.type}} ` : '' %>CALL "<%- module.name %>"<%- !!module.params && module.params.length > 0 ? ` USING ${module.params.map(p => p.name).join(', ')}` : '' %>.*
+
 <%- module.description %>
-<% }); } if(functions.length > 0) { %>
+
+<% if(!!module.params && module.params.length > 0) { %>#### Parameters
+<% module.params.forEach((param) => { %>
+> <%- !!param.type ? `*{${param.type}}* ` : '' %>**<%- param.name %>** <%- param.description %> <% }); %>
+
+<% } if(!!module.return) { %>#### Returns
+
+> <%- !!module.return.type ? `*{${module.return.type}}* ` : '' %><%- module.return.description %>
+
+<% } }); } if(functions.length > 0) { %>
 ## Function Details
 <% functions.forEach((cobolFunction) => { %>
 ### <%- cobolFunction.name %>
@@ -30,11 +41,11 @@ License: <%- license %>
 
 <%- cobolFunction.description %>
 
-#### Parameters
+<% if(!!cobolFunction.params && cobolFunction.params.length > 0) { %>#### Parameters
 <% cobolFunction.params.forEach((param) => { %>
 > <%- !!param.type ? `*{${param.type}}* ` : '' %>**<%- param.name %>** <%- param.description %> <% }); %>
 
-#### Returns
+<% } if(!!cobolFunction.return) { %>#### Returns
 
 > <%- !!cobolFunction.return.type ? `*{${cobolFunction.return.type}}* ` : '' %><%- cobolFunction.return.description %>
-<% }); } %>
+<% } }); } %>

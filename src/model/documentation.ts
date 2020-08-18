@@ -17,22 +17,14 @@ export interface Return {
     type?: string,
 }
 
-//Do functions have paragraphs?
-export interface CobolFunction {
+export interface ModuleOrFunction {
     name: string,
     line: number,
-    summary?: string,
+    paragraphs?: Paragraph[],
     description?: string,
-    params: Parameter[],
+    summary?: string,
+    params?: Parameter[],
     return?: Return,
-}
-
-export interface CobolModule {
-    name: string,
-    line: number,
-    paragraphs: Paragraph[],
-    description?: string,
-    summary?: string,
 }
 
 export interface ChangeLog {
@@ -46,7 +38,7 @@ export interface Documentation {
     license?: string,
     author?: string,
     fileDescription?: string,
-    functions?: CobolFunction[],
-    modules?: CobolModule[],
+    functions?: ModuleOrFunction[],
+    modules?: ModuleOrFunction[],
     changeLogs?: ChangeLog[],
 }

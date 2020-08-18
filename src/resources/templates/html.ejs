@@ -67,25 +67,40 @@
     </table><% } if(modules.length > 0) { %>
     <h2>Module Details</h2><% modules.forEach((module) => { %>
     <h3 id="<%- module.name %>"><%- module.name %></h3>
-    <p><%- module.description %></p><% }); } if(functions.length > 0) { %>
+    <p>
+        <em><%- !!module.return && !!module.return.type ? `{${module.return.type}} ` : '' %>CALL "<%- module.name %>"<%- !!module.params && module.params.length > 0 ? ` USING ${module.params.map(p => p.name).join(', ')}` : '' %>.</em>
+    </p>
+    <p><%- module.description %></p>
+    <% if(!!module.params && module.params.length > 0) { %><h4>Parameters</h4>
+    <ul><% module.params.forEach((param) => { %>
+        <li>
+            <%- !!param.type ? `<em>{${param.type}}</em> ` : '' %><strong><%- param.name %></strong> <%- param.description %>
+        </li><% }); %>
+    </ul>
+    <% } if(!!module.return) { %><h4>Returns</h4>
+    <ul>
+        <li>
+            <%- !!module.return.type ? `<em>{${module.return.type}}</em> ` : '' %><%- module.return.description %>
+        </li>
+    </ul><% }}); } if(functions.length > 0) { %>
     <h2>Function Details</h2><% functions.forEach((cobolFunction) => { %>
     <h3 id="<%- cobolFunction.name %>"><%- cobolFunction.name %></h3>
     <p>
-        <em><%- !!cobolFunction.return.type ? `{${cobolFunction.return.type}} ` : '' %><%- cobolFunction.name %>(<%- cobolFunction.params.map(p => p.name).join(', ') %>)</em>
+        <em><%- !!cobolFunction.return && !!cobolFunction.return.type ? `{${cobolFunction.return.type}} ` : '' %><%- cobolFunction.name %>(<%- cobolFunction.params.map(p => p.name).join(', ') %>)</em>
     </p>
     <p><%- cobolFunction.description %></p>
-    <h4>Parameters</h4>
+    <% if(!!cobolFunction.params && cobolFunction.params.length > 0) { %><h4>Parameters</h4>
     <ul><% cobolFunction.params.forEach((param) => { %>
         <li>
             <%- !!param.type ? `<em>{${param.type}}</em> ` : '' %><strong><%- param.name %></strong> <%- param.description %>
         </li><% }); %>
     </ul>
-    <h4>Returns</h4>
+    <% } if(!!cobolFunction.return) { %><h4>Returns</h4>
     <ul>
         <li>
             <%- !!cobolFunction.return.type ? `<em>{${cobolFunction.return.type}}</em> ` : '' %><%- cobolFunction.return.description %>
         </li>
-    </ul><% }); } %>
+    </ul><% } }); } %>
 </body>
 
 </html>

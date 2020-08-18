@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { Documentation, CobolFunction, CobolModule, Parameter, Return } from '../model/documentation';
+import { Documentation, ModuleOrFunction, Parameter, Return } from '../model/documentation';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -20,8 +20,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         const fileComments: string[] = [];
         let isFileComments = false;
         let isComments = false;
-        const functions: CobolFunction[] = [];
-        const modules: CobolModule[] = [];
+        const functions: ModuleOrFunction[] = [];
+        const modules: ModuleOrFunction[] = [];
         let lineCounter = 1;
         lines.forEach((line) => {
             if (/^\s*\*\>[^*].*/.test(line)) {
@@ -40,35 +40,10 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
                 isComments = !isComments;
                 isFileComments = false;
             } else if (/^\s*function-id\..+/i.test(line)) {
-                const functionName = line.split(".")[1].trim();
-                let description: string | undefined = undefined;
-                let summary: string | undefined = undefined;
-                let params: Parameter[] = [];
-                let returnObj: Return | undefined = undefined;
-                [description, summary, params, returnObj] = this._extractFunctionDetails(comments);
-                const cobolFunction: CobolFunction = {
-                    description: description,
-                    summary: summary,
-                    line: lineCounter,
-                    name: functionName,
-                    params: params,
-                    return: returnObj,
-                };
-                functions.push(cobolFunction);
+                functions.push(this._extractModuleOrFunction(line, lineCounter, comments));
                 comments = [];
             } else if (/^\s*program-id\..+/i.test(line)) {
-                const moduleName = line.split(".")[1].trim();
-                let description: string | undefined = undefined;
-                let summary: string | undefined = undefined;
-                [description, summary] = this._extractModuleDetails(comments);
-                const cobolModule: CobolModule = {
-                    description: description,
-                    summary: summary,
-                    line: lineCounter,
-                    name: moduleName,
-                    paragraphs: [],
-                };
-                modules.push(cobolModule);
+                modules.push(this._extractModuleOrFunction(line, lineCounter, comments));
                 comments = [];
             }
             lineCounter++;
@@ -86,7 +61,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         };
     }
 
-    private _extractFunctionDetails(comments: string[]): [string | undefined, string | undefined, Parameter[], Return | undefined] {
+    private _extractModuleOrFunction(line: string, lineNumber: number, comments: string[]): ModuleOrFunction {
+        const name = line.split(".")[1].trim();
         const rawText = this._cleanComments(comments);
         const pieces = rawText.split('@');
         const params: Parameter[] = [];
@@ -129,24 +105,15 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
             }
         });
 
-        return [description, summary, params, returnObj];
-    }
-
-    private _extractModuleDetails(comments: string[]): [string | undefined, string | undefined] {
-        const rawText = this._cleanComments(comments);
-        const pieces = rawText.split('@');
-        let description: string | undefined = undefined;
-        let summary: string | undefined = undefined;
-        pieces.forEach((piece, index) => {
-            if (index === 0) {
-                description = piece.trim();
-                summary = piece.replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
-            } else if (/^summary/.test(piece)) {
-                summary = piece.substring(piece.indexOf(' ')).replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
-            }
-        });
-
-        return [description, summary];
+        return {
+            description: description,
+            line: lineNumber,
+            name: name,
+            paragraphs: [],
+            params: params,
+            return: returnObj,
+            summary: summary
+        };
     }
 
     private _extractFileDetails(comments: string[]): [string | undefined, string | undefined, string | undefined] {
