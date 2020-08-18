@@ -13,7 +13,7 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
         license: 'LGPL-3.0',
         fileDescription: 'Short sample.',
         modules: [{
-            description: 'The first module. Trying to see what happens to huge text.',
+            description: 'The first module.  \nTrying to see **what** happens to    huge text.',
             summary: "the first module summary.",
             line: 14,
             name: 'first-module',
@@ -21,14 +21,14 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
         },
         {
             description: 'The second module',
-            summary: undefined,
+            summary: 'The second module',
             line: 44,
             name: 'second-module',
             paragraphs: []
         },
         {
             description: 'The third module',
-            summary: undefined,
+            summary: 'The third module',
             line: 77,
             name: 'third-module',
             paragraphs: []
@@ -36,7 +36,7 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
         functions: [{
             name: 'firstmodulefunction',
             line: 110,
-            description: 'first module function',
+            description: 'first module function\n',
             summary: "the first function summary.",
             params: [{
                 name: 'first-arg',
@@ -50,8 +50,8 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
         }, {
             name: 'secondmodulefunction',
             line: 127,
-            description: 'second module function',
-            summary: undefined,
+            description: 'second module function\n',
+            summary: 'second module function',
             params: [{
                 name: 'secondarg',
                 description: 'Second arg',
@@ -64,8 +64,8 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
         }, {
             name: 'thirdmodulefunction',
             line: 144,
-            description: 'third module function',
-            summary: undefined,
+            description: 'third module function\n',
+            summary: 'third module function',
             params: [{
                 name: 'thirdarg',
                 description: 'Third arg',

@@ -10,13 +10,14 @@ describe('Parsing string.cbl to doc file', () => {
     const doc: Documentation = {
         fileName: 'string.cbl',
         author: 'Olegs Kunicins',
-        license: 'LGPL-3.0 This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 3.0 of the License, or (at your option) any later version. This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License along with this library.',
+        license: 'LGPL-3.0\nThis library is free software; you can redistribute it and/or\nmodify it under the terms of the GNU Lesser General Public\nLicense as published by the Free Software Foundation; either\nversion 3.0 of the License, or (at your option) any later version.\nThis library is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\nYou should have received a copy of the GNU Lesser General Public\nLicense along with this library.',
         fileDescription: 'Core library: string',
         modules: [],
         functions: [{
             name: 'substr-pos',
             line: 32,
-            description: 'Find the position of the first occurrence of a substring in a string. Case-sensitive.',
+            description: 'Find the position of the first occurrence of a substring in a string.\nCase-sensitive.\n',
+            summary: 'Find the position of the first occurrence of a substring in a string. Case-sensitive.',
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -27,13 +28,14 @@ describe('Parsing string.cbl to doc file', () => {
                 type: undefined
             }],
             return: {
-                description: 'Position where the needle exists relative to the beginnning of l-haystack. Returns 0 if not found.',
+                description: 'Position where the needle exists relative to the beginnning\nof l-haystack. Returns 0 if not found.',
                 type: undefined
             }
         }, {
             name: 'substr-pos-case',
             line: 74,
-            description: 'Find the position of the first occurrence of a substring in a string. Case-insensitive.',
+            description: 'Find the position of the first occurrence of a substring in a string.\nCase-insensitive.\n',
+            summary: 'Find the position of the first occurrence of a substring in a string. Case-insensitive.',
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -44,13 +46,14 @@ describe('Parsing string.cbl to doc file', () => {
                 type: undefined
             }],
             return: {
-                description: 'Position where the needle exists relative to the beginnning of l-haystack. Returns 0 if not found.',
+                description: 'Position where the needle exists relative to the beginnning\nof l-haystack. Returns 0 if not found.',
                 type: undefined
             }
         }, {
             name: 'byte-to-hex',
             line: 97,
-            description: 'Convert one byte into hexadecimal representation.',
+            description: 'Convert one byte into hexadecimal representation.\n',
+            summary: 'Convert one byte into hexadecimal representation.',
             params: [{
                 name: 'l-byte',
                 description: 'Byte',
@@ -63,7 +66,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'hex-to-byte',
             line: 123,
-            description: 'Convert one byte into hexadecimal representation.',
+            description: 'Convert one byte into hexadecimal representation.\n',
+            summary: 'Convert one byte into hexadecimal representation.',
             params: [{
                 name: 'l-hex',
                 description: '2 hexadecimal chars',
@@ -76,7 +80,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'substr-count',
             line: 155,
-            description: 'Count the number of substring occurrences. Case-sensitive.',
+            description: 'Count the number of substring occurrences. Case-sensitive.\n',
+            summary: 'Count the number of substring occurrences. Case-sensitive.',
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -93,7 +98,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'substr-count-case',
             line: 193,
-            description: 'Count the number of substring occurrences. Case-insensitive.',
+            description: 'Count the number of substring occurrences. Case-insensitive.\n',
+            summary: 'Count the number of substring occurrences. Case-insensitive.',
             params: [{
                 name: 'l-haystack',
                 description: 'String to search in',
@@ -110,7 +116,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'sha3-256',
             line: 216,
-            description: 'Generate SHA3-256 message digest',
+            description: 'Generate SHA3-256 message digest\n',
+            summary: 'Generate SHA3-256 message digest',
             params: [{
                 name: 'l-buffer',
                 description: 'Input bytes',
@@ -123,7 +130,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'sha3-512',
             line: 254,
-            description: 'Generate SHA3-512 message digest',
+            description: 'Generate SHA3-512 message digest\n',
+            summary: 'Generate SHA3-512 message digest',
             params: [{
                 name: 'l-buffer',
                 description: 'Input bytes',
@@ -136,7 +144,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'urlencoded-to-byte',
             line: 292,
-            description: 'Convert urlencoded symbol into one byte.',
+            description: 'Convert urlencoded symbol into one byte.\n',
+            summary: 'Convert urlencoded symbol into one byte.',
             params: [{
                 name: 'l-symbol',
                 description: 'Urlencoded symbol (3 bytes)',
@@ -149,7 +158,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'byte-to-urlencoded',
             line: 318,
-            description: 'Convert one byte into urlencoded symbol.',
+            description: 'Convert one byte into urlencoded symbol.\n',
+            summary: 'Convert one byte into urlencoded symbol.',
             params: [{
                 name: 'l-byte',
                 description: 'Byte',
@@ -162,7 +172,8 @@ describe('Parsing string.cbl to doc file', () => {
         }, {
             name: 'csv-ecb-rates',
             line: 340,
-            description: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs. https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html',
+            description: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs.\nhttps://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html\n',
+            summary: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs. https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html',
             params: [{
                 name: 'l-byte',
                 description: 'CSV string',

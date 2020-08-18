@@ -26,7 +26,8 @@ License: LGPL-3.0
 
 ### first-module
 
-The first module. Trying to see what happens to huge text.
+The first module.  
+Trying to see **what** happens to    huge text.
 
 ### second-module
 
@@ -44,6 +45,7 @@ The third module
 
 first module function
 
+
 #### Parameters
 
 > *{PIC 9}* **first-arg** First arg 
@@ -58,6 +60,7 @@ first module function
 
 second module function
 
+
 #### Parameters
 
 > *{PIC 9}* **secondarg** Second arg 
@@ -71,6 +74,7 @@ second module function
 *{PIC 9} thirdmodulefunction(thirdarg)*
 
 third module function
+
 
 #### Parameters
 

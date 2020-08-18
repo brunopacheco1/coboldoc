@@ -4,7 +4,17 @@ Core library: string
 
 author: Olegs Kunicins
 
-License: LGPL-3.0 This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation; either version 3.0 of the License, or (at your option) any later version. This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details. You should have received a copy of the GNU Lesser General Public License along with this library.
+License: LGPL-3.0
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library.
 
 ## Function Summary
 
@@ -28,7 +38,9 @@ License: LGPL-3.0 This library is free software; you can redistribute it and/or 
 
 *substr-pos(l-haystack, l-needle)*
 
-Find the position of the first occurrence of a substring in a string. Case-sensitive.
+Find the position of the first occurrence of a substring in a string.
+Case-sensitive.
+
 
 #### Parameters
 
@@ -37,13 +49,16 @@ Find the position of the first occurrence of a substring in a string. Case-sensi
 
 #### Returns
 
-> Position where the needle exists relative to the beginnning of l-haystack. Returns 0 if not found.
+> Position where the needle exists relative to the beginnning
+of l-haystack. Returns 0 if not found.
 
 ### substr-pos-case
 
 *substr-pos-case(l-haystack, l-needle)*
 
-Find the position of the first occurrence of a substring in a string. Case-insensitive.
+Find the position of the first occurrence of a substring in a string.
+Case-insensitive.
+
 
 #### Parameters
 
@@ -52,13 +67,15 @@ Find the position of the first occurrence of a substring in a string. Case-insen
 
 #### Returns
 
-> Position where the needle exists relative to the beginnning of l-haystack. Returns 0 if not found.
+> Position where the needle exists relative to the beginnning
+of l-haystack. Returns 0 if not found.
 
 ### byte-to-hex
 
 *byte-to-hex(l-byte)*
 
 Convert one byte into hexadecimal representation.
+
 
 #### Parameters
 
@@ -74,6 +91,7 @@ Convert one byte into hexadecimal representation.
 
 Convert one byte into hexadecimal representation.
 
+
 #### Parameters
 
 > **l-hex** 2 hexadecimal chars 
@@ -87,6 +105,7 @@ Convert one byte into hexadecimal representation.
 *substr-count(l-haystack, l-needle)*
 
 Count the number of substring occurrences. Case-sensitive.
+
 
 #### Parameters
 
@@ -103,6 +122,7 @@ Count the number of substring occurrences. Case-sensitive.
 
 Count the number of substring occurrences. Case-insensitive.
 
+
 #### Parameters
 
 > **l-haystack** String to search in 
@@ -118,6 +138,7 @@ Count the number of substring occurrences. Case-insensitive.
 
 Generate SHA3-256 message digest
 
+
 #### Parameters
 
 > **l-buffer** Input bytes 
@@ -131,6 +152,7 @@ Generate SHA3-256 message digest
 *sha3-512(l-buffer)*
 
 Generate SHA3-512 message digest
+
 
 #### Parameters
 
@@ -146,6 +168,7 @@ Generate SHA3-512 message digest
 
 Convert urlencoded symbol into one byte.
 
+
 #### Parameters
 
 > **l-symbol** Urlencoded symbol (3 bytes) 
@@ -160,6 +183,7 @@ Convert urlencoded symbol into one byte.
 
 Convert one byte into urlencoded symbol.
 
+
 #### Parameters
 
 > **l-byte** Byte 
@@ -172,7 +196,9 @@ Convert one byte into urlencoded symbol.
 
 *csv-ecb-rates(l-byte)*
 
-Convert ECB exchange rates in CSV format to the list of currency-rate pairs. https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html
+Convert ECB exchange rates in CSV format to the list of currency-rate pairs.
+https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html
+
 
 #### Parameters
 

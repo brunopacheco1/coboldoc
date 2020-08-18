@@ -95,9 +95,10 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         let summary: string | undefined = undefined;
         pieces.forEach((piece, index) => {
             if (index === 0) {
-                description = piece.trim();
+                description = piece;
+                summary = piece.replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
             } else if (/^summary/.test(piece)) {
-                summary = piece.substring(piece.indexOf(' ')).trim();
+                summary = piece.substring(piece.indexOf(' ')).replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
             } else if (/^param/.test(piece)) {
                 piece = piece.substring(piece.indexOf(' ') + 1);
                 let paramType: string | undefined = undefined;
@@ -139,8 +140,9 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         pieces.forEach((piece, index) => {
             if (index === 0) {
                 description = piece.trim();
+                summary = piece.replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
             } else if (/^summary/.test(piece)) {
-                summary = piece.substring(piece.indexOf(' ')).trim();
+                summary = piece.substring(piece.indexOf(' ')).replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
             }
         });
 
@@ -167,11 +169,9 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
     }
 
     private _cleanComments(comments: string[]): string {
-        return comments.join('\n')
-            .replace(/\*\>\**\s*/g, '')
-            .replace(/\r/g, ' ')
-            .replace(/\n/g, ' ')
-            .replace(/\s\s+/g, ' ')
-            .trim();
+        return comments
+            .map(comment => comment.replace(/^\s*\*>\**\s*/, ''))
+            .filter(comment => comment.length !== 0)
+            .join('\n');
     }
 }

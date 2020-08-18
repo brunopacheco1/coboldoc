@@ -6,8 +6,8 @@
 *>**
 
 *>*
-*>  The first module.
-*>  Trying to see what happens to    huge text.
+*>  The first module.  
+*>  Trying to see **what** happens to    huge text.
 *>  @summary the first module summary.
 *>*
  IDENTIFICATION DIVISION.
