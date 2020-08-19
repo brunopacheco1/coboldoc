@@ -1,18 +1,22 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { DocumentationExtractor, DocumentationExtractorImpl } from '../../src/services/documentation-extractor';
+import { FreeCommentsExtractor, FreeCommentsExtractorImpl } from '../../src/services/free-comments-extractor';
+import { TagCommentsParser, TagCommentsParserImpl } from '../../src/services/tag-comments-parser';
 import { Documentation } from '../../src/model/documentation';
 
 describe('string.cbl to documentation', () => {
-    let service: DocumentationExtractor;
+    let commentsExtractor: FreeCommentsExtractor;
+    let commentsParser: TagCommentsParser;
 
     beforeEach(() => {
-        service = new DocumentationExtractorImpl();
+        commentsExtractor = new FreeCommentsExtractorImpl();
+        commentsParser = new TagCommentsParserImpl();
     });
 
     it('should extract', async () => {
-        const actual: Documentation = service.extract('./tests/resources/string.cbl');
+        const preDoc = commentsExtractor.extract('./tests/resources/string.cbl');
+        const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
             fileName: 'string.cbl',
             author: 'Olegs Kunicins',

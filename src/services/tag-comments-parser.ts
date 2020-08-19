@@ -1,58 +1,26 @@
 import { injectable } from 'inversify';
-import { Documentation, ModuleOrFunction, Parameter, Return } from '../model/documentation';
-import * as fs from 'fs';
-import * as path from 'path';
+import { Documentation, ModuleOrFunction, Parameter, Return, PreDocumentation, PreModuleOrFunction } from '../model/documentation';
+import { CommentsParser } from './comments-parser';
 
-export interface DocumentationExtractor {
-    extract(filePath: string): Documentation;
+export interface TagCommentsParser extends CommentsParser {
 }
 
 @injectable()
-export class DocumentationExtractorImpl implements DocumentationExtractor {
+export class TagCommentsParserImpl implements TagCommentsParser {
 
     constructor() { }
 
-    public extract(filePath: string): Documentation {
-        const data = fs.readFileSync(filePath, 'utf8');
-        const lines = data.split(/\r?\n/);
-
-        let comments: string[] = [];
-        const fileComments: string[] = [];
-        let isFileComments = false;
-        let isComments = false;
-        const functions: ModuleOrFunction[] = [];
-        const modules: ModuleOrFunction[] = [];
-        let lineCounter = 1;
-        lines.forEach((line) => {
-            if (/^\s*\*\>[^*].*/.test(line)) {
-                if (isFileComments) {
-                    fileComments.push(line);
-                }
-                if (isComments) {
-                    comments.push(line);
-                }
-            } else if (/^\s*\*\>\*\*.*/.test(line)) {
-                fileComments.push(line);
-                isFileComments = !isFileComments;
-                isComments = false;
-            } else if (/^\s*\*\>\*.*/.test(line)) {
-                comments.push(line);
-                isComments = !isComments;
-                isFileComments = false;
-            } else if (/^\s*function-id\..+/i.test(line)) {
-                functions.push(this._extractModuleOrFunction(line, lineCounter, comments));
-                comments = [];
-            } else if (/^\s*program-id\..+/i.test(line)) {
-                modules.push(this._extractModuleOrFunction(line, lineCounter, comments));
-                comments = [];
-            }
-            lineCounter++;
-        });
-
-        const [fileDescription, author, license] = this._extractFileDetails(fileComments);
+    public parse(preDocumentation: PreDocumentation): Documentation {
+        const [fileDescription, author, license] = this._extractFileDetails(preDocumentation.fileComments);
+        const modules = preDocumentation.modules.map(
+            preModule => this._extractModuleOrFunction(preModule)
+        );
+        const functions = preDocumentation.functions.map(
+            preFunction => this._extractModuleOrFunction(preFunction)
+        );
 
         return {
-            fileName: path.basename(filePath),
+            fileName: preDocumentation.fileName,
             fileDescription: fileDescription,
             author: author,
             license: license,
@@ -61,10 +29,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         };
     }
 
-    private _extractModuleOrFunction(line: string, lineNumber: number, comments: string[]): ModuleOrFunction {
-        const name = line.split(".")[1].trim();
-        const rawText = this._cleanComments(comments);
-        const pieces = rawText.split('@');
+    private _extractModuleOrFunction(preModuleOrFunction: PreModuleOrFunction): ModuleOrFunction {
+        const pieces = preModuleOrFunction.comments.split('@');
         const params: Parameter[] = [];
         let returnObj: Return | undefined = undefined;
         let description: string | undefined = undefined;
@@ -107,8 +73,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
 
         return {
             description: description,
-            line: lineNumber,
-            name: name,
+            line: preModuleOrFunction.line,
+            name: preModuleOrFunction.name,
             paragraphs: [],
             params: params,
             return: returnObj,
@@ -116,9 +82,8 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         };
     }
 
-    private _extractFileDetails(comments: string[]): [string | undefined, string | undefined, string | undefined] {
-        const rawText = this._cleanComments(comments);
-        const pieces = rawText.split('@');
+    private _extractFileDetails(comments: string): [string | undefined, string | undefined, string | undefined] {
+        const pieces = comments.split('@');
         let author: string | undefined = undefined;
         let license: string | undefined = undefined;
         let description: string | undefined = undefined;
@@ -133,12 +98,5 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         });
 
         return [description, author, license];
-    }
-
-    private _cleanComments(comments: string[]): string {
-        return comments
-            .map(comment => comment.replace(/^\s*\*>\**\s*/, ''))
-            .filter(comment => comment.length !== 0)
-            .join('\n');
     }
 }

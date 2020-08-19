@@ -1,7 +1,10 @@
 const TYPES = {
     Cli: Symbol.for('Cli'),
-    FileParser: Symbol.for('FileParser'),
-    DocumentationExtractor: Symbol.for('DocumentationExtractor'),
+    DocumentationService: Symbol.for('DocumentationService'),
+    FreeCommentsExtractor: Symbol.for('FreeCommentsExtractor'),
+    MicrofocusCommentsExtractor: Symbol.for('MicrofocusCommentsExtractor'),
+    TagCommentsParser: Symbol.for('TagCommentsParser'),
+    XmlCommentsParser: Symbol.for('XmlCommentsParser'),
     TemplateEngine: Symbol.for('TemplateEngine'),
     FileOutputStream: Symbol.for('FileOutputStream'),
 };

@@ -42,3 +42,16 @@ export interface Documentation {
     modules?: ModuleOrFunction[],
     changeLogs?: ChangeLog[],
 }
+
+export interface PreModuleOrFunction {
+    name: string,
+    line: number,
+    comments: string,
+}
+
+export interface PreDocumentation {
+    fileName: string,
+    fileComments: string,
+    functions: PreModuleOrFunction[],
+    modules: PreModuleOrFunction[],
+}

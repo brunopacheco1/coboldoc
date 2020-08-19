@@ -2,9 +2,11 @@ import { Command } from 'commander';
 import { injectable, inject } from 'inversify';
 import kleur from 'kleur';
 import figlet from 'figlet';
-import { FileParser } from '../services/file-parser';
+import { DocumentationService } from '../services/documentation-service';
 import { TYPES } from '../types';
 import { Format } from '../model/format';
+import { CodeFormat } from '../model/code-format';
+import { CommentType } from '../model/comment-type';
 const pkg = require('../../package.json');
 
 @injectable()
@@ -13,7 +15,7 @@ export class Cli {
     private readonly _MINIMUM_ARG_SIZE = 2;
 
     constructor(
-        @inject(TYPES.FileParser) private readonly _fileParser: FileParser) { }
+        @inject(TYPES.DocumentationService) private readonly _documentationService: DocumentationService) { }
 
     public main(argv: string[]): void {
         console.log(
@@ -33,7 +35,7 @@ export class Cli {
         command.command('generate <files...>')
             .description('generate the documentation')
             .action((files) => {
-                this._fileParser.parse(files, command.output, Format[command.format.toUpperCase() as keyof typeof Format]);
+                this._documentationService.parse(files, command.output, Format[command.format.toUpperCase() as keyof typeof Format], CodeFormat.FREE, CommentType.TAG);
             });
 
         command.parse(argv);
