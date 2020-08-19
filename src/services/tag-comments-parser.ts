@@ -78,7 +78,7 @@ export class TagCommentsParserImpl implements TagCommentsParser {
             paragraphs: [],
             params: params,
             return: returnObj,
-            summary: summary
+            summary: summary,
         };
     }
 
