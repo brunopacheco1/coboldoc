@@ -43,7 +43,7 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
             name: 'firstmodulefunction',
             line: 110,
             description: 'first module function\n',
-            summary: "the first function summary.",
+            summary: "the first function summary.\n",
             paragraphs: [],
             params: [{
                 name: 'first-arg',
@@ -58,7 +58,7 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
             name: 'secondmodulefunction',
             line: 127,
             description: 'second module function\n',
-            summary: 'second module function',
+            summary: 'second module function\n',
             paragraphs: [],
             params: [{
                 name: 'secondarg',
@@ -73,7 +73,7 @@ describe('Parsing freedialectsample.cbl to doc file', () => {
             name: 'thirdmodulefunction',
             line: 144,
             description: 'third module function\n',
-            summary: 'third module function',
+            summary: 'third module function\n',
             paragraphs: [],
             params: [{
                 name: 'thirdarg',

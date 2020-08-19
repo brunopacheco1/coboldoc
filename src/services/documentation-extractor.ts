@@ -72,9 +72,9 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
         pieces.forEach((piece, index) => {
             if (index === 0) {
                 description = piece;
-                summary = piece.replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
+                summary = piece;
             } else if (/^summary/.test(piece)) {
-                summary = piece.substring(piece.indexOf(' ')).replace(/\s\s/g, '<br>').replace(/\n/g, ' ').trim();
+                summary = piece.substring(piece.indexOf(' ') + 1);
             } else if (/^param/.test(piece)) {
                 piece = piece.substring(piece.indexOf(' ') + 1);
                 let paramType: string | undefined = undefined;
@@ -83,7 +83,7 @@ export class DocumentationExtractorImpl implements DocumentationExtractor {
                     paramType = match[1];
                     piece = piece.replace(/\{(.+)\}/, '').trim();
                 }
-                const paramName = piece.substring(0, piece.indexOf(' ')).trim();
+                const paramName = piece.substring(0, piece.indexOf(' '));
                 const paramDescription = piece.substring(piece.indexOf(' ') + 1).trim();
                 params.push({
                     name: paramName,

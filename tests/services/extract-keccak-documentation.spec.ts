@@ -22,7 +22,7 @@ describe('keccak.cbl to documentation', () => {
                 name: 'KECCAK',
                 line: 41,
                 description: 'The KECCAK module, that uses the Keccak-f[1600] permutation.<br>\nDate-Written: 2016-05-17<br>\nFields in LINKAGE SECTION:<br>\n<ul>\n<li>LNK-KECCAK-RATE: The value of the rate r. The rate must be\na multiple of 8 bits in this implementation.</li>           \n<li>LNK-KECCAK-CAPACITY: The value of the capacity c. \nThe rate and capacity must have r+c=1600.</li>        \n<li>LNK-KECCAK-INPUT: The input message.   </li>         \n<li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided\nin the input message.</li> \n<li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically\nappended to the end of the input message, as in domain \nseparation.</li> \n<li>LNK-KECCAK-OUTPUT: The buffer where to store the output.   </li>        \n<li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li>\n</ul>',
-                summary: 'The KECCAK module, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2016-05-17<br> Fields in LINKAGE SECTION:<br> <ul> <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation.</li><br><br><br><br><br><br><li>LNK-KECCAK-CAPACITY: The value of the capacity c.<br>The rate and capacity must have r+c=1600.</li><br><br><br><br> <li>LNK-KECCAK-INPUT: The input message.<br> </li><br><br><br><br><br><li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message.</li><br><li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain<br>separation.</li><br><li>LNK-KECCAK-OUTPUT: The buffer where to store the output.<br> </li><br><br><br><br> <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li> </ul>',
+                summary: 'The KECCAK module, that uses the Keccak-f[1600] permutation.<br>\nDate-Written: 2016-05-17<br>\nFields in LINKAGE SECTION:<br>\n<ul>\n<li>LNK-KECCAK-RATE: The value of the rate r. The rate must be\na multiple of 8 bits in this implementation.</li>           \n<li>LNK-KECCAK-CAPACITY: The value of the capacity c. \nThe rate and capacity must have r+c=1600.</li>        \n<li>LNK-KECCAK-INPUT: The input message.   </li>         \n<li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided\nin the input message.</li> \n<li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically\nappended to the end of the input message, as in domain \nseparation.</li> \n<li>LNK-KECCAK-OUTPUT: The buffer where to store the output.   </li>        \n<li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li>\n</ul>',
                 paragraphs: [],
                 return: undefined,
                 params: []
@@ -76,7 +76,7 @@ describe('keccak.cbl to documentation', () => {
                 name: 'LFSR86540',
                 line: 784,
                 description: 'Module that computes the linear feedback shift register (LFSR) used to\ndefine the round constants (see [Keccak Reference, Section 1.2]).',
-                summary: 'Module that computes the linear feedback shift register (LFSR) used to define the round constants (see [Keccak Reference, Section 1.2]).',
+                summary: 'Module that computes the linear feedback shift register (LFSR) used to\ndefine the round constants (see [Keccak Reference, Section 1.2]).',
                 paragraphs: [],
                 return: undefined,
                 params: []

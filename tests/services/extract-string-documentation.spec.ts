@@ -23,7 +23,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-pos',
                 line: 32,
                 description: 'Find the position of the first occurrence of a substring in a string.\nCase-sensitive.\n',
-                summary: 'Find the position of the first occurrence of a substring in a string. Case-sensitive.',
+                summary: 'Find the position of the first occurrence of a substring in a string.\nCase-sensitive.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-haystack',
@@ -42,7 +42,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-pos-case',
                 line: 74,
                 description: 'Find the position of the first occurrence of a substring in a string.\nCase-insensitive.\n',
-                summary: 'Find the position of the first occurrence of a substring in a string. Case-insensitive.',
+                summary: 'Find the position of the first occurrence of a substring in a string.\nCase-insensitive.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-haystack',
@@ -61,7 +61,7 @@ describe('string.cbl to documentation', () => {
                 name: 'byte-to-hex',
                 line: 97,
                 description: 'Convert one byte into hexadecimal representation.\n',
-                summary: 'Convert one byte into hexadecimal representation.',
+                summary: 'Convert one byte into hexadecimal representation.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-byte',
@@ -76,7 +76,7 @@ describe('string.cbl to documentation', () => {
                 name: 'hex-to-byte',
                 line: 123,
                 description: 'Convert one byte into hexadecimal representation.\n',
-                summary: 'Convert one byte into hexadecimal representation.',
+                summary: 'Convert one byte into hexadecimal representation.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-hex',
@@ -91,7 +91,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-count',
                 line: 155,
                 description: 'Count the number of substring occurrences. Case-sensitive.\n',
-                summary: 'Count the number of substring occurrences. Case-sensitive.',
+                summary: 'Count the number of substring occurrences. Case-sensitive.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-haystack',
@@ -110,7 +110,7 @@ describe('string.cbl to documentation', () => {
                 name: 'substr-count-case',
                 line: 193,
                 description: 'Count the number of substring occurrences. Case-insensitive.\n',
-                summary: 'Count the number of substring occurrences. Case-insensitive.',
+                summary: 'Count the number of substring occurrences. Case-insensitive.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-haystack',
@@ -129,7 +129,7 @@ describe('string.cbl to documentation', () => {
                 name: 'sha3-256',
                 line: 216,
                 description: 'Generate SHA3-256 message digest\n',
-                summary: 'Generate SHA3-256 message digest',
+                summary: 'Generate SHA3-256 message digest\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-buffer',
@@ -144,7 +144,7 @@ describe('string.cbl to documentation', () => {
                 name: 'sha3-512',
                 line: 254,
                 description: 'Generate SHA3-512 message digest\n',
-                summary: 'Generate SHA3-512 message digest',
+                summary: 'Generate SHA3-512 message digest\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-buffer',
@@ -159,7 +159,7 @@ describe('string.cbl to documentation', () => {
                 name: 'urlencoded-to-byte',
                 line: 292,
                 description: 'Convert urlencoded symbol into one byte.\n',
-                summary: 'Convert urlencoded symbol into one byte.',
+                summary: 'Convert urlencoded symbol into one byte.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-symbol',
@@ -174,7 +174,7 @@ describe('string.cbl to documentation', () => {
                 name: 'byte-to-urlencoded',
                 line: 318,
                 description: 'Convert one byte into urlencoded symbol.\n',
-                summary: 'Convert one byte into urlencoded symbol.',
+                summary: 'Convert one byte into urlencoded symbol.\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-byte',
@@ -189,7 +189,7 @@ describe('string.cbl to documentation', () => {
                 name: 'csv-ecb-rates',
                 line: 340,
                 description: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs.\nhttps://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html\n',
-                summary: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs. https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html',
+                summary: 'Convert ECB exchange rates in CSV format to the list of currency-rate pairs.\nhttps://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html\n',
                 paragraphs: [],
                 params: [{
                     name: 'l-byte',
