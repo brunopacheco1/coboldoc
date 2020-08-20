@@ -9,7 +9,7 @@ import * as fs from 'fs';
 describe('Parsing freedialectsample.cbl to doc file', () => {
     const doc: Documentation = {
         fileName: 'freedialectsample.cbl',
-        author: 'Bruno Pacheco (https://brunopacheco1.github.io/)',
+        author: 'Bruno Pacheco (https://brunopacheco1.github.io/)\n',
         license: 'LGPL-3.0',
         fileDescription: 'Short sample.',
         modules: [{

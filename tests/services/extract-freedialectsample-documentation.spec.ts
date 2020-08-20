@@ -19,7 +19,7 @@ describe('freedialectsample.cbl to documentation', () => {
         const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
             fileName: 'freedialectsample.cbl',
-            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)',
+            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)\n',
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{

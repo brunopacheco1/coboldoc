@@ -30,11 +30,9 @@ export class FreeCommentsExtractorImpl implements FreeCommentsExtractor {
                     comments.push(line);
                 }
             } else if (/^\s*\*\>\*\*.*/.test(line)) {
-                fileComments.push(line);
                 isFileComments = !isFileComments;
                 isComments = false;
             } else if (/^\s*\*\>\*.*/.test(line)) {
-                comments.push(line);
                 isComments = !isComments;
                 isFileComments = false;
             } else if (/^\s*function-id\..+/i.test(line)) {
@@ -66,7 +64,6 @@ export class FreeCommentsExtractorImpl implements FreeCommentsExtractor {
     private _cleanComments(comments: string[]): string {
         return comments
             .map(comment => comment.replace(/^\s*\*>\**\s*/, ''))
-            .filter(comment => comment.length !== 0)
             .join('\n');
     }
 }

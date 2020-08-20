@@ -20,8 +20,8 @@ describe('keccak.cbl to documentation', () => {
         const expected: Documentation = {
             fileName: 'keccak.cbl',
             fileDescription: '',
-            author: 'Laszlo Erdos - https://www.facebook.com/wortfee',
-            license: 'LGPL-3.0\nThis library is free software; you can redistribute it and/or\nmodify it under the terms of the GNU Lesser General Public\nLicense as published by the Free Software Foundation; either\nversion 3.0 of the License, or (at your option) any later version.\nThis library is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\nYou should have received a copy of the GNU Lesser General Public\nLicense along with this library.',
+            author: 'Laszlo Erdos - https://www.facebook.com/wortfee\n',
+            license: 'LGPL-3.0\nThis library is free software; you can redistribute it and/or\nmodify it under the terms of the GNU Lesser General Public\nLicense as published by the Free Software Foundation; either\nversion 3.0 of the License, or (at your option) any later version.\n\nThis library is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLesser General Public License for more details.\n\nYou should have received a copy of the GNU Lesser General Public\nLicense along with this library.',
             modules: [{
                 name: 'KECCAK',
                 line: 41,

@@ -1,0 +1,133 @@
+<!DOCTYPE>
+<html lang="en" xml:lang="en">
+
+<head>
+    <title>datetime.cbl</title>
+    <meta content="text/html; charset=utf-8" />
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #dee3e9;
+            padding: 7px;
+        }
+
+        td {
+            padding: 7px;
+        }
+
+        tr:nth-child(even) {
+            background: #FFF
+        }
+
+        tr:nth-child(odd) {
+            background: #CCC
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        datetime.cbl
+    </h1>
+    <p>
+        Core library: datetime
+    </p>
+    <p>
+        author: Olegs Kunicins
+
+    </p>
+    <p>
+        License: LGPL-3.0
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 3.0 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library.
+    </p>
+    <h2>Function Summary</h2>
+    <table>
+        <caption>Function Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#datetime-format">datetime-format</a></td>
+            <td>Format the given or current timestamp, replacing the tokens, such as  
+YY    Year                                      18  
+YYYY  Year                                      2018  
+M     Month of the year (1-12)                  7  
+MM    Month of the year (01-12)                 07  
+MMM   Month of the year textual                 Jul  
+D     Day of the month (1-31)                   9  
+DD    Day of the month (01-31)                  09  
+DDD   Day of the year (01-366)                  07  
+WW    Week of the year (01-53)                  05  
+U     Weekday (1-7)                             2  
+EEE   Weekday textual      	                   Tue  
+h     Hour of the day (0-23)                    5  
+hh    Hour of the day (00-23)                   05  
+m     Minute of the hour (0-59)                 9  
+mm    Minute of the hour (00-59)                09  
+s     Second of the minute (0-59)               4  
+ss    Second of the minute (00-59)              04  
+z     Timezone                                  GMT-08:00  
+x     Timezone ISO 8601                         -08:00  
+</td>
+        </tr>
+    </table>
+    <h2>Function Details</h2>
+    <h3 id="datetime-format">datetime-format</h3>
+    <p>
+        <em>datetime-format(l-format, l-timestamp)</em>
+    </p>
+    <p>Format the given or current timestamp, replacing the tokens, such as  
+YY    Year                                      18  
+YYYY  Year                                      2018  
+M     Month of the year (1-12)                  7  
+MM    Month of the year (01-12)                 07  
+MMM   Month of the year textual                 Jul  
+D     Day of the month (1-31)                   9  
+DD    Day of the month (01-31)                  09  
+DDD   Day of the year (01-366)                  07  
+WW    Week of the year (01-53)                  05  
+U     Weekday (1-7)                             2  
+EEE   Weekday textual      	                   Tue  
+h     Hour of the day (0-23)                    5  
+hh    Hour of the day (00-23)                   05  
+m     Minute of the hour (0-59)                 9  
+mm    Minute of the hour (00-59)                09  
+s     Second of the minute (0-59)               4  
+ss    Second of the minute (00-59)              04  
+z     Timezone                                  GMT-08:00  
+x     Timezone ISO 8601                         -08:00  
+</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li>
+            <strong>l-format</strong> 32-char long string
+        </li>
+        <li>
+            <strong>l-timestamp</strong> 21-char long current-date or ZERO
+        </li>
+    </ul>
+    <h4>Returns</h4>
+    <ul>
+        <li>
+            Formatted timestamp trailing by spaces, 32-char long
+        </li>
+    </ul>
+</body>
+
+</html>

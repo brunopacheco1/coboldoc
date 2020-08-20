@@ -91,9 +91,9 @@ export class TagCommentsParserImpl implements TagCommentsParser {
             if (index === 0) {
                 description = piece.trim();
             } else if (/^license/.test(piece)) {
-                license = piece.substring(piece.indexOf(' ')).trim();
+                license = piece.substring(piece.indexOf(' ') + 1);
             } else if (/^author/.test(piece)) {
-                author = piece.substring(piece.indexOf(' ')).trim();
+                author = piece.substring(piece.indexOf(' ') + 1);
             }
         });
 
