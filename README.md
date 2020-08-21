@@ -19,6 +19,8 @@
 - Generate documentation in HTML;
 - Support for in-line HTML content;
 - Support for in-line Markdown content;
+- Support for Tag and XML annotations;
+- Support for Free Format and Microfocus;
 
 #### Requirements
 - NodeJS 8+
@@ -41,14 +43,16 @@ $ coboldoc
 Usage: coboldoc <command> [options]
 
 Options:
-  -o, --output <outputDirectory>  The output directory (default: "./")
-  -f, --format <fileFormat>       Suported output format: md, html (default: "md")
-  -v, --version                   output the version number
-  -h, --help                      display help for command
+  -o, --output <output directory>        The output directory (default: "/home/casa/dev/git/coboldoc")
+  -f, --format <fileFormat>              Suported output format: md, html (default: "md")
+  -d, --dialect <dialect>                Suported dialects: free, microfocus (default: "free")
+  -a, --annotation <comment annotation>  Suported comment annotations: tag, xml (default: "tag")
+  -v, --version                          output the version number
+  -h, --help                             display help for command
 
 Commands:
-  generate <files...>             generate the documentation
-  help [command]                  display help for command
+  generate <files...>                    generate the documentation
+  help [command]                         display help for command
 ```
 
 ##### Usage sample
@@ -69,7 +73,31 @@ Generating freedialectsample.cbl documentation... DONE
 Generating README.md... DONE
 ```
 
-#### Code Blocks
+#### Supported dialects
+COBOLDoc suports free format and Microfocus comment dialects. The diff is on how the comment blocks are detected. If it is a free format code, the comment block pattern is `*>*(*)`, and if it is Microfocus code, it will look for `*>>*(*)`.
+
+#### Supported annotations
+COBOLDoc suports tag or XML annotations.
+
+##### Tag annotations
+```
+*>**
+*>  Short sample.
+*>  @author Bruno Pacheco (https://brunopacheco1.github.io/)
+*>  @license LGPL-3.0
+*>**
+```
+
+##### XML annotations
+```
+*>>**
+*>>  <summary>Short sample.</summary>
+*>>  <author>Bruno Pacheco (https://brunopacheco1.github.io/)</author>
+*>>  <license>LGPL-3.0</license>
+*>**
+```
+
+#### Comment Blocks
 COBOLDoc supports the following comment blocks in order to build the documentation.
 
 In essence, COBOLDoc has been tested against COBOL source files written in free-format only, but there shouldn't be restrictions on other COBOL coding formats, if you follow the standards of this tool. During the scanning phase, COBOLDoc ignores leading blank spaces of each line of code.
@@ -88,7 +116,7 @@ File comment block can be anywhere in the source file, but ideally it should be 
 ```
 
 ##### Module/Function Comment Block
-Anything that describes the following module or function, will scanned in this kind of comment block, starting and ending with `*>*` and all internal line starting with `*> `.
+Anything that describes the next line module or function, will scanned in this kind of comment block, starting and ending with `*>*` and all internal line starting with `*> `.
 
 Module/Function comment blocks have to preceed a `FUNCTION-ID` or `PROGRAM-ID` definition.
 
@@ -306,7 +334,9 @@ separation.
 ```
 
 #### Roadmap
-- List of paragraphs in the module details view;
+- List of paragraphs in the module/function details view;
 - Scan and display changelog (if present);
+- Comply with MSDN Comment Style (on XML annotations);
+- Support other structures in COBOL (entries, classes, interfaces...);
 
 Your contribution is always welcome!

@@ -37,7 +37,7 @@ License: <%- license %>
 <% functions.forEach((cobolFunction) => { %>
 ### <%- cobolFunction.name %>
 
-*<%- !!cobolFunction.return.type ? `{${cobolFunction.return.type}} ` : '' %><%- cobolFunction.name %>(<%- cobolFunction.params.map(p => p.name).join(', ') %>)*
+*<%- !!cobolFunction.return && !!cobolFunction.return.type ? `{${cobolFunction.return.type}} ` : '' %><%- cobolFunction.name %>(<%- cobolFunction.params.map(p => p.name).join(', ') %>)*
 
 <%- cobolFunction.description %>
 

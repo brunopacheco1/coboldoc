@@ -1,21 +1,22 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { FreeCommentsExtractor, FreeCommentsExtractorImpl } from '../../src/services/free-comments-extractor';
+import { CommentsExtractor, CommentsExtractorImpl } from '../../src/services/comments-extractor';
 import { TagCommentsParser, TagCommentsParserImpl } from '../../src/services/tag-comments-parser';
 import { Documentation } from '../../src/model/documentation';
+import { Dialect } from '../../src/model/dialect';
 
 describe('keccak.cbl to documentation', () => {
-    let commentsExtractor: FreeCommentsExtractor;
+    let commentsExtractor: CommentsExtractor;
     let commentsParser: TagCommentsParser;
 
     beforeEach(() => {
-        commentsExtractor = new FreeCommentsExtractorImpl();
+        commentsExtractor = new CommentsExtractorImpl();
         commentsParser = new TagCommentsParserImpl();
     });
 
     it('should extract', async () => {
-        const preDoc = commentsExtractor.extract('./tests/resources/keccak.cbl');
+        const preDoc = commentsExtractor.extract(Dialect.FREE, './tests/resources/keccak.cbl');
         const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
             fileName: 'keccak.cbl',

@@ -2,31 +2,31 @@ import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
 import { CommentsExtractor, CommentsExtractorImpl } from '../../src/services/comments-extractor';
-import { TagCommentsParser, TagCommentsParserImpl } from '../../src/services/tag-comments-parser';
+import { XmlCommentsParser, XmlCommentsParserImpl } from '../../src/services/xml-comments-parser';
 import { Documentation } from '../../src/model/documentation';
 import { Dialect } from '../../src/model/dialect';
 
-describe('freedialectsample.cbl to documentation', () => {
+describe('microfocusdialectsample.cbl to documentation', () => {
     let commentsExtractor: CommentsExtractor;
-    let commentsParser: TagCommentsParser;
+    let commentsParser: XmlCommentsParser;
 
     beforeEach(() => {
         commentsExtractor = new CommentsExtractorImpl();
-        commentsParser = new TagCommentsParserImpl();
+        commentsParser = new XmlCommentsParserImpl();
     });
 
     it('should extract', async () => {
-        const preDoc = commentsExtractor.extract(Dialect.FREE, './tests/resources/freedialectsample.cbl');
+        const preDoc = commentsExtractor.extract(Dialect.MICROFOCUS, './tests/resources/microfocusdialectsample.cbl');
         const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
-            fileName: 'freedialectsample.cbl',
-            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)\n',
+            fileName: 'microfocusdialectsample.cbl',
+            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)',
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module.  \nTrying to see **what** happens to    huge text.\n',
-                summary: "the first module summary.",
-                line: 14,
+                description: 'The first module.  \nTrying to see **what** happens to    huge text.',
+                summary: 'The first module.  \nTrying to see **what** happens to    huge text.',
+                line: 13,
                 name: 'first-module',
                 paragraphs: [],
                 return: undefined,
@@ -35,7 +35,7 @@ describe('freedialectsample.cbl to documentation', () => {
             {
                 description: 'The second module',
                 summary: 'The second module',
-                line: 44,
+                line: 43,
                 name: 'second-module',
                 paragraphs: [],
                 return: undefined,
@@ -44,7 +44,7 @@ describe('freedialectsample.cbl to documentation', () => {
             {
                 description: 'The third module',
                 summary: 'The third module',
-                line: 77,
+                line: 76,
                 name: 'third-module',
                 paragraphs: [],
                 return: undefined,
@@ -52,13 +52,17 @@ describe('freedialectsample.cbl to documentation', () => {
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 110,
-                description: 'first module function\n',
-                summary: "the first function summary.\n",
+                line: 109,
+                description: 'first module function',
+                summary: 'first module function',
                 paragraphs: [],
                 params: [{
                     name: 'first-arg',
                     description: 'First arg',
+                    type: 'PIC 9'
+                }, {
+                    name: 'second-arg',
+                    description: 'Second arg',
                     type: 'PIC 9'
                 }],
                 return: {
@@ -67,9 +71,9 @@ describe('freedialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 127,
-                description: 'second module function\n',
-                summary: 'second module function\n',
+                line: 126,
+                description: 'second module function',
+                summary: 'second module function',
                 paragraphs: [],
                 params: [{
                     name: 'secondarg',
@@ -82,9 +86,9 @@ describe('freedialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 144,
-                description: 'third module function\n',
-                summary: 'third module function\n',
+                line: 143,
+                description: 'third module function',
+                summary: 'third module function',
                 paragraphs: [],
                 params: [{
                     name: 'thirdarg',

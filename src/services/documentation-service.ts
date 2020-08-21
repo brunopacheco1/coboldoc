@@ -5,39 +5,35 @@ import { Format, TableOfContents } from '../model/format';
 import { TemplateEngine } from './template-engine';
 import { FileOutputStream } from './file-output-stream';
 import kleur from 'kleur';
-import { FreeCommentsExtractor } from './free-comments-extractor';
 import { TagCommentsParser } from './tag-comments-parser';
-import { CodeFormat } from '../model/code-format';
+import { Dialect } from '../model/dialect';
 import { CommentsExtractor } from './comments-extractor';
-import { MicrofocusCommentsExtractor } from './microfocus-comments-extractor';
 import { XmlCommentsParser } from './xml-comments-parser';
-import { CommentType } from '../model/comment-type';
+import { CommentType } from '../model/comment-style';
 import { CommentsParser } from './comments-parser';
 
 export interface DocumentationService {
-    parse(files: string[], outputDirectory: string, format: Format, codeFormat: CodeFormat, commentType: CommentType): void;
+    parse(files: string[], outputDirectory: string, format: Format, dialect: Dialect, commentType: CommentType): void;
 }
 
 @injectable()
 export class DocumentationServiceImpl implements DocumentationService {
 
     constructor(
-        @inject(TYPES.FreeCommentsExtractor) private readonly _freeCommentsExtractor: FreeCommentsExtractor,
-        @inject(TYPES.MicrofocusCommentsExtractor) private readonly _microfocusCommentsExtractor: MicrofocusCommentsExtractor,
+        @inject(TYPES.CommentsExtractor) private readonly _commentsExtractor: CommentsExtractor,
         @inject(TYPES.TagCommentsParser) private readonly _tagCommentsParser: TagCommentsParser,
         @inject(TYPES.XmlCommentsParser) private readonly _xmlCommentsParser: XmlCommentsParser,
         @inject(TYPES.TemplateEngine) private readonly _templateEngine: TemplateEngine,
         @inject(TYPES.FileOutputStream) private readonly _outputStream: FileOutputStream,
     ) { }
 
-    public parse(files: string[], outputDirectory: string, format: Format, codeFormat: CodeFormat, commentType: CommentType): void {
+    public parse(files: string[], outputDirectory: string, format: Format, dialect: Dialect, commentType: CommentType): void {
         console.log(`Output directory: ${outputDirectory}`);
         console.log(`Selected format: ${format}`);
-        const commentsExtractor = this._getCommentsExtractor(codeFormat);
         const commentsParser = this._getCommentsParser(commentType);
         const exportedFiles: string[] = [];
         files.forEach(file => {
-            this._parseFile(file, outputDirectory, format, commentsExtractor, commentsParser, exportedFiles);
+            this._parseFile(file, outputDirectory, format, dialect, commentsParser, exportedFiles);
         });
         const tableOfContents = TableOfContents.from(format);
         process.stdout.write(`Generating ${tableOfContents}... `);
@@ -46,12 +42,12 @@ export class DocumentationServiceImpl implements DocumentationService {
         console.log(kleur.green('DONE'));
     }
 
-    private _parseFile(file: string, outputDirectory: string, format: Format, commentsExtractor: CommentsExtractor, commentsParser: CommentsParser, exportedFiles: string[]): void {
+    private _parseFile(file: string, outputDirectory: string, format: Format, dialect: Dialect, commentsParser: CommentsParser, exportedFiles: string[]): void {
         const filePath = this._defineFilePath(file);
         const baseName = path.basename(filePath);
         const exportedFileName = `${baseName}.${format}`;
         process.stdout.write(`Generating ${baseName} documentation... `);
-        const preDocumentation = commentsExtractor.extract(filePath);
+        const preDocumentation = this._commentsExtractor.extract(dialect, filePath);
         const documentation = commentsParser.parse(preDocumentation);
         const outputContent = this._templateEngine.parseDocumentation(format, documentation);
         this._outputStream.write(outputDirectory, exportedFileName, outputContent);
@@ -65,17 +61,6 @@ export class DocumentationServiceImpl implements DocumentationService {
             filePath = path.join(process.cwd(), file);
         }
         return filePath;
-    }
-
-    private _getCommentsExtractor(codeFormat: CodeFormat): CommentsExtractor {
-        switch (codeFormat) {
-            case CodeFormat.FREE:
-                return this._freeCommentsExtractor;
-            case CodeFormat.MICROFOCUS:
-                return this._microfocusCommentsExtractor;
-            default:
-                throw new Error(`Code format not supported: ${codeFormat}`);
-        }
     }
 
     private _getCommentsParser(commentType: CommentType): CommentsParser {
