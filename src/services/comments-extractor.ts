@@ -24,7 +24,7 @@ export class CommentsExtractorImpl implements CommentsExtractor {
         const modules: PreModuleOrFunction[] = [];
         let lineCounter = 1;
         lines.forEach((line) => {
-            if (commentsRegex.contentRegex.test(line)) {
+            if (commentsRegex.contentRegex.test(line) && (isFileComments || isComments)) {
                 if (isFileComments) {
                     fileComments.push(line);
                 }

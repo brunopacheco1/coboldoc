@@ -1,14 +1,14 @@
        >>SOURCE FORMAT FREE
-*>>**
+*>>>
 *>>  <summary>Short sample.</summary>
 *>>  <author>Bruno Pacheco (https://brunopacheco1.github.io/)</author>
 *>>  <license>LGPL-3.0</license>
-*>>**
+*>>>
 
-*>>*
+*>>
 *>>  <summary>The first module.  
 *>>  Trying to see **what** happens to    huge text.</summary>
-*>>*
+*>>
  IDENTIFICATION DIVISION.
  PROGRAM-ID. first-module.
 
@@ -36,9 +36,9 @@
     END-CALL.
  END PROGRAM first-module.
  
-*>>*
+*>>
 *>> <summary>The second module</summary>
-*>>*
+*>>
  IDENTIFICATION DIVISION.
  PROGRAM-ID. second-module.
 
@@ -69,9 +69,9 @@
 
  END PROGRAM second-module.
  
-*>>*
+*>>
 *>> <summary>The third module</summary>
-*>>*
+*>>
  IDENTIFICATION DIVISION.
  PROGRAM-ID. third-module.
 
@@ -99,12 +99,12 @@
     DISPLAY "Third Module: ", WS-THIRDMODULE.
  END PROGRAM third-module.
 
-*>>*
+*>>
 *>> <summary>first module function</summary>
 *>> <param type="PIC 9" name="first-arg">First arg</param>
 *>> <param type="PIC 9" name="second-arg">Second arg</param>
 *>> <returns type="PIC 9">First return</returns>
-*>>*
+*>>
 IDENTIFICATION DIVISION.
 FUNCTION-ID. firstmodulefunction.
 
@@ -117,11 +117,11 @@ PROCEDURE DIVISION USING first-arg RETURNING firstresult.
     COMPUTE firstresult = firstarg + 1.
 END FUNCTION firstmodulefunction.
 
-*>>*
+*>>
 *>> <summary>second module function</summary>
 *>> <param type="PIC 9" name="secondarg">Second arg</param>
 *>> <returns type="PIC 9">Second return</returns>
-*>>*
+*>>
 IDENTIFICATION DIVISION.
 FUNCTION-ID. secondmodulefunction.
 
@@ -134,11 +134,11 @@ PROCEDURE DIVISION USING secondarg RETURNING secondresult.
     COMPUTE secondresult = secondarg + 2.
 END FUNCTION secondmodulefunction.
 
-*>>*
+*>>
 *>> <summary>third module function</summary>
 *>> <param type="PIC 9" name="thirdarg">Third arg</param>
 *>> <returns type="PIC 9">Third return</returns>
-*>>*
+*>>
 IDENTIFICATION DIVISION.
 FUNCTION-ID. thirdmodulefunction.
 

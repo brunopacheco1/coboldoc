@@ -74,7 +74,7 @@ Generating README.md... DONE
 ```
 
 #### Supported dialects
-COBOLDoc suports free format and Microfocus comment dialects. The diff is on how the comment blocks are detected. If it is a free format code, the comment block pattern is `*>*(*)`, and if it is Microfocus code, it will look for `*>>*(*)`.
+COBOLDoc suports free format and Microfocus comment dialects. The diff is on how the comment blocks are detected. If it is a free format code, the comment block pattern is `*>*(*)`, and if it is Microfocus code, it will look for `*>>(>)`.
 
 #### Supported annotations
 COBOLDoc suports tag or XML annotations.
@@ -90,11 +90,11 @@ COBOLDoc suports tag or XML annotations.
 
 ##### XML annotations
 ```
-*>>**
+*>>>
 *>>  <summary>Short sample.</summary>
 *>>  <author>Bruno Pacheco (https://brunopacheco1.github.io/)</author>
 *>>  <license>LGPL-3.0</license>
-*>**
+*>>>
 ```
 
 #### Comment Blocks

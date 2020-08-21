@@ -15,10 +15,10 @@ export namespace CommentsRegex {
                 };
             case Dialect.MICROFOCUS:
                 return {
-                    fileCommentsRegex: /^\s*\*>>\*\*.*/,
-                    documentationRegex: /^\s*\*>>\*.*/,
-                    contentRegex: /^\s*\*>>[^*].*/,
-                    cleanRegex: /^\s*\*>>\**\s*/,
+                    fileCommentsRegex: /^\s*\*>>>.*/,
+                    documentationRegex: /^\s*\*>>.*/,
+                    contentRegex: /^\s*\*>>[^>].*/,
+                    cleanRegex: /^\s*\*>>\s*/,
                 };
             default:
                 throw new Error(`Not supported dialect: ${dialect}`);
