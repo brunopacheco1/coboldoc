@@ -27,7 +27,8 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 description: 'The first module.  \nTrying to see **what** happens to    huge text.',
                 summary: 'The first module.  \nTrying to see **what** happens to    huge text.',
                 remarks: 'Any remark',
-                line: 14,
+                example: '\nCALL \"first-module\" USING BY CONTENT WS-FIRSTMODULE.\n',
+                line: 19,
                 name: 'first-module',
                 paragraphs: [],
                 return: undefined,
@@ -37,7 +38,8 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 description: 'The second module',
                 summary: 'The second module',
                 remarks: undefined,
-                line: 44,
+                example: undefined,
+                line: 49,
                 name: 'second-module',
                 paragraphs: [],
                 return: undefined,
@@ -47,7 +49,8 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 description: 'The third module',
                 summary: 'The third module',
                 remarks: undefined,
-                line: 77,
+                example: undefined,
+                line: 82,
                 name: 'third-module',
                 paragraphs: [],
                 return: undefined,
@@ -55,10 +58,11 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 110,
+                line: 115,
                 description: 'first module function',
                 summary: 'first module function',
                 remarks: undefined,
+                example: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'first-arg',
@@ -75,10 +79,11 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 127,
+                line: 132,
                 description: 'second module function',
                 summary: 'second module function',
                 remarks: undefined,
+                example: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'secondarg',
@@ -91,10 +96,11 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 144,
+                line: 149,
                 description: 'third module function',
                 summary: 'third module function',
                 remarks: undefined,
+                example: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'thirdarg',

@@ -9,6 +9,11 @@
 *>>  <summary>The first module.  
 *>>  Trying to see **what** happens to    huge text.</summary>
 *>>  <remarks>Any remark</remarks>
+*>>  <example>
+*>>  <code>
+*>>    CALL "first-module" USING BY CONTENT WS-FIRSTMODULE.
+*>>  </code>
+*>>  </example>
 *>>
  IDENTIFICATION DIVISION.
  PROGRAM-ID. first-module.

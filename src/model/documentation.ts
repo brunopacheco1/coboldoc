@@ -23,6 +23,7 @@ export interface ModuleOrFunction {
     paragraphs?: Paragraph[],
     description?: string,
     remarks?: string,
+    example?: string,
     summary?: string,
     params?: Parameter[],
     return?: Return,

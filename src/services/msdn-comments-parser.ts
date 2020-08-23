@@ -64,11 +64,13 @@ export class MsdnCommentsParserImpl implements MsdnCommentsParser {
 
         const summary = this._retrieveValue(parsed.summary);
         const remarks = this._retrieveValue(parsed.remarks);
+        const example = this._retrieveValue(!!parsed.example && parsed.example.length > 0 ? parsed.example[0].code : undefined);
 
         return {
             description: summary,
             summary: summary,
             remarks: remarks,
+            example: example,
             line: preModuleOrFunction.line,
             name: preModuleOrFunction.name,
             paragraphs: [],
