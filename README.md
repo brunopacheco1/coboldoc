@@ -19,7 +19,7 @@
 - Generate documentation in HTML;
 - Support for in-line HTML content;
 - Support for in-line Markdown content;
-- Support for Tag and XML annotations;
+- Support for Tag and MSDN annotations;
 - Support for Free Format and Microfocus;
 
 #### Requirements
@@ -77,7 +77,7 @@ Generating README.md... DONE
 COBOLDoc suports free format and Microfocus comment dialects. The diff is on how the comment blocks are detected. If it is a free format code, the comment block pattern is `*>*(*)`, and if it is Microfocus code, it will look for `*>>(>)`.
 
 #### Supported annotations
-COBOLDoc suports tag or XML annotations.
+COBOLDoc suports tag or MSDN annotations.
 
 ##### Tag annotations
 ```
@@ -88,7 +88,7 @@ COBOLDoc suports tag or XML annotations.
 *>**
 ```
 
-##### XML annotations
+##### MSDN annotations
 ```
 *>>>
 *>>  <summary>Short sample.</summary>
@@ -336,7 +336,7 @@ separation.
 #### Roadmap
 - List of paragraphs in the module/function details view;
 - Scan and display changelog (if present);
-- Comply with MSDN Comment Style (on XML annotations);
+- Comply with MSDN Comment Style;
 - Support other structures in COBOL (entries, classes, interfaces...);
 
 Your contribution is always welcome!

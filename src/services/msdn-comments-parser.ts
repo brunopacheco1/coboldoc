@@ -3,11 +3,11 @@ import { Documentation, PreDocumentation, PreModuleOrFunction, ModuleOrFunction,
 import { CommentsParser } from './comments-parser';
 import * as xml2js from 'xml2js';
 
-export interface XmlCommentsParser extends CommentsParser {
+export interface MsdnCommentsParser extends CommentsParser {
 }
 
 @injectable()
-export class XmlCommentsParserImpl implements XmlCommentsParser {
+export class MsdnCommentsParserImpl implements MsdnCommentsParser {
 
     constructor() { }
 
@@ -62,17 +62,23 @@ export class XmlCommentsParserImpl implements XmlCommentsParser {
             };
         }
 
-        const summary = !!parsed.summary && parsed.summary.length > 0 ? parsed.summary[0] : undefined;
+        const summary = this._retrieveValue(parsed.summary);
+        const remarks = this._retrieveValue(parsed.remarks);
 
         return {
             description: summary,
             summary: summary,
+            remarks: remarks,
             line: preModuleOrFunction.line,
             name: preModuleOrFunction.name,
             paragraphs: [],
             params: params,
             return: returnObj,
         };
+    }
+
+    private _retrieveValue(field: any): string {
+        return !!field && field.length > 0 ? field[0] : undefined;
     }
 
     private _extractFileDetails(comments: string): [string | undefined, string | undefined, string | undefined] {

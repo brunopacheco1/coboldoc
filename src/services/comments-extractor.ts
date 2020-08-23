@@ -2,17 +2,17 @@ import { injectable } from 'inversify';
 import { PreDocumentation, PreModuleOrFunction } from '../model/documentation';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Dialect, CommentsRegex } from '../model/dialect';
+import { CommentStyle, CommentsRegex } from '../model/comment-style';
 
 export interface CommentsExtractor {
-    extract(dialect: Dialect, filePath: string): PreDocumentation;
+    extract(dialect: CommentStyle, filePath: string): PreDocumentation;
 }
 
 @injectable()
 export class CommentsExtractorImpl implements CommentsExtractor {
 
-    public extract(dialect: Dialect, filePath: string): PreDocumentation {
-        const commentsRegex = CommentsRegex.from(dialect);
+    public extract(commentStyle: CommentStyle, filePath: string): PreDocumentation {
+        const commentsRegex = CommentsRegex.from(commentStyle);
         const data = fs.readFileSync(filePath, 'utf8');
         const lines = data.split(/\r?\n/);
 

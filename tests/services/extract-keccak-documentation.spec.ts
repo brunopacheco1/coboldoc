@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { CommentsExtractor, CommentsExtractorImpl } from '../../src/services/comments-extractor';
 import { TagCommentsParser, TagCommentsParserImpl } from '../../src/services/tag-comments-parser';
 import { Documentation } from '../../src/model/documentation';
-import { Dialect } from '../../src/model/dialect';
+import { CommentStyle } from '../../src/model/comment-style';
 
 describe('keccak.cbl to documentation', () => {
     let commentsExtractor: CommentsExtractor;
@@ -16,7 +16,7 @@ describe('keccak.cbl to documentation', () => {
     });
 
     it('should extract', async () => {
-        const preDoc = commentsExtractor.extract(Dialect.FREE, './tests/resources/keccak.cbl');
+        const preDoc = commentsExtractor.extract(CommentStyle.FREE, './tests/resources/keccak.cbl');
         const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
             fileName: 'keccak.cbl',

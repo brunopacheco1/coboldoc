@@ -6,14 +6,14 @@ import { TemplateEngine } from './template-engine';
 import { FileOutputStream } from './file-output-stream';
 import kleur from 'kleur';
 import { TagCommentsParser } from './tag-comments-parser';
-import { Dialect } from '../model/dialect';
+import { CommentStyle } from '../model/comment-style';
 import { CommentsExtractor } from './comments-extractor';
-import { XmlCommentsParser } from './xml-comments-parser';
-import { CommentType } from '../model/comment-style';
+import { MsdnCommentsParser as MsdnCommentsParser } from './msdn-comments-parser';
+import { AnnotationType } from '../model/annotation-type';
 import { CommentsParser } from './comments-parser';
 
 export interface DocumentationService {
-    parse(files: string[], outputDirectory: string, format: Format, dialect: Dialect, commentType: CommentType): void;
+    parse(files: string[], outputDirectory: string, format: Format, dialect: CommentStyle, annotationType: AnnotationType): void;
 }
 
 @injectable()
@@ -22,18 +22,20 @@ export class DocumentationServiceImpl implements DocumentationService {
     constructor(
         @inject(TYPES.CommentsExtractor) private readonly _commentsExtractor: CommentsExtractor,
         @inject(TYPES.TagCommentsParser) private readonly _tagCommentsParser: TagCommentsParser,
-        @inject(TYPES.XmlCommentsParser) private readonly _xmlCommentsParser: XmlCommentsParser,
+        @inject(TYPES.MsdnCommentsParser) private readonly _msdnCommentsParser: MsdnCommentsParser,
         @inject(TYPES.TemplateEngine) private readonly _templateEngine: TemplateEngine,
         @inject(TYPES.FileOutputStream) private readonly _outputStream: FileOutputStream,
     ) { }
 
-    public parse(files: string[], outputDirectory: string, format: Format, dialect: Dialect, commentType: CommentType): void {
+    public parse(files: string[], outputDirectory: string, format: Format, commentStyle: CommentStyle, annotationType: AnnotationType): void {
         console.log(`Output directory: ${outputDirectory}`);
         console.log(`Selected format: ${format}`);
-        const commentsParser = this._getCommentsParser(commentType);
+        console.log(`Selected comment style: ${commentStyle}`);
+        console.log(`Selected annotation type: ${annotationType}`);
+        const commentsParser = this._getCommentsParser(annotationType);
         const exportedFiles: string[] = [];
         files.forEach(file => {
-            this._parseFile(file, outputDirectory, format, dialect, commentsParser, exportedFiles);
+            this._parseFile(file, outputDirectory, format, commentStyle, commentsParser, exportedFiles);
         });
         const tableOfContents = TableOfContents.from(format);
         process.stdout.write(`Generating ${tableOfContents}... `);
@@ -42,12 +44,12 @@ export class DocumentationServiceImpl implements DocumentationService {
         console.log(kleur.green('DONE'));
     }
 
-    private _parseFile(file: string, outputDirectory: string, format: Format, dialect: Dialect, commentsParser: CommentsParser, exportedFiles: string[]): void {
+    private _parseFile(file: string, outputDirectory: string, format: Format, commentStyle: CommentStyle, commentsParser: CommentsParser, exportedFiles: string[]): void {
         const filePath = this._defineFilePath(file);
         const baseName = path.basename(filePath);
         const exportedFileName = `${baseName}.${format}`;
         process.stdout.write(`Generating ${baseName} documentation... `);
-        const preDocumentation = this._commentsExtractor.extract(dialect, filePath);
+        const preDocumentation = this._commentsExtractor.extract(commentStyle, filePath);
         const documentation = commentsParser.parse(preDocumentation);
         const outputContent = this._templateEngine.parseDocumentation(format, documentation);
         this._outputStream.write(outputDirectory, exportedFileName, outputContent);
@@ -63,14 +65,14 @@ export class DocumentationServiceImpl implements DocumentationService {
         return filePath;
     }
 
-    private _getCommentsParser(commentType: CommentType): CommentsParser {
-        switch (commentType) {
-            case CommentType.TAG:
+    private _getCommentsParser(annotationType: AnnotationType): CommentsParser {
+        switch (annotationType) {
+            case AnnotationType.TAG:
                 return this._tagCommentsParser;
-            case CommentType.XML:
-                return this._xmlCommentsParser;
+            case AnnotationType.MSDN:
+                return this._msdnCommentsParser;
             default:
-                throw new Error(`Comment type not supported: ${commentType}`);
+                throw new Error(`Annotation type not supported: ${annotationType}`);
         }
     }
 }

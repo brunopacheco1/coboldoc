@@ -8,6 +8,7 @@
 *>>
 *>>  <summary>The first module.  
 *>>  Trying to see **what** happens to    huge text.</summary>
+*>>  <remarks>Any remark</remarks>
 *>>
  IDENTIFICATION DIVISION.
  PROGRAM-ID. first-module.

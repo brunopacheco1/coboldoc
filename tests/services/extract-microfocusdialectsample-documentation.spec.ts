@@ -2,21 +2,21 @@ import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
 import { CommentsExtractor, CommentsExtractorImpl } from '../../src/services/comments-extractor';
-import { XmlCommentsParser, XmlCommentsParserImpl } from '../../src/services/xml-comments-parser';
+import { MsdnCommentsParser, MsdnCommentsParserImpl } from '../../src/services/msdn-comments-parser';
 import { Documentation } from '../../src/model/documentation';
-import { Dialect } from '../../src/model/dialect';
+import { CommentStyle } from '../../src/model/comment-style';
 
 describe('microfocusdialectsample.cbl to documentation', () => {
     let commentsExtractor: CommentsExtractor;
-    let commentsParser: XmlCommentsParser;
+    let commentsParser: MsdnCommentsParser;
 
     beforeEach(() => {
         commentsExtractor = new CommentsExtractorImpl();
-        commentsParser = new XmlCommentsParserImpl();
+        commentsParser = new MsdnCommentsParserImpl();
     });
 
     it('should extract', async () => {
-        const preDoc = commentsExtractor.extract(Dialect.MICROFOCUS, './tests/resources/microfocusdialectsample.cbl');
+        const preDoc = commentsExtractor.extract(CommentStyle.MICROFOCUS, './tests/resources/microfocusdialectsample.cbl');
         const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
             fileName: 'microfocusdialectsample.cbl',
@@ -26,7 +26,8 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             modules: [{
                 description: 'The first module.  \nTrying to see **what** happens to    huge text.',
                 summary: 'The first module.  \nTrying to see **what** happens to    huge text.',
-                line: 13,
+                remarks: 'Any remark',
+                line: 14,
                 name: 'first-module',
                 paragraphs: [],
                 return: undefined,
@@ -35,7 +36,8 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             {
                 description: 'The second module',
                 summary: 'The second module',
-                line: 43,
+                remarks: undefined,
+                line: 44,
                 name: 'second-module',
                 paragraphs: [],
                 return: undefined,
@@ -44,7 +46,8 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             {
                 description: 'The third module',
                 summary: 'The third module',
-                line: 76,
+                remarks: undefined,
+                line: 77,
                 name: 'third-module',
                 paragraphs: [],
                 return: undefined,
@@ -52,9 +55,10 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 109,
+                line: 110,
                 description: 'first module function',
                 summary: 'first module function',
+                remarks: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'first-arg',
@@ -71,9 +75,10 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 126,
+                line: 127,
                 description: 'second module function',
                 summary: 'second module function',
+                remarks: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'secondarg',
@@ -86,9 +91,10 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 143,
+                line: 144,
                 description: 'third module function',
                 summary: 'third module function',
+                remarks: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'thirdarg',
