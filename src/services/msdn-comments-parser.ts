@@ -62,9 +62,9 @@ export class MsdnCommentsParserImpl implements MsdnCommentsParser {
             };
         }
 
-        const summary = this._retrieveValue(parsed.summary);
-        const remarks = this._retrieveValue(parsed.remarks);
-        const example = this._retrieveValue(!!parsed.example && parsed.example.length > 0 ? parsed.example[0].code : undefined);
+        const summary = this._extractTag(preModuleOrFunction.comments, 'summary');
+        const remarks = this._extractTag(preModuleOrFunction.comments, 'remarks');
+        const example = this._extractTag(preModuleOrFunction.comments, 'example');
 
         return {
             description: summary,
@@ -77,6 +77,13 @@ export class MsdnCommentsParserImpl implements MsdnCommentsParser {
             params: params,
             return: returnObj,
         };
+    }
+
+    private _extractTag(comment: string, tag: string): string | undefined {
+        if(comment.includes(`<${tag}>`) && comment.includes(`</${tag}>`)) {
+            return comment.split(`<${tag}>`)[1].split(`</${tag}>`)[0];
+        }
+        return undefined;
     }
 
     private _retrieveValue(field: any): string {

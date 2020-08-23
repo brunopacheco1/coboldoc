@@ -1,10 +1,10 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { CommentsExtractor, CommentsExtractorImpl } from '../../src/services/comments-extractor';
-import { TagCommentsParser, TagCommentsParserImpl } from '../../src/services/tag-comments-parser';
-import { Documentation } from '../../src/model/documentation';
-import { CommentStyle } from '../../src/model/comment-style';
+import { CommentsExtractor, CommentsExtractorImpl } from '../src/services/comments-extractor';
+import { TagCommentsParser, TagCommentsParserImpl } from '../src/services/tag-comments-parser';
+import { Documentation } from '../src/model/documentation';
+import { CommentStyle } from '../src/model/comment-style';
 
 describe('string.cbl to documentation', () => {
     let commentsExtractor: CommentsExtractor;

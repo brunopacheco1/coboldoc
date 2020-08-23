@@ -1,32 +1,34 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { CommentsExtractor, CommentsExtractorImpl } from '../../src/services/comments-extractor';
-import { TagCommentsParser, TagCommentsParserImpl } from '../../src/services/tag-comments-parser';
-import { Documentation } from '../../src/model/documentation';
-import { CommentStyle } from '../../src/model/comment-style';
+import { CommentsExtractor, CommentsExtractorImpl } from '../src/services/comments-extractor';
+import { MsdnCommentsParser, MsdnCommentsParserImpl } from '../src/services/msdn-comments-parser';
+import { Documentation } from '../src/model/documentation';
+import { CommentStyle } from '../src/model/comment-style';
 
-describe('freedialectsample.cbl to documentation', () => {
+describe('microfocusdialectsample.cbl to documentation', () => {
     let commentsExtractor: CommentsExtractor;
-    let commentsParser: TagCommentsParser;
+    let commentsParser: MsdnCommentsParser;
 
     beforeEach(() => {
         commentsExtractor = new CommentsExtractorImpl();
-        commentsParser = new TagCommentsParserImpl();
+        commentsParser = new MsdnCommentsParserImpl();
     });
 
     it('should extract', async () => {
-        const preDoc = commentsExtractor.extract(CommentStyle.FREE, './tests/resources/freedialectsample.cbl');
+        const preDoc = commentsExtractor.extract(CommentStyle.MICROFOCUS, './tests/resources/microfocusdialectsample.cbl');
         const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
-            fileName: 'freedialectsample.cbl',
-            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)\n',
+            fileName: 'microfocusdialectsample.cbl',
+            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)',
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module.  \nTrying to see **what** happens to    huge text.\n',
-                summary: "the first module summary.",
-                line: 14,
+                description: 'The first module.  \nTrying to see **what** happens to    huge text.',
+                summary: 'The first module.  \nTrying to see **what** happens to    huge text.',
+                remarks: 'Any remark',
+                example: '\n<code>\nCALL \"first-module\" USING BY CONTENT WS-FIRSTMODULE.\n</code>\n',
+                line: 19,
                 name: 'first-module',
                 paragraphs: [],
                 return: undefined,
@@ -35,7 +37,9 @@ describe('freedialectsample.cbl to documentation', () => {
             {
                 description: 'The second module',
                 summary: 'The second module',
-                line: 44,
+                remarks: undefined,
+                example: undefined,
+                line: 49,
                 name: 'second-module',
                 paragraphs: [],
                 return: undefined,
@@ -44,7 +48,9 @@ describe('freedialectsample.cbl to documentation', () => {
             {
                 description: 'The third module',
                 summary: 'The third module',
-                line: 77,
+                remarks: undefined,
+                example: undefined,
+                line: 82,
                 name: 'third-module',
                 paragraphs: [],
                 return: undefined,
@@ -52,13 +58,19 @@ describe('freedialectsample.cbl to documentation', () => {
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 110,
-                description: 'first module function\n',
-                summary: "the first function summary.\n",
+                line: 115,
+                description: 'first module function',
+                summary: 'first module function',
+                remarks: undefined,
+                example: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'first-arg',
                     description: 'First arg',
+                    type: 'PIC 9'
+                }, {
+                    name: 'second-arg',
+                    description: 'Second arg',
                     type: 'PIC 9'
                 }],
                 return: {
@@ -67,9 +79,11 @@ describe('freedialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 127,
-                description: 'second module function\n',
-                summary: 'second module function\n',
+                line: 132,
+                description: 'second module function',
+                summary: 'second module function',
+                remarks: undefined,
+                example: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'secondarg',
@@ -82,9 +96,11 @@ describe('freedialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 144,
-                description: 'third module function\n',
-                summary: 'third module function\n',
+                line: 149,
+                description: 'third module function',
+                summary: 'third module function',
+                remarks: undefined,
+                example: undefined,
                 paragraphs: [],
                 params: [{
                     name: 'thirdarg',

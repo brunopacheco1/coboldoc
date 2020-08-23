@@ -1,34 +1,32 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { CommentsExtractor, CommentsExtractorImpl } from '../../src/services/comments-extractor';
-import { MsdnCommentsParser, MsdnCommentsParserImpl } from '../../src/services/msdn-comments-parser';
-import { Documentation } from '../../src/model/documentation';
-import { CommentStyle } from '../../src/model/comment-style';
+import { CommentsExtractor, CommentsExtractorImpl } from '../src/services/comments-extractor';
+import { TagCommentsParser, TagCommentsParserImpl } from '../src/services/tag-comments-parser';
+import { Documentation } from '../src/model/documentation';
+import { CommentStyle } from '../src/model/comment-style';
 
-describe('microfocusdialectsample.cbl to documentation', () => {
+describe('freedialectsample.cbl to documentation', () => {
     let commentsExtractor: CommentsExtractor;
-    let commentsParser: MsdnCommentsParser;
+    let commentsParser: TagCommentsParser;
 
     beforeEach(() => {
         commentsExtractor = new CommentsExtractorImpl();
-        commentsParser = new MsdnCommentsParserImpl();
+        commentsParser = new TagCommentsParserImpl();
     });
 
     it('should extract', async () => {
-        const preDoc = commentsExtractor.extract(CommentStyle.MICROFOCUS, './tests/resources/microfocusdialectsample.cbl');
+        const preDoc = commentsExtractor.extract(CommentStyle.FREE, './tests/resources/freedialectsample.cbl');
         const actual: Documentation = commentsParser.parse(preDoc);
         const expected: Documentation = {
-            fileName: 'microfocusdialectsample.cbl',
-            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)',
+            fileName: 'freedialectsample.cbl',
+            author: 'Bruno Pacheco (https://brunopacheco1.github.io/)\n',
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module.  \nTrying to see **what** happens to    huge text.',
-                summary: 'The first module.  \nTrying to see **what** happens to    huge text.',
-                remarks: 'Any remark',
-                example: '\nCALL \"first-module\" USING BY CONTENT WS-FIRSTMODULE.\n',
-                line: 19,
+                description: 'The first module.  \nTrying to see **what** happens to    huge text.\n',
+                summary: "the first module summary.",
+                line: 14,
                 name: 'first-module',
                 paragraphs: [],
                 return: undefined,
@@ -37,9 +35,7 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             {
                 description: 'The second module',
                 summary: 'The second module',
-                remarks: undefined,
-                example: undefined,
-                line: 49,
+                line: 44,
                 name: 'second-module',
                 paragraphs: [],
                 return: undefined,
@@ -48,9 +44,7 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             {
                 description: 'The third module',
                 summary: 'The third module',
-                remarks: undefined,
-                example: undefined,
-                line: 82,
+                line: 77,
                 name: 'third-module',
                 paragraphs: [],
                 return: undefined,
@@ -58,19 +52,13 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 115,
-                description: 'first module function',
-                summary: 'first module function',
-                remarks: undefined,
-                example: undefined,
+                line: 110,
+                description: 'first module function\n',
+                summary: "the first function summary.\n",
                 paragraphs: [],
                 params: [{
                     name: 'first-arg',
                     description: 'First arg',
-                    type: 'PIC 9'
-                }, {
-                    name: 'second-arg',
-                    description: 'Second arg',
                     type: 'PIC 9'
                 }],
                 return: {
@@ -79,11 +67,9 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 132,
-                description: 'second module function',
-                summary: 'second module function',
-                remarks: undefined,
-                example: undefined,
+                line: 127,
+                description: 'second module function\n',
+                summary: 'second module function\n',
                 paragraphs: [],
                 params: [{
                     name: 'secondarg',
@@ -96,11 +82,9 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 149,
-                description: 'third module function',
-                summary: 'third module function',
-                remarks: undefined,
-                example: undefined,
+                line: 144,
+                description: 'third module function\n',
+                summary: 'third module function\n',
                 paragraphs: [],
                 params: [{
                     name: 'thirdarg',

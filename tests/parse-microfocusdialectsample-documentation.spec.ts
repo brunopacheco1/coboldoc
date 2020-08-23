@@ -1,9 +1,9 @@
 import 'reflect-metadata';
 import 'mocha';
 import { expect } from 'chai';
-import { TemplateEngine, TemplateEngineImpl } from '../../src/services/template-engine';
-import { Documentation } from '../../src/model/documentation';
-import { Format } from '../../src/model/format';
+import { TemplateEngine, TemplateEngineImpl } from '../src/services/template-engine';
+import { Documentation } from '../src/model/documentation';
+import { Format } from '../src/model/format';
 import * as fs from 'fs';
 
 describe('Parsing microfocusdialectsample.cbl to doc file', () => {
