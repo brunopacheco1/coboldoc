@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { Documentation, ModuleOrFunction, Parameter, Return, PreDocumentation, PreModuleOrFunction } from '../model/documentation';
+import { ModuleOrFunction, Parameter, Return, PreModuleOrFunction } from '../model/documentation';
 import { CommentsParser, BaseCommentsParser } from './comments-parser';
 
 export interface TagCommentsParser extends CommentsParser {

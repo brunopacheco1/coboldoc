@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { Documentation, PreDocumentation, PreModuleOrFunction, ModuleOrFunction, Parameter, Return } from '../model/documentation';
+import { PreModuleOrFunction, ModuleOrFunction, Parameter, Return } from '../model/documentation';
 import { CommentsParser, BaseCommentsParser } from './comments-parser';
 import * as xml2js from 'xml2js';
 
