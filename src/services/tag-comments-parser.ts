@@ -1,35 +1,18 @@
 import { injectable } from 'inversify';
 import { Documentation, ModuleOrFunction, Parameter, Return, PreDocumentation, PreModuleOrFunction } from '../model/documentation';
-import { CommentsParser } from './comments-parser';
+import { CommentsParser, BaseCommentsParser } from './comments-parser';
 
 export interface TagCommentsParser extends CommentsParser {
 }
 
 @injectable()
-export class TagCommentsParserImpl implements TagCommentsParser {
+export class TagCommentsParserImpl extends BaseCommentsParser implements TagCommentsParser {
 
-    constructor() { }
-
-    public parse(preDocumentation: PreDocumentation): Documentation {
-        const [fileDescription, author, license] = this._extractFileDetails(preDocumentation.fileComments);
-        const modules = preDocumentation.modules.map(
-            preModule => this._extractModuleOrFunction(preModule),
-        );
-        const functions = preDocumentation.functions.map(
-            preFunction => this._extractModuleOrFunction(preFunction),
-        );
-
-        return {
-            fileName: preDocumentation.fileName,
-            fileDescription: fileDescription,
-            author: author,
-            license: license,
-            functions: functions,
-            modules: modules,
-        };
+    constructor() {
+        super();
     }
 
-    private _extractModuleOrFunction(preModuleOrFunction: PreModuleOrFunction): ModuleOrFunction {
+    protected _extractModuleOrFunction(preModuleOrFunction: PreModuleOrFunction): ModuleOrFunction {
         const pieces = preModuleOrFunction.comments.split('@');
         const params: Parameter[] = [];
         let returnObj: Return | undefined = undefined;
@@ -82,7 +65,7 @@ export class TagCommentsParserImpl implements TagCommentsParser {
         };
     }
 
-    private _extractFileDetails(comments: string): [string | undefined, string | undefined, string | undefined] {
+    protected _extractFileDetails(comments: string): [string | undefined, string | undefined, string | undefined] {
         const pieces = comments.split('@');
         let author: string | undefined = undefined;
         let license: string | undefined = undefined;

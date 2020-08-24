@@ -1,36 +1,19 @@
 import { injectable } from 'inversify';
 import { Documentation, PreDocumentation, PreModuleOrFunction, ModuleOrFunction, Parameter, Return } from '../model/documentation';
-import { CommentsParser } from './comments-parser';
+import { CommentsParser, BaseCommentsParser } from './comments-parser';
 import * as xml2js from 'xml2js';
 
 export interface MsdnCommentsParser extends CommentsParser {
 }
 
 @injectable()
-export class MsdnCommentsParserImpl implements MsdnCommentsParser {
+export class MsdnCommentsParserImpl extends BaseCommentsParser implements MsdnCommentsParser {
 
-    constructor() { }
-
-    public parse(preDocumentation: PreDocumentation): Documentation {
-        const [fileDescription, author, license] = this._extractFileDetails(preDocumentation.fileComments);
-        const modules = preDocumentation.modules.map(
-            preModule => this._extractModuleOrFunction(preModule),
-        );
-        const functions = preDocumentation.functions.map(
-            preFunction => this._extractModuleOrFunction(preFunction),
-        );
-
-        return {
-            fileName: preDocumentation.fileName,
-            fileDescription: fileDescription,
-            author: author,
-            license: license,
-            functions: functions,
-            modules: modules,
-        };
+    constructor() {
+        super();
     }
 
-    private _extractModuleOrFunction(preModuleOrFunction: PreModuleOrFunction): ModuleOrFunction {
+    protected _extractModuleOrFunction(preModuleOrFunction: PreModuleOrFunction): ModuleOrFunction {
         let parsed: any = {};
         xml2js.parseString(`<root>${preModuleOrFunction.comments}</root>`, {
             async: false,
@@ -79,13 +62,13 @@ export class MsdnCommentsParserImpl implements MsdnCommentsParser {
     }
 
     private _extractTag(comment: string, tag: string): string | undefined {
-        if(comment.includes(`<${tag}>`) && comment.includes(`</${tag}>`)) {
+        if (comment.includes(`<${tag}>`) && comment.includes(`</${tag}>`)) {
             return comment.split(`<${tag}>`)[1].split(`</${tag}>`)[0];
         }
         return undefined;
     }
 
-    private _extractFileDetails(comments: string): [string | undefined, string | undefined, string | undefined] {
+    protected _extractFileDetails(comments: string): [string | undefined, string | undefined, string | undefined] {
         let parsed: any = {};
         xml2js.parseString(`<root>${comments}</root>`, {
             async: false,
