@@ -22,7 +22,6 @@ export interface ModuleOrFunction {
     line: number,
     paragraphs?: Paragraph[],
     description?: string,
-    remarks?: string,
     example?: string,
     summary?: string,
     params?: Parameter[],

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name><%- fileName %></name>
+    </assembly>
+    <members>
+        <% modules.forEach((module) => { %><member name="MOD:<%- module.name %>">
+            <% if(!!module.summary) { %><summary><%- module.summary %></summary><% } %>
+            <% if(!!module.description) { %><remarks><%- module.description %></remarks><% } %>
+            <% if(!!module.params) { module.params.forEach((param) => { %><param name="<%- param.name %>"><%- param.description %></param><% }); } %>
+            <% if(!!module.returns) { %><returns><%- module.returns.description %></returns><% } %>
+        </member><% }); %>
+        <% functions.forEach((cobolFunction) => { %><member name="FUN:<%- cobolFunction.name %>">
+            <% if(!!cobolFunction.summary) { %><summary><%- cobolFunction.summary %></summary><% } %>
+            <% if(!!cobolFunction.description) { %><remarks><%- cobolFunction.description %></remarks><% } %>
+            <% if(!!cobolFunction.params) { cobolFunction.params.forEach((param) => { %><param name="<%- param.name %>"><%- param.description %></param><% }); } %>
+            <% if(!!cobolFunction.return) { %><returns><%- cobolFunction.return.description %></returns><% } %>
+        </member><% }); %>
+    </members>
+</doc>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>microfocusdialectsample.cbl</name>
+    </assembly>
+    <members>
+        <member name="MOD:first-module">
+            <summary>Any remark</summary>
+            <remarks>The <c>first</c> module.  
+Trying to see **what** happens to    huge text.</remarks>
+            
+            
+        </member><member name="MOD:second-module">
+            <summary>The second module</summary>
+            <remarks>The second module</remarks>
+            
+            
+        </member><member name="MOD:third-module">
+            <summary>The third module</summary>
+            <remarks>The third module</remarks>
+            
+            
+        </member>
+        <member name="FUN:firstmodulefunction">
+            <summary>first module function accepts <paramref name="first-arg"/> as an arg.
+<seealso cref="secondmodulefunction"/>
+</summary>
+            <remarks>first module function accepts <paramref name="first-arg"/> as an arg.
+<seealso cref="secondmodulefunction"/>
+</remarks>
+            <param name="first-arg">First arg</param><param name="second-arg">Second arg</param>
+            <returns>First return</returns>
+        </member><member name="FUN:secondmodulefunction">
+            <summary>second module function</summary>
+            <remarks>second module function</remarks>
+            <param name="secondarg">Second arg</param>
+            <returns>Second return</returns>
+        </member><member name="FUN:thirdmodulefunction">
+            <summary>third module function</summary>
+            <remarks>third module function</remarks>
+            <param name="thirdarg">Third arg</param>
+            <returns>Third return</returns>
+        </member>
+    </members>
+</doc>

@@ -68,8 +68,7 @@ export class MsdnCommentsParserImpl implements MsdnCommentsParser {
 
         return {
             description: summary,
-            summary: summary,
-            remarks: remarks,
+            summary: remarks || summary,
             example: example,
             line: preModuleOrFunction.line,
             name: preModuleOrFunction.name,

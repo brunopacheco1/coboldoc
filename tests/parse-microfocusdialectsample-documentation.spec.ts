@@ -13,9 +13,10 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
         license: 'LGPL-3.0',
         fileDescription: 'Short sample.',
         modules: [{
-            description: 'The first module.  \nTrying to see **what** happens to    huge text.',
-            summary: 'The first module.  \nTrying to see **what** happens to    huge text.',
-            line: 13,
+            description: 'The <c>first</c> module.  \nTrying to see **what** happens to    huge text.',
+            summary: 'Any remark',
+            example: '\n<code>\nCALL \"first-module\" USING BY CONTENT WS-FIRSTMODULE.\n</code>\n',
+            line: 19,
             name: 'first-module',
             paragraphs: [],
             return: undefined,
@@ -24,7 +25,8 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
         {
             description: 'The second module',
             summary: 'The second module',
-            line: 43,
+            example: undefined,
+            line: 49,
             name: 'second-module',
             paragraphs: [],
             return: undefined,
@@ -33,7 +35,8 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
         {
             description: 'The third module',
             summary: 'The third module',
-            line: 76,
+            example: undefined,
+            line: 82,
             name: 'third-module',
             paragraphs: [],
             return: undefined,
@@ -41,9 +44,10 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
         }],
         functions: [{
             name: 'firstmodulefunction',
-            line: 109,
-            description: 'first module function',
-            summary: 'first module function',
+            line: 117,
+            description: 'first module function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondmodulefunction\"/>\n',
+            summary: 'first module function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondmodulefunction\"/>\n',
+            example: undefined,
             paragraphs: [],
             params: [{
                 name: 'first-arg',
@@ -60,9 +64,10 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
             }
         }, {
             name: 'secondmodulefunction',
-            line: 126,
+            line: 134,
             description: 'second module function',
             summary: 'second module function',
+            example: undefined,
             paragraphs: [],
             params: [{
                 name: 'secondarg',
@@ -75,9 +80,10 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
             }
         }, {
             name: 'thirdmodulefunction',
-            line: 143,
+            line: 151,
             description: 'third module function',
             summary: 'third module function',
+            example: undefined,
             paragraphs: [],
             params: [{
                 name: 'thirdarg',
@@ -97,15 +103,9 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
         service = new TemplateEngineImpl();
     });
 
-    it('should parse to md', async () => {
-        const actual = service.parseDocumentation(Format.MD, doc);
-        const expected = fs.readFileSync('./tests/resources/microfocusdialectsample.cbl.expected.md', 'utf8');
-        expect(actual).to.deep.equal(expected);
-    });
-
-    it('should parse to html', async () => {
-        const actual = service.parseDocumentation(Format.HTML, doc);
-        const expected = fs.readFileSync('./tests/resources/microfocusdialectsample.cbl.expected.html', 'utf8');
+    it('should parse to msdn', async () => {
+        const actual = service.parseDocumentation(Format.MSDN, doc);
+        const expected = fs.readFileSync('./tests/resources/microfocusdialectsample.cbl.expected.xml', 'utf8');
         expect(actual).to.deep.equal(expected);
     });
 });

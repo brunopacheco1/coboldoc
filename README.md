@@ -17,10 +17,12 @@
 #### Features
 - Generate documentation in Markdown;
 - Generate documentation in HTML;
+- Generate documentation in MSDN Comment XML;
 - Support for in-line HTML content;
 - Support for in-line Markdown content;
-- Support for Tag and MSDN annotations;
-- Support for Free Format and Microfocus;
+- Support for MSDN Comment Style;
+- Support for Free Format doc standard;
+- Support for Microfocus doc standard;
 
 #### Requirements
 - NodeJS 8+
@@ -44,9 +46,9 @@ Usage: coboldoc <command> [options]
 
 Options:
   -o, --output <output directory>        The output directory (default: "/home/casa/dev/git/coboldoc")
-  -f, --format <fileFormat>              Suported output format: md, html (default: "md")
-  -d, --dialect <dialect>                Suported dialects: free, microfocus (default: "free")
-  -a, --annotation <comment annotation>  Suported comment annotations: tag, xml (default: "tag")
+  -f, --format <output file format>      Suported output formats: md, html, msdn (default: "md")
+  -s, --style <comment style>            Suported comment styles: free, microfocus (default: "free")
+  -a, --annotation <comment annotation>  Suported comment annotations: tag, msdn (default: "tag")
   -v, --version                          output the version number
   -h, --help                             display help for command
 
@@ -73,8 +75,10 @@ Generating freedialectsample.cbl documentation... DONE
 Generating README.md... DONE
 ```
 
-#### Supported dialects
-COBOLDoc suports free format and Microfocus comment dialects. The diff is on how the comment blocks are detected. If it is a free format code, the comment block pattern is `*>*(*)`, and if it is Microfocus code, it will look for `*>>(>)`.
+#### Supported Comment Style
+COBOLDoc suports free format and Microfocus comment styles. The diff is on how the comment blocks are detected, depending on the line prefix:
+- Free format uses `*>*(*)`
+- Microfocus uses `*>>(>)`
 
 #### Supported annotations
 COBOLDoc suports tag or MSDN annotations.
@@ -90,11 +94,11 @@ COBOLDoc suports tag or MSDN annotations.
 
 ##### MSDN annotations
 ```
-*>>>
-*>>  <summary>Short sample.</summary>
-*>>  <author>Bruno Pacheco (https://brunopacheco1.github.io/)</author>
-*>>  <license>LGPL-3.0</license>
-*>>>
+*>>  <summary>Short sample function.</summary>
+*>>  <remarks>
+*>>      first module function accepts <paramref name=\"first-arg\"/> as an arg.
+*>>      <seealso cref=\"secondmodulefunction\"/>
+*>>  </remarks>
 ```
 
 #### Comment Blocks
@@ -141,6 +145,21 @@ FUNCTION-ID. anyfunction.
 
 ...
 ```
+
+#### Supported MSDN Annotation
+Please, refer to the list below for the see the supported MSDN annotations:
+- `<c>`
+- `<code>`
+- `<example>`
+- `<list>`
+- `<para>`
+- `<param>`
+- `<paramref>`
+- `<remarks>`
+- `<returns>`
+- `<see>`
+- `<seealso>`
+- `<summary>`
 
 #### Supported tags
 
@@ -336,7 +355,6 @@ separation.
 #### Roadmap
 - List of paragraphs in the module/function details view;
 - Scan and display changelog (if present);
-- Comply with MSDN Comment Style;
 - Support other structures in COBOL (entries, classes, interfaces...);
 
 Your contribution is always welcome!

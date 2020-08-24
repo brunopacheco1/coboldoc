@@ -24,8 +24,8 @@ export class Cli {
         const command = new Command();
 
         command.option('-o, --output <output directory>', 'The output directory', process.cwd())
-            .option('-f, --format <output file format>', 'Suported output format: md, html', 'md')
-            .option('-s, --style <comment style>', 'Suported comment style: free, microfocus', 'free')
+            .option('-f, --format <output file format>', 'Suported output formats: md, html, msdn', 'md')
+            .option('-s, --style <comment style>', 'Suported comment styles: free, microfocus', 'free')
             .option('-a, --annotation <comment annotation>', 'Suported comment annotations: tag, msdn', 'tag')
 
         command.version(pkg.version, '-v, --version')
@@ -34,7 +34,7 @@ export class Cli {
         command.command('generate <files...>')
             .description('generate the documentation')
             .action((files) => {
-                this._documentationService.parse(files, command.output, command.format.toLowerCase(), command.dialect.toLowerCase(), command.style.toLowerCase());
+                this._documentationService.parse(files, command.output, command.format.toLowerCase(), command.style.toLowerCase(), command.annotation.toLowerCase());
             });
 
         command.parse(argv);

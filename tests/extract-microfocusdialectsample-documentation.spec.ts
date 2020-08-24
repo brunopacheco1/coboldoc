@@ -24,9 +24,8 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module.  \nTrying to see **what** happens to    huge text.',
-                summary: 'The first module.  \nTrying to see **what** happens to    huge text.',
-                remarks: 'Any remark',
+                description: 'The <c>first</c> module.  \nTrying to see **what** happens to    huge text.',
+                summary: 'Any remark',
                 example: '\n<code>\nCALL \"first-module\" USING BY CONTENT WS-FIRSTMODULE.\n</code>\n',
                 line: 19,
                 name: 'first-module',
@@ -37,7 +36,6 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             {
                 description: 'The second module',
                 summary: 'The second module',
-                remarks: undefined,
                 example: undefined,
                 line: 49,
                 name: 'second-module',
@@ -48,7 +46,6 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             {
                 description: 'The third module',
                 summary: 'The third module',
-                remarks: undefined,
                 example: undefined,
                 line: 82,
                 name: 'third-module',
@@ -58,10 +55,9 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             }],
             functions: [{
                 name: 'firstmodulefunction',
-                line: 115,
-                description: 'first module function',
-                summary: 'first module function',
-                remarks: undefined,
+                line: 117,
+                description: 'first module function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondmodulefunction\"/>\n',
+                summary: 'first module function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondmodulefunction\"/>\n',
                 example: undefined,
                 paragraphs: [],
                 params: [{
@@ -79,10 +75,9 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'secondmodulefunction',
-                line: 132,
+                line: 134,
                 description: 'second module function',
                 summary: 'second module function',
-                remarks: undefined,
                 example: undefined,
                 paragraphs: [],
                 params: [{
@@ -96,10 +91,9 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                 }
             }, {
                 name: 'thirdmodulefunction',
-                line: 149,
+                line: 151,
                 description: 'third module function',
                 summary: 'third module function',
-                remarks: undefined,
                 example: undefined,
                 paragraphs: [],
                 params: [{

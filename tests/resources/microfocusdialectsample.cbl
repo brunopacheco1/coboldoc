@@ -6,7 +6,7 @@
 *>>>
 
 *>>
-*>>  <summary>The first module.  
+*>>  <summary>The <c>first</c> module.  
 *>>  Trying to see **what** happens to    huge text.</summary>
 *>>  <remarks>Any remark</remarks>
 *>>  <example>
@@ -106,7 +106,9 @@
  END PROGRAM third-module.
 
 *>>
-*>> <summary>first module function</summary>
+*>> <summary>first module function accepts <paramref name="first-arg"/> as an arg.
+*>> <seealso cref="secondmodulefunction"/>
+*>> </summary>
 *>> <param type="PIC 9" name="first-arg">First arg</param>
 *>> <param type="PIC 9" name="second-arg">Second arg</param>
 *>> <returns type="PIC 9">First return</returns>

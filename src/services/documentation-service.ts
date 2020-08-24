@@ -1,7 +1,7 @@
 import { injectable, inject } from 'inversify';
 import * as path from 'path';
 import { TYPES } from '../types';
-import { Format, TableOfContents } from '../model/format';
+import { Format, TableOfContents, OutputFormat } from '../model/format';
 import { TemplateEngine } from './template-engine';
 import { FileOutputStream } from './file-output-stream';
 import kleur from 'kleur';
@@ -13,7 +13,7 @@ import { AnnotationType } from '../model/annotation-type';
 import { CommentsParser } from './comments-parser';
 
 export interface DocumentationService {
-    parse(files: string[], outputDirectory: string, format: Format, dialect: CommentStyle, annotationType: AnnotationType): void;
+    parse(files: string[], outputDirectory: string, format: Format, style: CommentStyle, annotationType: AnnotationType): void;
 }
 
 @injectable()
@@ -38,16 +38,18 @@ export class DocumentationServiceImpl implements DocumentationService {
             this._parseFile(file, outputDirectory, format, commentStyle, commentsParser, exportedFiles);
         });
         const tableOfContents = TableOfContents.from(format);
-        process.stdout.write(`Generating ${tableOfContents}... `);
-        const outputContent = this._templateEngine.parseTableOfContents(format, exportedFiles);
-        this._outputStream.write(outputDirectory, tableOfContents, outputContent);
-        console.log(kleur.green('DONE'));
+        if (!!tableOfContents) {
+            process.stdout.write(`Generating ${tableOfContents}... `);
+            const outputContent = this._templateEngine.parseTableOfContents(format, exportedFiles);
+            this._outputStream.write(outputDirectory, tableOfContents, outputContent);
+            console.log(kleur.green('DONE'));
+        }
     }
 
     private _parseFile(file: string, outputDirectory: string, format: Format, commentStyle: CommentStyle, commentsParser: CommentsParser, exportedFiles: string[]): void {
         const filePath = this._defineFilePath(file);
         const baseName = path.basename(filePath);
-        const exportedFileName = `${baseName}.${format}`;
+        const exportedFileName = `${baseName}.${OutputFormat.from(format)}`;
         process.stdout.write(`Generating ${baseName} documentation... `);
         const preDocumentation = this._commentsExtractor.extract(commentStyle, filePath);
         const documentation = commentsParser.parse(preDocumentation);
