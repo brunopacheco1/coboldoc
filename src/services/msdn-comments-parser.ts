@@ -14,10 +14,10 @@ export class MsdnCommentsParserImpl implements MsdnCommentsParser {
     public parse(preDocumentation: PreDocumentation): Documentation {
         const [fileDescription, author, license] = this._extractFileDetails(preDocumentation.fileComments);
         const modules = preDocumentation.modules.map(
-            preModule => this._extractModuleOrFunction(preModule)
+            preModule => this._extractModuleOrFunction(preModule),
         );
         const functions = preDocumentation.functions.map(
-            preFunction => this._extractModuleOrFunction(preFunction)
+            preFunction => this._extractModuleOrFunction(preFunction),
         );
 
         return {
@@ -83,10 +83,6 @@ export class MsdnCommentsParserImpl implements MsdnCommentsParser {
             return comment.split(`<${tag}>`)[1].split(`</${tag}>`)[0];
         }
         return undefined;
-    }
-
-    private _retrieveValue(field: any): string {
-        return !!field && field.length > 0 ? field[0] : undefined;
     }
 
     private _extractFileDetails(comments: string): [string | undefined, string | undefined, string | undefined] {

@@ -13,10 +13,10 @@ export class TagCommentsParserImpl implements TagCommentsParser {
     public parse(preDocumentation: PreDocumentation): Documentation {
         const [fileDescription, author, license] = this._extractFileDetails(preDocumentation.fileComments);
         const modules = preDocumentation.modules.map(
-            preModule => this._extractModuleOrFunction(preModule)
+            preModule => this._extractModuleOrFunction(preModule),
         );
         const functions = preDocumentation.functions.map(
-            preFunction => this._extractModuleOrFunction(preFunction)
+            preFunction => this._extractModuleOrFunction(preFunction),
         );
 
         return {

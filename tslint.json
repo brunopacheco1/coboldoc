@@ -8,7 +8,6 @@
                 "multiline": "always",
                 "singleline": "never"
             }
-        ],
-        "no-any": true
+        ]
     }
 }

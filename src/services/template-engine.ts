@@ -22,8 +22,10 @@ export class TemplateEngineImpl implements TemplateEngine {
             this._templateFunctions.set(format, ejs.compile(template));
 
             const tableOfContentsTemplatePath = path.join(__dirname, `../resources/templates/table-of-contents.${format}.ejs`);
-            const templtableOfContentsTemplate = fs.readFileSync(tableOfContentsTemplatePath, 'utf8');
-            this._templateFunctions.set(`table-of-contents.${format}`, ejs.compile(templtableOfContentsTemplate));
+            if (fs.existsSync(tableOfContentsTemplatePath)) {
+                const templtableOfContentsTemplate = fs.readFileSync(tableOfContentsTemplatePath, 'utf8');
+                this._templateFunctions.set(`table-of-contents.${format}`, ejs.compile(templtableOfContentsTemplate));
+            }
         });
     }
 
