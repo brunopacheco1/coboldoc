@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { PreModuleOrFunction, ModuleOrFunction, Parameter, Return } from '../model/documentation';
+import { CobolFunction, Parameter, Return, PreCobolClass, CobolClass, PreCobolFunction } from '../model/documentation';
 import { CommentsParser, BaseCommentsParser } from './comments-parser';
 import * as xml2js from 'xml2js';
 
@@ -13,9 +13,9 @@ export class MsdnCommentsParserImpl extends BaseCommentsParser implements MsdnCo
         super();
     }
 
-    protected _extractModuleOrFunction(preModuleOrFunction: PreModuleOrFunction): ModuleOrFunction {
+    protected _extractFunction(preCobolFunction: PreCobolFunction): CobolFunction {
         let parsed: any = {};
-        xml2js.parseString(`<root>${preModuleOrFunction.comments}</root>`, {
+        xml2js.parseString(`<root>${preCobolFunction.comments}</root>`, {
             async: false,
             ignoreAttrs: false,
         }, (err, result) => {
@@ -45,16 +45,16 @@ export class MsdnCommentsParserImpl extends BaseCommentsParser implements MsdnCo
             };
         }
 
-        const summary = this._extractTag(preModuleOrFunction.comments, 'summary');
-        const remarks = this._extractTag(preModuleOrFunction.comments, 'remarks');
-        const example = this._extractTag(preModuleOrFunction.comments, 'example');
+        const summary = this._extractTag(preCobolFunction.comments, 'summary');
+        const remarks = this._extractTag(preCobolFunction.comments, 'remarks');
+        const example = this._extractTag(preCobolFunction.comments, 'example');
 
         return {
             description: summary,
             summary: remarks || summary,
             example: example,
-            line: preModuleOrFunction.line,
-            name: preModuleOrFunction.name,
+            line: preCobolFunction.line,
+            name: preCobolFunction.name,
             paragraphs: [],
             params: params,
             return: returnObj,
@@ -84,5 +84,9 @@ export class MsdnCommentsParserImpl extends BaseCommentsParser implements MsdnCo
         const author = !!parsed.author && parsed.author.length > 0 ? parsed.author[0] : undefined;
         const license = !!parsed.license && parsed.license.length > 0 ? parsed.license[0] : undefined;
         return [summary, author, license];
+    }
+
+    protected _extractClass(preClass: PreCobolClass): CobolClass {
+        throw new Error('Not implemented yet');
     }
 }

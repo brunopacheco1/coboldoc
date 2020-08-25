@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { ModuleOrFunction, Parameter, Return, PreModuleOrFunction } from '../model/documentation';
+import { CobolFunction, Parameter, Return, PreCobolFunction, PreCobolClass, CobolClass } from '../model/documentation';
 import { CommentsParser, BaseCommentsParser } from './comments-parser';
 
 export interface TagCommentsParser extends CommentsParser {
@@ -12,8 +12,8 @@ export class TagCommentsParserImpl extends BaseCommentsParser implements TagComm
         super();
     }
 
-    protected _extractModuleOrFunction(preModuleOrFunction: PreModuleOrFunction): ModuleOrFunction {
-        const pieces = preModuleOrFunction.comments.split('@');
+    protected _extractFunction(preCobolFunction: PreCobolFunction): CobolFunction {
+        const pieces = preCobolFunction.comments.split('@');
         const params: Parameter[] = [];
         let returnObj: Return | undefined = undefined;
         let description: string | undefined = undefined;
@@ -56,8 +56,8 @@ export class TagCommentsParserImpl extends BaseCommentsParser implements TagComm
 
         return {
             description: description,
-            line: preModuleOrFunction.line,
-            name: preModuleOrFunction.name,
+            line: preCobolFunction.line,
+            name: preCobolFunction.name,
             paragraphs: [],
             params: params,
             return: returnObj,
@@ -81,5 +81,9 @@ export class TagCommentsParserImpl extends BaseCommentsParser implements TagComm
         });
 
         return [description, author, license];
+    }
+
+    protected _extractClass(preClass: PreCobolClass): CobolClass {
+        throw new Error('Not implemented yet');
     }
 }

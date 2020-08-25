@@ -17,15 +17,24 @@ export interface Return {
     type?: string,
 }
 
-export interface ModuleOrFunction {
+export interface CobolFunction {
     name: string,
     line: number,
-    paragraphs?: Paragraph[],
+    paragraphs: Paragraph[],
     description?: string,
     example?: string,
     summary?: string,
-    params?: Parameter[],
+    params: Parameter[],
     return?: Return,
+}
+
+export interface CobolClass {
+    name: string,
+    line: number,
+    methods: CobolFunction[],
+    description?: string,
+    example?: string,
+    summary?: string,
 }
 
 export interface ChangeLog {
@@ -39,20 +48,26 @@ export interface Documentation {
     license?: string,
     author?: string,
     fileDescription?: string,
-    functions?: ModuleOrFunction[],
-    modules?: ModuleOrFunction[],
-    changeLogs?: ChangeLog[],
+    functions: CobolFunction[],
+    modules: CobolFunction[],
+    classes: CobolClass[],
+    changeLogs: ChangeLog[],
 }
 
-export interface PreModuleOrFunction {
+export interface PreCobolFunction {
     name: string,
     line: number,
     comments: string,
 }
 
+export interface PreCobolClass extends PreCobolFunction {
+    methods: PreCobolFunction[],
+}
+
 export interface PreDocumentation {
     fileName: string,
     fileComments: string,
-    functions: PreModuleOrFunction[],
-    modules: PreModuleOrFunction[],
+    functions: PreCobolFunction[],
+    modules: PreCobolFunction[],
+    classes: PreCobolClass[],
 }

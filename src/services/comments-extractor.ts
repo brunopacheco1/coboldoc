@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { PreDocumentation, PreModuleOrFunction } from '../model/documentation';
+import { PreDocumentation, PreCobolFunction, PreCobolClass } from '../model/documentation';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CommentStyle, CommentsRegex } from '../model/comment-style';
@@ -20,8 +20,9 @@ export class CommentsExtractorImpl implements CommentsExtractor {
         const fileComments: string[] = [];
         let isFileComments = false;
         let isComments = false;
-        const functions: PreModuleOrFunction[] = [];
-        const modules: PreModuleOrFunction[] = [];
+        const functions: PreCobolFunction[] = [];
+        const modules: PreCobolFunction[] = [];
+        const classes: PreCobolClass[] = [];
         let lineCounter = 1;
         lines.forEach((line) => {
             if (commentsRegex.contentRegex.test(line) && (isFileComments || isComments)) {
@@ -51,6 +52,22 @@ export class CommentsExtractorImpl implements CommentsExtractor {
                     comments: this._cleanComments(comments, commentsRegex),
                 });
                 comments = [];
+            } else if (/^\s*class-id.+/i.test(line)) {
+                classes.push({
+                    name: line.split('.')[1].trim().split(' ')[0].trim(),
+                    line: lineCounter,
+                    comments: this._cleanComments(comments, commentsRegex),
+                    methods: [],
+                });
+                comments = [];
+            } else if (/^\s*method-id.+/i.test(line)) {
+                const clazz = classes[classes.length - 1];
+                clazz.methods.push({
+                    name: line.split('.')[1].trim().split(' ')[0].trim(),
+                    line: lineCounter,
+                    comments: this._cleanComments(comments, commentsRegex),
+                });
+                comments = [];
             }
             lineCounter++;
         });
@@ -60,6 +77,7 @@ export class CommentsExtractorImpl implements CommentsExtractor {
             fileComments: this._cleanComments(fileComments, commentsRegex),
             functions: functions,
             modules: modules,
+            classes: classes,
         };
     }
 
