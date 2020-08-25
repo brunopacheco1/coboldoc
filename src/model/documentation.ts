@@ -28,10 +28,18 @@ export interface CobolFunction {
     return?: Return,
 }
 
+export interface CobolProperty {
+    name: string,
+    line: number,
+    description?: string,
+    type?: string,
+}
+
 export interface CobolClass {
     name: string,
     line: number,
     methods: CobolFunction[],
+    properties: CobolProperty[],
     description?: string,
     example?: string,
     summary?: string,
@@ -54,20 +62,25 @@ export interface Documentation {
     changeLogs: ChangeLog[],
 }
 
-export interface PreCobolFunction {
+export interface PreCobolObject {
     name: string,
     line: number,
     comments: string,
 }
 
-export interface PreCobolClass extends PreCobolFunction {
-    methods: PreCobolFunction[],
+export interface PreCobolProperty extends PreCobolObject {
+    type?: string,
+}
+
+export interface PreCobolClass extends PreCobolObject {
+    properties: PreCobolProperty[],
+    methods: PreCobolObject[],
 }
 
 export interface PreDocumentation {
     fileName: string,
     fileComments: string,
-    functions: PreCobolFunction[],
-    modules: PreCobolFunction[],
+    functions: PreCobolObject[],
+    modules: PreCobolObject[],
     classes: PreCobolClass[],
 }

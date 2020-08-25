@@ -105,7 +105,9 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                     description: 'Third return',
                     type: 'PIC 9'
                 }
-            }]
+            }],
+            changeLogs: [],
+            classes: [],
         };
         expect(actual).to.deep.equal(expected);
     });

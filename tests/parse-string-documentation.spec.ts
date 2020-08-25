@@ -194,7 +194,9 @@ describe('Parsing string.cbl to doc file', () => {
                 description: 'Urlencoded symbol Pointer to the list of 64 [pic x(3), pic 9(7)V9(8)] elements',
                 type: undefined
             }
-        }]
+        }],
+        changeLogs: [],
+        classes: [],
     };
 
     let service: TemplateEngine;

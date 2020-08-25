@@ -21,11 +21,11 @@ describe('freedialectsample.cbl to documentation', () => {
         const expected: Documentation = {
             fileName: 'freedialectsample.cbl',
             author: 'Bruno Pacheco (https://brunopacheco1.github.io/)\n',
-            license: 'LGPL-3.0',
+            license: 'LGPL-3.0\n',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module.  \nTrying to see **what** happens to    huge text.\n',
-                summary: "the first module summary.",
+                description: '\nThe first module.  \nTrying to see **what** happens to    huge text.\n',
+                summary: "the first module summary.\n",
                 line: 14,
                 name: 'first-module',
                 paragraphs: [],
@@ -33,8 +33,8 @@ describe('freedialectsample.cbl to documentation', () => {
                 params: []
             },
             {
-                description: 'The second module',
-                summary: 'The second module',
+                description: '\nThe second module\n',
+                summary: '\nThe second module\n',
                 line: 44,
                 name: 'second-module',
                 paragraphs: [],
@@ -42,8 +42,8 @@ describe('freedialectsample.cbl to documentation', () => {
                 params: []
             },
             {
-                description: 'The third module',
-                summary: 'The third module',
+                description: '\nThe third module\n',
+                summary: '\nThe third module\n',
                 line: 77,
                 name: 'third-module',
                 paragraphs: [],
@@ -53,7 +53,7 @@ describe('freedialectsample.cbl to documentation', () => {
             functions: [{
                 name: 'firstmodulefunction',
                 line: 110,
-                description: 'first module function\n',
+                description: '\nfirst module function\n',
                 summary: "the first function summary.\n",
                 paragraphs: [],
                 params: [{
@@ -68,8 +68,8 @@ describe('freedialectsample.cbl to documentation', () => {
             }, {
                 name: 'secondmodulefunction',
                 line: 127,
-                description: 'second module function\n',
-                summary: 'second module function\n',
+                description: '\nsecond module function\n',
+                summary: '\nsecond module function\n',
                 paragraphs: [],
                 params: [{
                     name: 'secondarg',
@@ -83,8 +83,8 @@ describe('freedialectsample.cbl to documentation', () => {
             }, {
                 name: 'thirdmodulefunction',
                 line: 144,
-                description: 'third module function\n',
-                summary: 'third module function\n',
+                description: '\nthird module function\n',
+                summary: '\nthird module function\n',
                 paragraphs: [],
                 params: [{
                     name: 'thirdarg',
@@ -95,7 +95,9 @@ describe('freedialectsample.cbl to documentation', () => {
                     description: 'Third return',
                     type: 'PIC 9'
                 }
-            }]
+            }],
+            changeLogs: [],
+            classes: [],
         };
         expect(actual).to.deep.equal(expected);
     });

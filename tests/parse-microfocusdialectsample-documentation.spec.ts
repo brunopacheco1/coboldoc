@@ -94,7 +94,9 @@ describe('Parsing microfocusdialectsample.cbl to doc file', () => {
                 description: 'Third return',
                 type: 'PIC 9'
             }
-        }]
+        }],
+        changeLogs: [],
+        classes: [],
     };
 
     let service: TemplateEngine;

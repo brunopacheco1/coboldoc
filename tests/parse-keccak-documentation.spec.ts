@@ -75,7 +75,9 @@ describe('Parsing keccak.cbl to doc file', () => {
             return: undefined,
             params: []
         }],
-        functions: []
+        functions: [],
+        changeLogs: [],
+        classes: [],
     };
 
     let service: TemplateEngine;

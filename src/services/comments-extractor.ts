@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { PreDocumentation, PreCobolFunction, PreCobolClass } from '../model/documentation';
+import { PreDocumentation, PreCobolObject, PreCobolClass } from '../model/documentation';
 import * as fs from 'fs';
 import * as path from 'path';
 import { CommentStyle, CommentsRegex } from '../model/comment-style';
@@ -20,8 +20,8 @@ export class CommentsExtractorImpl implements CommentsExtractor {
         const fileComments: string[] = [];
         let isFileComments = false;
         let isComments = false;
-        const functions: PreCobolFunction[] = [];
-        const modules: PreCobolFunction[] = [];
+        const functions: PreCobolObject[] = [];
+        const modules: PreCobolObject[] = [];
         const classes: PreCobolClass[] = [];
         let lineCounter = 1;
         lines.forEach((line) => {
@@ -35,38 +35,53 @@ export class CommentsExtractorImpl implements CommentsExtractor {
             } else if (commentsRegex.fileCommentsRegex.test(line)) {
                 isFileComments = !isFileComments;
                 isComments = false;
+                fileComments.push(line);
             } else if (commentsRegex.documentationRegex.test(line)) {
                 isComments = !isComments;
                 isFileComments = false;
-            } else if (/^\s*function-id\..+/i.test(line)) {
+                comments.push(line);
+            } else if (/^\s*function-id\.{0,1}.+/i.test(line)) {
                 functions.push({
-                    name: line.split(".")[1].trim(),
+                    name: this._cleanName(line),
                     line: lineCounter,
                     comments: this._cleanComments(comments, commentsRegex),
                 });
                 comments = [];
-            } else if (/^\s*program-id\..+/i.test(line)) {
+            } else if (/^\s*program-id\.{0,1}.+/i.test(line)) {
                 modules.push({
-                    name: line.split(".")[1].trim(),
+                    name: this._cleanName(line),
                     line: lineCounter,
                     comments: this._cleanComments(comments, commentsRegex),
                 });
                 comments = [];
-            } else if (/^\s*class-id.+/i.test(line)) {
+            } else if (/^\s*class-id\.{0,1}.+/i.test(line)) {
                 classes.push({
-                    name: line.split('.')[1].trim().split(' ')[0].trim(),
+                    name: this._cleanName(line),
                     line: lineCounter,
                     comments: this._cleanComments(comments, commentsRegex),
                     methods: [],
+                    properties: [],
                 });
                 comments = [];
-            } else if (/^\s*method-id.+/i.test(line)) {
+            } else if (/^\s*\d+.+/i.test(line)) {
                 const clazz = classes[classes.length - 1];
-                clazz.methods.push({
-                    name: line.split('.')[1].trim().split(' ')[0].trim(),
-                    line: lineCounter,
-                    comments: this._cleanComments(comments, commentsRegex),
-                });
+                if (!!clazz) {
+                    clazz.properties.push({
+                        name: this._cleanName(line),
+                        line: lineCounter,
+                        comments: this._cleanComments(comments, commentsRegex),
+                    });
+                    comments = [];
+                }
+            } else if (/^\s*method-id\.{0,1}.+/i.test(line)) {
+                const clazz = classes[classes.length - 1];
+                if (!!clazz) {
+                    clazz.methods.push({
+                        name: this._cleanName(line),
+                        line: lineCounter,
+                        comments: this._cleanComments(comments, commentsRegex),
+                    });
+                }
                 comments = [];
             }
             lineCounter++;
@@ -79,6 +94,10 @@ export class CommentsExtractorImpl implements CommentsExtractor {
             modules: modules,
             classes: classes,
         };
+    }
+
+    private _cleanName(line: string): string {
+        return line.trim().split(' ')[1].replace(/\./, '');
     }
 
     private _cleanComments(comments: string[], commentsRegex: CommentsRegex): string {

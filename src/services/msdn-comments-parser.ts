@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { CobolFunction, Parameter, Return, PreCobolClass, CobolClass, PreCobolFunction } from '../model/documentation';
+import { CobolFunction, Parameter, Return, PreCobolClass, CobolClass, PreCobolObject, CobolProperty, PreCobolProperty } from '../model/documentation';
 import { CommentsParser, BaseCommentsParser } from './comments-parser';
 import * as xml2js from 'xml2js';
 
@@ -13,7 +13,7 @@ export class MsdnCommentsParserImpl extends BaseCommentsParser implements MsdnCo
         super();
     }
 
-    protected _extractFunction(preCobolFunction: PreCobolFunction): CobolFunction {
+    protected _extractFunction(preCobolFunction: PreCobolObject): CobolFunction {
         let parsed: any = {};
         xml2js.parseString(`<root>${preCobolFunction.comments}</root>`, {
             async: false,
@@ -87,6 +87,30 @@ export class MsdnCommentsParserImpl extends BaseCommentsParser implements MsdnCo
     }
 
     protected _extractClass(preClass: PreCobolClass): CobolClass {
-        throw new Error('Not implemented yet');
+        const summary = this._extractTag(preClass.comments, 'summary');
+        const remarks = this._extractTag(preClass.comments, 'remarks');
+        const example = this._extractTag(preClass.comments, 'example');
+
+        return {
+            line: preClass.line,
+            name: preClass.name,
+            methods: [],
+            properties: [],
+            description: summary,
+            summary: remarks || summary,
+            example: example,
+        };
+    }
+
+    protected _extractProperty(preProperty: PreCobolProperty): CobolProperty {
+        const summary = this._extractTag(preProperty.comments, 'summary');
+        const value = this._extractTag(preProperty.comments, 'value');
+
+        return {
+            line: preProperty.line,
+            name: preProperty.name,
+            description: summary || value,
+            type: preProperty.type,
+        };
     }
 }

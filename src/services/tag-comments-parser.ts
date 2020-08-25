@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { CobolFunction, Parameter, Return, PreCobolFunction, PreCobolClass, CobolClass } from '../model/documentation';
+import { CobolFunction, Parameter, Return, PreCobolObject, PreCobolClass, CobolClass, CobolProperty, PreCobolProperty } from '../model/documentation';
 import { CommentsParser, BaseCommentsParser } from './comments-parser';
 
 export interface TagCommentsParser extends CommentsParser {
@@ -12,7 +12,7 @@ export class TagCommentsParserImpl extends BaseCommentsParser implements TagComm
         super();
     }
 
-    protected _extractFunction(preCobolFunction: PreCobolFunction): CobolFunction {
+    protected _extractFunction(preCobolFunction: PreCobolObject): CobolFunction {
         const pieces = preCobolFunction.comments.split('@');
         const params: Parameter[] = [];
         let returnObj: Return | undefined = undefined;
@@ -84,6 +84,44 @@ export class TagCommentsParserImpl extends BaseCommentsParser implements TagComm
     }
 
     protected _extractClass(preClass: PreCobolClass): CobolClass {
-        throw new Error('Not implemented yet');
+        const pieces = preClass.comments.split('@');
+        let description: string | undefined = undefined;
+        let summary: string | undefined = undefined;
+        pieces.forEach((piece, index) => {
+            if (index === 0) {
+                description = piece;
+                summary = piece;
+            } else if (/^summary/.test(piece)) {
+                summary = piece.substring(piece.indexOf(' ') + 1);
+            }
+        });
+
+        return {
+            line: preClass.line,
+            name: preClass.name,
+            methods: [],
+            properties: [],
+            description: description,
+            summary: summary,
+        };
+    }
+
+    protected _extractProperty(preProperty: PreCobolProperty): CobolProperty {
+        const pieces = preProperty.comments.split('@');
+        let description: string | undefined = undefined;
+        let summary: string | undefined = undefined;
+        pieces.forEach((piece, index) => {
+            if (index === 0) {
+                description = piece;
+                summary = piece;
+            }
+        });
+
+        return {
+            line: preProperty.line,
+            name: preProperty.name,
+            description: description,
+            type: preProperty.type,
+        };
     }
 }

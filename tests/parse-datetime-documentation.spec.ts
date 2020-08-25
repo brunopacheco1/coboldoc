@@ -37,7 +37,9 @@ describe('Parsing datetime.cbl to doc file', () => {
                 }
             }
         ],
-        modules: []
+        modules: [],
+        changeLogs: [],
+        classes: [],
     };
 
     let service: TemplateEngine;
