@@ -64,6 +64,18 @@
             <td><a href="#<%- cobolFunction.name %>"><%- cobolFunction.name %></a></td>
             <td><%- cobolFunction.summary %></td>
         </tr><% }); %>
+    </table><% } if(classes.length > 0) { %>
+    <h2>Class Summary</h2>
+    <table>
+        <caption>Class Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr><% classes.forEach((cobolClass) => { %>
+        <tr>
+            <td><a href="#<%- cobolClass.name %>"><%- cobolClass.name %></a></td>
+            <td><%- cobolClass.summary %></td>
+        </tr><% }); %>
     </table><% } if(modules.length > 0) { %>
     <h2>Module Details</h2><% modules.forEach((module) => { %>
     <h3 id="<%- module.name %>"><%- module.name %></h3>
@@ -100,7 +112,61 @@
         <li>
             <%- !!cobolFunction.return.type ? `<em>{${cobolFunction.return.type}}</em> ` : '' %><%- cobolFunction.return.description %>
         </li>
-    </ul><% } }); } %>
+    </ul><% }}); } if(classes.length > 0) { %>
+    <h2>Class Details</h2><% classes.forEach((cobolClass) => { %>
+    <h3 id="<%- cobolClass.name %>"><%- cobolClass.name %></h3>
+    <p><%- cobolClass.description %></p>
+    <% if(!!cobolClass.properties && cobolClass.properties.length > 0) { %><h4>Property Summary</h4>
+    <table>
+        <caption>Property Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr><% cobolClass.properties.forEach((property, index) => { %>
+        <tr>
+            <td><a href="#<%- cobolClass.name %>p<%- index %>"><%- property.name %></a></td>
+            <td><%- property.summary %></td>
+        </tr><% }); %>
+    </table>
+    <% } if(!!cobolClass.methods && cobolClass.methods.length > 0) { %><h4>Method Summary</h4>
+    <table>
+        <caption>Method Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr><% cobolClass.methods.forEach((method, index) => { %>
+        <tr>
+            <td><a href="#<%- cobolClass.name %>m<%- index %>"><%- method.name %></a></td>
+            <td><%- method.summary %></td>
+        </tr><% }); %>
+    </table>
+    <% } if(!!cobolClass.properties && cobolClass.properties.length > 0) { %>
+    <h4>Property Details</h4><% cobolClass.properties.forEach((property, index) => { %>
+    <h5 id="<%- cobolClass.name %>p<%- index %>"><%- property.name %></h5>
+    <p>
+        <em><%- !!property.type ? `{${property.type}} ` : '' %><%- property.name %></em>
+    </p>
+    <p><%- property.description %></p>
+    <% }); } if(!!cobolClass.methods && cobolClass.methods.length > 0) { %>
+    <h4>Method Details</h4><% cobolClass.methods.forEach((method, index) => { %>
+    <h5 id="<%- cobolClass.name %>m<%- index %>"><%- method.name %></h5>
+    <p>
+        <em><%- !!method.return && !!method.return.type ? `{${method.return.type}} ` : '' %><%- method.name %>(<%- method.params.map(p => p.name).join(', ') %>)</em>
+    </p>
+    <p><%- method.description %></p>
+    <% if(!!method.params && method.params.length > 0) { %><h5>Parameters</h5>
+    <ul><% method.params.forEach((param) => { %>
+        <li>
+            <%- !!param.type ? `<em>{${param.type}}</em> ` : '' %><strong><%- param.name %></strong> <%- param.description %>
+        </li><% }); %>
+    </ul>
+    <% } if(!!method.return) { %><h5>Returns</h5>
+    <ul>
+        <li>
+            <%- !!method.return.type ? `<em>{${method.return.type}}</em> ` : '' %><%- method.return.description %>
+        </li>
+    </ul>
+    <% }}); } }); } %>
 </body>
 
 </html>

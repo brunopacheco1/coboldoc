@@ -1,0 +1,373 @@
+<!DOCTYPE>
+<html lang="en" xml:lang="en">
+
+<head>
+    <title>classsample.cbl</title>
+    <meta content="text/html; charset=utf-8" />
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #dee3e9;
+            padding: 7px;
+        }
+
+        td {
+            padding: 7px;
+        }
+
+        tr:nth-child(even) {
+            background: #FFF
+        }
+
+        tr:nth-child(odd) {
+            background: #CCC
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        classsample.cbl
+    </h1>
+    
+    <p>
+        author: 
+    </p>
+    <p>
+        License: 
+    </p>
+    <h2>Class Summary</h2>
+    <table>
+        <caption>Class Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#SuccessException">SuccessException</a></td>
+            <td>
+SuccessException - Exception thrown if the test case ends with a sucess condition
+</td>
+        </tr>
+        <tr>
+            <td><a href="#AssertionFailedException">AssertionFailedException</a></td>
+            <td>
+AssertionFailedException - Thrown when an assertion failed.
+</td>
+        </tr>
+        <tr>
+            <td><a href="#InconclusiveException">InconclusiveException</a></td>
+            <td>
+InconclusiveException - Thrown when an Inconclusive failure assert is used.
+</td>
+        </tr>
+        <tr>
+            <td><a href="#AssertErrorException">AssertErrorException</a></td>
+            <td>
+AssertErrorException - Thrown when an assertion failed.
+</td>
+        </tr>
+    </table>
+    <h2>Class Details</h2>
+    <h3 id="SuccessException">SuccessException</h3>
+    <p>
+SuccessException - Exception thrown if the test case ends with a sucess condition
+</p>
+    <h4>Method Summary</h4>
+    <table>
+        <caption>Method Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#SuccessExceptionm0">New</a></td>
+            <td>
+SuccessException - constructor with no assert message
+</td>
+        </tr>
+        <tr>
+            <td><a href="#SuccessExceptionm1">New</a></td>
+            <td>
+SuccessException - constructor with assert message
+</td>
+        </tr>
+    </table>
+    
+    <h4>Method Details</h4>
+    <h5 id="SuccessExceptionm0">New</h5>
+    <p>
+        <em>New()</em>
+    </p>
+    <p>
+SuccessException - constructor with no assert message
+</p>
+    
+    <h5 id="SuccessExceptionm1">New</h5>
+    <p>
+        <em>New(msg)</em>
+    </p>
+    <p>
+SuccessException - constructor with assert message
+</p>
+    <h5>Parameters</h5>
+    <ul>
+        <li>
+            <strong>msg</strong> message
+        </li>
+    </ul>
+    
+    <h3 id="AssertionFailedException">AssertionFailedException</h3>
+    <p>
+AssertionFailedException - Thrown when an assertion failed.
+</p>
+    <h4>Property Summary</h4>
+    <table>
+        <caption>Property Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#AssertionFailedExceptionp0">AssertMessage</a></td>
+            <td></td>
+        </tr>
+    </table>
+    <h4>Method Summary</h4>
+    <table>
+        <caption>Method Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#AssertionFailedExceptionm0">New</a></td>
+            <td>
+AssertionFailedException - constructor with no assert message
+</td>
+        </tr>
+        <tr>
+            <td><a href="#AssertionFailedExceptionm1">New</a></td>
+            <td>
+AssertionFailedException - constructor with assert message
+</td>
+        </tr>
+    </table>
+    
+    <h4>Property Details</h4>
+    <h5 id="AssertionFailedExceptionp0">AssertMessage</h5>
+    <p>
+        <em>AssertMessage</em>
+    </p>
+    <p>
+AssertMessage - Property for assert message
+</p>
+    
+    <h4>Method Details</h4>
+    <h5 id="AssertionFailedExceptionm0">New</h5>
+    <p>
+        <em>New()</em>
+    </p>
+    <p>
+AssertionFailedException - constructor with no assert message
+</p>
+    
+    <h5 id="AssertionFailedExceptionm1">New</h5>
+    <p>
+        <em>New(msg)</em>
+    </p>
+    <p>
+AssertionFailedException - constructor with assert message
+</p>
+    <h5>Parameters</h5>
+    <ul>
+        <li>
+            <strong>msg</strong> message
+        </li>
+    </ul>
+    
+    <h3 id="InconclusiveException">InconclusiveException</h3>
+    <p>
+InconclusiveException - Thrown when an Inconclusive failure assert is used.
+</p>
+    <h4>Property Summary</h4>
+    <table>
+        <caption>Property Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#InconclusiveExceptionp0">AssertMessage</a></td>
+            <td></td>
+        </tr>
+    </table>
+    <h4>Method Summary</h4>
+    <table>
+        <caption>Method Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#InconclusiveExceptionm0">New</a></td>
+            <td>
+InconclusiveException - constructor with assert message
+</td>
+        </tr>
+        <tr>
+            <td><a href="#InconclusiveExceptionm1">New</a></td>
+            <td>
+InconclusiveException - constructor with assert message
+</td>
+        </tr>
+    </table>
+    
+    <h4>Property Details</h4>
+    <h5 id="InconclusiveExceptionp0">AssertMessage</h5>
+    <p>
+        <em>AssertMessage</em>
+    </p>
+    <p>
+AssertMessage - Property for assert message
+</p>
+    
+    <h4>Method Details</h4>
+    <h5 id="InconclusiveExceptionm0">New</h5>
+    <p>
+        <em>New(msg)</em>
+    </p>
+    <p>
+InconclusiveException - constructor with assert message
+</p>
+    <h5>Parameters</h5>
+    <ul>
+        <li>
+            <strong>msg</strong> message
+        </li>
+    </ul>
+    
+    <h5 id="InconclusiveExceptionm1">New</h5>
+    <p>
+        <em>New(msg)</em>
+    </p>
+    <p>
+InconclusiveException - constructor with assert message
+</p>
+    <h5>Parameters</h5>
+    <ul>
+        <li>
+            <strong>msg</strong> message
+        </li>
+    </ul>
+    
+    <h3 id="AssertErrorException">AssertErrorException</h3>
+    <p>
+AssertErrorException - Thrown when an assertion failed.
+</p>
+    <h4>Property Summary</h4>
+    <table>
+        <caption>Property Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#AssertErrorExceptionp0">AssertMessage</a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><a href="#AssertErrorExceptionp1">CauseOfException</a></td>
+            <td></td>
+        </tr>
+    </table>
+    <h4>Method Summary</h4>
+    <table>
+        <caption>Method Summary</caption>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        <tr>
+            <td><a href="#AssertErrorExceptionm0">New</a></td>
+            <td>
+AssertErrorException - constructor with no assert message
+</td>
+        </tr>
+        <tr>
+            <td><a href="#AssertErrorExceptionm1">New</a></td>
+            <td>
+AssertErrorException - constructor with assert message
+</td>
+        </tr>
+        <tr>
+            <td><a href="#AssertErrorExceptionm2">New</a></td>
+            <td>
+AssertErrorException - constructor with assert message
+</td>
+        </tr>
+    </table>
+    
+    <h4>Property Details</h4>
+    <h5 id="AssertErrorExceptionp0">AssertMessage</h5>
+    <p>
+        <em>AssertMessage</em>
+    </p>
+    <p>
+AssertMessage - Property for assert message
+</p>
+    
+    <h5 id="AssertErrorExceptionp1">CauseOfException</h5>
+    <p>
+        <em>CauseOfException</em>
+    </p>
+    <p>
+AssertMessage - Property for assert message
+</p>
+    
+    <h4>Method Details</h4>
+    <h5 id="AssertErrorExceptionm0">New</h5>
+    <p>
+        <em>New()</em>
+    </p>
+    <p>
+AssertErrorException - constructor with no assert message
+</p>
+    
+    <h5 id="AssertErrorExceptionm1">New</h5>
+    <p>
+        <em>New(msg)</em>
+    </p>
+    <p>
+AssertErrorException - constructor with assert message
+</p>
+    <h5>Parameters</h5>
+    <ul>
+        <li>
+            <strong>msg</strong> message
+        </li>
+    </ul>
+    
+    <h5 id="AssertErrorExceptionm2">New</h5>
+    <p>
+        <em>New(msg, cause)</em>
+    </p>
+    <p>
+AssertErrorException - constructor with assert message
+</p>
+    <h5>Parameters</h5>
+    <ul>
+        <li>
+            <strong>msg</strong> message
+        </li>
+        <li>
+            <strong>cause</strong> inner exception
+        </li>
+    </ul>
+    
+</body>
+
+</html>
