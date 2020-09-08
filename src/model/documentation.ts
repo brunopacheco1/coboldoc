@@ -32,6 +32,7 @@ export interface CobolProperty {
     name: string,
     line: number,
     description?: string,
+    summary?: string,
     type?: string,
 }
 

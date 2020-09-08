@@ -1,9 +1,11 @@
 import { PreDocumentation, Documentation, CobolFunction, PreCobolClass, CobolClass, PreCobolObject, CobolProperty, PreCobolProperty } from '../model/documentation';
+import { injectable } from 'inversify';
 
 export interface CommentsParser {
     parse(preDocumentation: PreDocumentation): Documentation;
 }
 
+@injectable()
 export abstract class BaseCommentsParser {
 
     public parse(preDocumentation: PreDocumentation): Documentation {

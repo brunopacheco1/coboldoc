@@ -7,7 +7,6 @@ export enum Format {
 export enum TableOfContents {
     HTML = 'index.html',
     MD = 'README.md',
-    MSDN = 'index.xml',
 }
 
 export namespace TableOfContents {

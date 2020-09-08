@@ -21,7 +21,7 @@ export namespace CommentsRegex {
                     cleanRegex: /^\s*\*>>\s*/,
                 };
             default:
-                throw new Error(`Not supported dialect: ${commentStyle}`);
+                throw new Error(`Not supported comment style: ${commentStyle}`);
         }
     }
 }
