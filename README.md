@@ -22,7 +22,7 @@
 - Support for in-line Markdown content;
 - Support for MSDN Comment Style;
 - Support for Free Format doc standard;
-- Support for Microfocus doc standard;
+- Support for Micro Focus doc standard;
 
 #### Requirements
 - NodeJS 8+
@@ -76,9 +76,9 @@ Generating README.md... DONE
 ```
 
 #### Supported Comment Style
-COBOLDoc suports free format and Microfocus comment styles. The diff is on how the comment blocks are detected, depending on the line prefix:
+COBOLDoc suports free format and Micro Focus comment styles. The diff is on how the comment blocks are detected, depending on the line prefix:
 - Free format uses `*>*(*)`
-- Microfocus uses `*>>(>)`
+- Micro Focus uses `*>>(>)`
 
 #### Supported annotations
 COBOLDoc suports tag or MSDN annotations.
