@@ -4,40 +4,40 @@
         <name>microfocusdialectsample.cbl</name>
     </assembly>
     <members>
-        <member name="MOD:first-module">
+        <member name="MOD:first-program">
             <summary>Any remark</summary>
-            <remarks>The <c>first</c> module.  
+            <remarks>The <c>first</c> program.  
 Trying to see **what** happens to    huge text.</remarks>
             
             
-        </member><member name="MOD:second-module">
-            <summary>The second module</summary>
-            <remarks>The second module</remarks>
+        </member><member name="MOD:second-program">
+            <summary>The second program</summary>
+            <remarks>The second program</remarks>
             
             
-        </member><member name="MOD:third-module">
-            <summary>The third module</summary>
-            <remarks>The third module</remarks>
+        </member><member name="MOD:third-program">
+            <summary>The third program</summary>
+            <remarks>The third program</remarks>
             
             
         </member>
-        <member name="FUN:firstmodulefunction">
-            <summary>first module function accepts <paramref name="first-arg"/> as an arg.
-<seealso cref="secondmodulefunction"/>
+        <member name="FUN:firstprogramfunction">
+            <summary>first program function accepts <paramref name="first-arg"/> as an arg.
+<seealso cref="secondprogramfunction"/>
 </summary>
-            <remarks>first module function accepts <paramref name="first-arg"/> as an arg.
-<seealso cref="secondmodulefunction"/>
+            <remarks>first program function accepts <paramref name="first-arg"/> as an arg.
+<seealso cref="secondprogramfunction"/>
 </remarks>
             <param name="first-arg">First arg</param><param name="second-arg">Second arg</param>
             <returns>First return</returns>
-        </member><member name="FUN:secondmodulefunction">
-            <summary>second module function</summary>
-            <remarks>second module function</remarks>
+        </member><member name="FUN:secondprogramfunction">
+            <summary>second program function</summary>
+            <remarks>second program function</remarks>
             <param name="secondarg">Second arg</param>
             <returns>Second return</returns>
-        </member><member name="FUN:thirdmodulefunction">
-            <summary>third module function</summary>
-            <remarks>third module function</remarks>
+        </member><member name="FUN:thirdprogramfunction">
+            <summary>third program function</summary>
+            <remarks>third program function</remarks>
             <param name="thirdarg">Third arg</param>
             <returns>Third return</returns>
         </member>

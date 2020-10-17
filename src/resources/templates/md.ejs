@@ -4,7 +4,7 @@ author: <%- author %>
 
 License: <%- license %>
 <% if(modules.length > 0) { %>
-## Module Summary
+## Program Summary
 
 | Name | Description |
 | ----------- | ----------- | <% modules.forEach((module) => { %>
@@ -16,7 +16,7 @@ License: <%- license %>
 | ----------- | ----------- | <% functions.forEach((cobolFunction) => { %>
 | [<%- cobolFunction.name %>](#<%- cobolFunction.name %>) | <%- !!cobolFunction.summary ? cobolFunction.summary.replace(/\s\s\n/g, '<br>').replace(/\n/g, ' ').trim() : '' %> | <% }); %>
 <% } if(modules.length > 0) { %>
-## Module Details
+## Program Details
 <% modules.forEach((module) => { %>
 ### <%- module.name %>
 

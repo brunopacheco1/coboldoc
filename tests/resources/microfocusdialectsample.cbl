@@ -6,22 +6,22 @@
 *>>>
 
 *>>
-*>>  <summary>The <c>first</c> module.  
+*>>  <summary>The <c>first</c> program.  
 *>>  Trying to see **what** happens to    huge text.</summary>
 *>>  <remarks>Any remark</remarks>
 *>>  <example>
 *>>  <code>
-*>>    CALL "first-module" USING BY CONTENT WS-FIRSTMODULE.
+*>>    CALL "first-program" USING BY CONTENT WS-FIRSTMODULE.
 *>>  </code>
 *>>  </example>
 *>>
  IDENTIFICATION DIVISION.
- PROGRAM-ID. first-module.
+ PROGRAM-ID. first-program.
 
  ENVIRONMENT DIVISION.
  CONFIGURATION SECTION.
  REPOSITORY.
-     FUNCTION firstmodulefunction.
+     FUNCTION firstprogramfunction.
 
  DATA DIVISION.
  WORKING-STORAGE SECTION.
@@ -36,22 +36,22 @@
  
  0002-FIRSTMODULE-NEWPARA.
     ACCEPT WS-FIRSTMODULE.
-    COMPUTE WS-FIRSTMODULE = firstmodulefunction(WS-FIRSTMODULE).
-    DISPLAY "First Module: ", WS-FIRSTMODULE.
-    CALL 'second-module' USING BY CONTENT WS-FIRSTMODULE
+    COMPUTE WS-FIRSTMODULE = firstprogramfunction(WS-FIRSTMODULE).
+    DISPLAY "First Program: ", WS-FIRSTMODULE.
+    CALL 'second-program' USING BY CONTENT WS-FIRSTMODULE
     END-CALL.
- END PROGRAM first-module.
+ END PROGRAM first-program.
  
 *>>
-*>> <summary>The second module</summary>
+*>> <summary>The second program</summary>
 *>>
  IDENTIFICATION DIVISION.
- PROGRAM-ID. second-module.
+ PROGRAM-ID. second-program.
 
  ENVIRONMENT DIVISION.
  CONFIGURATION SECTION.
  REPOSITORY.
-     FUNCTION secondmodulefunction.
+     FUNCTION secondprogramfunction.
 
  DATA DIVISION.
  WORKING-STORAGE SECTION.
@@ -68,23 +68,23 @@
 
  0002-SECONDMODULE-NEWPARAGRAPH.
     MOVE WS-TRANSFER TO WS-SECONDMODULE.
-    COMPUTE WS-SECONDMODULE = secondmodulefunction(WS-SECONDMODULE).
-    DISPLAY "Second Module: ", WS-SECONDMODULE.
-    CALL 'third-module' USING BY CONTENT WS-SECONDMODULE
+    COMPUTE WS-SECONDMODULE = secondprogramfunction(WS-SECONDMODULE).
+    DISPLAY "Second Program: ", WS-SECONDMODULE.
+    CALL 'third-program' USING BY CONTENT WS-SECONDMODULE
     END-CALL.
 
- END PROGRAM second-module.
+ END PROGRAM second-program.
  
 *>>
-*>> <summary>The third module</summary>
+*>> <summary>The third program</summary>
 *>>
  IDENTIFICATION DIVISION.
- PROGRAM-ID. third-module.
+ PROGRAM-ID. third-program.
 
  ENVIRONMENT DIVISION.
  CONFIGURATION SECTION.
  REPOSITORY.
-     FUNCTION thirdmodulefunction.
+     FUNCTION thirdprogramfunction.
 
  DATA DIVISION.
  WORKING-STORAGE SECTION.
@@ -101,20 +101,20 @@
 
  0002-THIRDMODULE-NEWPARAGRAPH.
     MOVE WS-TRANSFER TO WS-THIRDMODULE.
-    COMPUTE WS-THIRDMODULE = thirdmodulefunction(WS-THIRDMODULE).
-    DISPLAY "Third Module: ", WS-THIRDMODULE.
- END PROGRAM third-module.
+    COMPUTE WS-THIRDMODULE = thirdprogramfunction(WS-THIRDMODULE).
+    DISPLAY "Third Program: ", WS-THIRDMODULE.
+ END PROGRAM third-program.
 
 *>>
-*>> <summary>first module function accepts <paramref name="first-arg"/> as an arg.
-*>> <seealso cref="secondmodulefunction"/>
+*>> <summary>first program function accepts <paramref name="first-arg"/> as an arg.
+*>> <seealso cref="secondprogramfunction"/>
 *>> </summary>
 *>> <param type="PIC 9" name="first-arg">First arg</param>
 *>> <param type="PIC 9" name="second-arg">Second arg</param>
 *>> <returns type="PIC 9">First return</returns>
 *>>
 IDENTIFICATION DIVISION.
-FUNCTION-ID. firstmodulefunction.
+FUNCTION-ID. firstprogramfunction.
 
 DATA DIVISION.
 WORKING-STORAGE SECTION.
@@ -123,15 +123,15 @@ LINKAGE SECTION.
    01 firstresult PIC 9.
 PROCEDURE DIVISION USING first-arg RETURNING firstresult.
     COMPUTE firstresult = firstarg + 1.
-END FUNCTION firstmodulefunction.
+END FUNCTION firstprogramfunction.
 
 *>>
-*>> <summary>second module function</summary>
+*>> <summary>second program function</summary>
 *>> <param type="PIC 9" name="secondarg">Second arg</param>
 *>> <returns type="PIC 9">Second return</returns>
 *>>
 IDENTIFICATION DIVISION.
-FUNCTION-ID. secondmodulefunction.
+FUNCTION-ID. secondprogramfunction.
 
 DATA DIVISION.
 WORKING-STORAGE SECTION.
@@ -140,15 +140,15 @@ LINKAGE SECTION.
    01 secondresult PIC 9.
 PROCEDURE DIVISION USING secondarg RETURNING secondresult.
     COMPUTE secondresult = secondarg + 2.
-END FUNCTION secondmodulefunction.
+END FUNCTION secondprogramfunction.
 
 *>>
-*>> <summary>third module function</summary>
+*>> <summary>third program function</summary>
 *>> <param type="PIC 9" name="thirdarg">Third arg</param>
 *>> <returns type="PIC 9">Third return</returns>
 *>>
 IDENTIFICATION DIVISION.
-FUNCTION-ID. thirdmodulefunction.
+FUNCTION-ID. thirdprogramfunction.
 
 DATA DIVISION.
 WORKING-STORAGE SECTION.
@@ -157,4 +157,4 @@ LINKAGE SECTION.
    01 thirdresult PIC 9.
 PROCEDURE DIVISION USING thirdarg RETURNING thirdresult.
     COMPUTE thirdresult = thirdarg + 3.
-END FUNCTION thirdmodulefunction.
+END FUNCTION thirdprogramfunction.

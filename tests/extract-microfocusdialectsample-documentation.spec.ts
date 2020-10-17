@@ -24,40 +24,40 @@ describe('microfocusdialectsample.cbl to documentation', () => {
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The <c>first</c> module.  \nTrying to see **what** happens to    huge text.',
+                description: 'The <c>first</c> program.  \nTrying to see **what** happens to    huge text.',
                 summary: 'Any remark',
-                example: '\n<code>\nCALL \"first-module\" USING BY CONTENT WS-FIRSTMODULE.\n</code>\n',
+                example: '\n<code>\nCALL \"first-program\" USING BY CONTENT WS-FIRSTMODULE.\n</code>\n',
                 line: 19,
-                name: 'first-module',
+                name: 'first-program',
                 paragraphs: [],
                 return: undefined,
                 params: []
             },
             {
-                description: 'The second module',
-                summary: 'The second module',
+                description: 'The second program',
+                summary: 'The second program',
                 example: undefined,
                 line: 49,
-                name: 'second-module',
+                name: 'second-program',
                 paragraphs: [],
                 return: undefined,
                 params: []
             },
             {
-                description: 'The third module',
-                summary: 'The third module',
+                description: 'The third program',
+                summary: 'The third program',
                 example: undefined,
                 line: 82,
-                name: 'third-module',
+                name: 'third-program',
                 paragraphs: [],
                 return: undefined,
                 params: []
             }],
             functions: [{
-                name: 'firstmodulefunction',
+                name: 'firstprogramfunction',
                 line: 117,
-                description: 'first module function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondmodulefunction\"/>\n',
-                summary: 'first module function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondmodulefunction\"/>\n',
+                description: 'first program function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondprogramfunction\"/>\n',
+                summary: 'first program function accepts <paramref name=\"first-arg\"/> as an arg.\n<seealso cref=\"secondprogramfunction\"/>\n',
                 example: undefined,
                 paragraphs: [],
                 params: [{
@@ -74,10 +74,10 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                     type: 'PIC 9'
                 }
             }, {
-                name: 'secondmodulefunction',
+                name: 'secondprogramfunction',
                 line: 134,
-                description: 'second module function',
-                summary: 'second module function',
+                description: 'second program function',
+                summary: 'second program function',
                 example: undefined,
                 paragraphs: [],
                 params: [{
@@ -90,10 +90,10 @@ describe('microfocusdialectsample.cbl to documentation', () => {
                     type: 'PIC 9'
                 }
             }, {
-                name: 'thirdmodulefunction',
+                name: 'thirdprogramfunction',
                 line: 151,
-                description: 'third module function',
-                summary: 'third module function',
+                description: 'third program function',
+                summary: 'third program function',
                 example: undefined,
                 paragraphs: [],
                 params: [{

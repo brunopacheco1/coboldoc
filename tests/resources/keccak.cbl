@@ -18,7 +18,7 @@
 *>**
 
 *>*
-*>  The KECCAK module, that uses the Keccak-f[1600] permutation.<br>
+*>  The KECCAK program, that uses the Keccak-f[1600] permutation.<br>
 *>
 *>  Date-Written: 2016-05-17<br>
 *>  Fields in LINKAGE SECTION:<br>
@@ -192,7 +192,7 @@
  
  
 *>*
-*> Module that computes the Keccak-f[1600] permutation on the given state.
+*> Program that computes the Keccak-f[1600] permutation on the given state.
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. STATE-PERMUTE.
@@ -599,7 +599,7 @@
 
  
 *>*
-*> Module to load a 64-bit value from STATE.
+*> Program to load a 64-bit value from STATE.
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. READ-LANE.
@@ -636,7 +636,7 @@
 
  
 *>*
-*> Module to write a 64-bit value in STATE.
+*> Program to write a 64-bit value in STATE.
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. WRITE-LANE.
@@ -673,7 +673,7 @@
 
  
 *>*
-*> Module to xor and write a 64-bit value in STATE.
+*> Program to xor and write a 64-bit value in STATE.
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. XOR-LANE.
@@ -719,7 +719,7 @@
  
  
 *>*
-*> Module to rotate a 64-bit value.
+*> Program to rotate a 64-bit value.
 *>*
  IDENTIFICATION DIVISION.
  PROGRAM-ID. ROL-LANE.
@@ -777,7 +777,7 @@
 
  
 *>*
-*> Module that computes the linear feedback shift register (LFSR) used to
+*> Program that computes the linear feedback shift register (LFSR) used to
 *> define the round constants (see [Keccak Reference, Section 1.2]).
 *>*
  IDENTIFICATION DIVISION.

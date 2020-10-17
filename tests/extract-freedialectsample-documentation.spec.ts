@@ -24,36 +24,36 @@ describe('freedialectsample.cbl to documentation', () => {
             license: 'LGPL-3.0',
             fileDescription: 'Short sample.',
             modules: [{
-                description: 'The first module.  \nTrying to see **what** happens to    huge text.\n',
-                summary: "the first module summary.",
+                description: 'The first program.  \nTrying to see **what** happens to    huge text.\n',
+                summary: "the first program summary.",
                 line: 14,
-                name: 'first-module',
+                name: 'first-program',
                 paragraphs: [],
                 return: undefined,
                 params: []
             },
             {
-                description: 'The second module',
-                summary: 'The second module',
+                description: 'The second program',
+                summary: 'The second program',
                 line: 44,
-                name: 'second-module',
+                name: 'second-program',
                 paragraphs: [],
                 return: undefined,
                 params: []
             },
             {
-                description: 'The third module',
-                summary: 'The third module',
+                description: 'The third program',
+                summary: 'The third program',
                 line: 77,
-                name: 'third-module',
+                name: 'third-program',
                 paragraphs: [],
                 return: undefined,
                 params: []
             }],
             functions: [{
-                name: 'firstmodulefunction',
+                name: 'firstprogramfunction',
                 line: 110,
-                description: 'first module function\n',
+                description: 'first program function\n',
                 summary: "the first function summary.\n",
                 paragraphs: [],
                 params: [{
@@ -66,10 +66,10 @@ describe('freedialectsample.cbl to documentation', () => {
                     type: 'PIC 9'
                 }
             }, {
-                name: 'secondmodulefunction',
+                name: 'secondprogramfunction',
                 line: 127,
-                description: 'second module function\n',
-                summary: 'second module function\n',
+                description: 'second program function\n',
+                summary: 'second program function\n',
                 paragraphs: [],
                 params: [{
                     name: 'secondarg',
@@ -81,10 +81,10 @@ describe('freedialectsample.cbl to documentation', () => {
                     type: 'PIC 9'
                 }
             }, {
-                name: 'thirdmodulefunction',
+                name: 'thirdprogramfunction',
                 line: 144,
-                description: 'third module function\n',
-                summary: 'third module function\n',
+                description: 'third program function\n',
+                summary: 'third program function\n',
                 paragraphs: [],
                 params: [{
                     name: 'thirdarg',

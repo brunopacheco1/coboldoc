@@ -17,25 +17,25 @@ Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public
 License along with this library.
 
-## Module Summary
+## Program Summary
 
 | Name | Description |
 | ----------- | ----------- | 
-| [KECCAK](#KECCAK) | The KECCAK module, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2016-05-17<br> Fields in LINKAGE SECTION:<br> <ul> <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation.</li>         <br><li>LNK-KECCAK-CAPACITY: The value of the capacity c.  The rate and capacity must have r+c=1600.</li>      <br><li>LNK-KECCAK-INPUT: The input message.   </li>       <br><li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message.</li>  <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain  separation.</li>  <li>LNK-KECCAK-OUTPUT: The buffer where to store the output.   </li>      <br><li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li> </ul> | 
-| [STATE-PERMUTE](#STATE-PERMUTE) | Module that computes the Keccak-f[1600] permutation on the given state. | 
-| [READ-LANE](#READ-LANE) | Module to load a 64-bit value from STATE. | 
-| [WRITE-LANE](#WRITE-LANE) | Module to write a 64-bit value in STATE. | 
-| [XOR-LANE](#XOR-LANE) | Module to xor and write a 64-bit value in STATE. | 
-| [ROL-LANE](#ROL-LANE) | Module to rotate a 64-bit value. | 
-| [LFSR86540](#LFSR86540) | Module that computes the linear feedback shift register (LFSR) used to define the round constants (see [Keccak Reference, Section 1.2]). | 
+| [KECCAK](#KECCAK) | The KECCAK program, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2016-05-17<br> Fields in LINKAGE SECTION:<br> <ul> <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation.</li>         <br><li>LNK-KECCAK-CAPACITY: The value of the capacity c.  The rate and capacity must have r+c=1600.</li>      <br><li>LNK-KECCAK-INPUT: The input message.   </li>       <br><li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message.</li>  <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain  separation.</li>  <li>LNK-KECCAK-OUTPUT: The buffer where to store the output.   </li>      <br><li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li> </ul> | 
+| [STATE-PERMUTE](#STATE-PERMUTE) | Program that computes the Keccak-f[1600] permutation on the given state. | 
+| [READ-LANE](#READ-LANE) | Program to load a 64-bit value from STATE. | 
+| [WRITE-LANE](#WRITE-LANE) | Program to write a 64-bit value in STATE. | 
+| [XOR-LANE](#XOR-LANE) | Program to xor and write a 64-bit value in STATE. | 
+| [ROL-LANE](#ROL-LANE) | Program to rotate a 64-bit value. | 
+| [LFSR86540](#LFSR86540) | Program that computes the linear feedback shift register (LFSR) used to define the round constants (see [Keccak Reference, Section 1.2]). | 
 
-## Module Details
+## Program Details
 
 ### KECCAK
 
 *CALL "KECCAK".*
 
-The KECCAK module, that uses the Keccak-f[1600] permutation.<br>
+The KECCAK program, that uses the Keccak-f[1600] permutation.<br>
 Date-Written: 2016-05-17<br>
 Fields in LINKAGE SECTION:<br>
 <ul>
@@ -58,41 +58,41 @@ separation.</li>
 
 *CALL "STATE-PERMUTE".*
 
-Module that computes the Keccak-f[1600] permutation on the given state.
+Program that computes the Keccak-f[1600] permutation on the given state.
 
 
 ### READ-LANE
 
 *CALL "READ-LANE".*
 
-Module to load a 64-bit value from STATE.
+Program to load a 64-bit value from STATE.
 
 
 ### WRITE-LANE
 
 *CALL "WRITE-LANE".*
 
-Module to write a 64-bit value in STATE.
+Program to write a 64-bit value in STATE.
 
 
 ### XOR-LANE
 
 *CALL "XOR-LANE".*
 
-Module to xor and write a 64-bit value in STATE.
+Program to xor and write a 64-bit value in STATE.
 
 
 ### ROL-LANE
 
 *CALL "ROL-LANE".*
 
-Module to rotate a 64-bit value.
+Program to rotate a 64-bit value.
 
 
 ### LFSR86540
 
 *CALL "LFSR86540".*
 
-Module that computes the linear feedback shift register (LFSR) used to
+Program that computes the linear feedback shift register (LFSR) used to
 define the round constants (see [Keccak Reference, Section 1.2]).
 

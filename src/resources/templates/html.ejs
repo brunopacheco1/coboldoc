@@ -41,9 +41,9 @@
     <p>
         License: <%- license %>
     </p><% if(modules.length > 0) { %>
-    <h2>Module Summary</h2>
+    <h2>Program Summary</h2>
     <table>
-        <caption>Module Summary</caption>
+        <caption>Program Summary</caption>
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
@@ -65,7 +65,7 @@
             <td><%- cobolFunction.summary %></td>
         </tr><% }); %>
     </table><% } if(modules.length > 0) { %>
-    <h2>Module Details</h2><% modules.forEach((module) => { %>
+    <h2>Program Details</h2><% modules.forEach((module) => { %>
     <h3 id="<%- module.name %>"><%- module.name %></h3>
     <p>
         <em><%- !!module.return && !!module.return.type ? `{${module.return.type}} ` : '' %>CALL "<%- module.name %>"<%- !!module.params && module.params.length > 0 ? ` USING ${module.params.map(p => p.name).join(', ')}` : '' %>.</em>
