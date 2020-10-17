@@ -7,54 +7,54 @@ author: Bruno Pacheco (https://brunopacheco1.github.io/)
 
 License: LGPL-3.0
 
-## Module Summary
+## Program Summary
 
 | Name | Description |
 | ----------- | ----------- | 
-| [first-module](#first-module) | the first module summary. | 
-| [second-module](#second-module) | The second module | 
-| [third-module](#third-module) | The third module | 
+| [first-program](#first-program) | the first program summary. | 
+| [second-program](#second-program) | The second program | 
+| [third-program](#third-program) | The third program | 
 
 ## Function Summary
 
 | Name | Description |
 | ----------- | ----------- | 
-| [firstmodulefunction](#firstmodulefunction) | the first function summary. | 
-| [secondmodulefunction](#secondmodulefunction) | second module function | 
-| [thirdmodulefunction](#thirdmodulefunction) | third module function | 
+| [firstprogramfunction](#firstprogramfunction) | the first function summary. | 
+| [secondprogramfunction](#secondprogramfunction) | second program function | 
+| [thirdprogramfunction](#thirdprogramfunction) | third program function | 
 
-## Module Details
+## Program Details
 
-### first-module
+### first-program
 
-*CALL "first-module".*
+*CALL "first-program".*
 
-The first module.  
+The first program.  
 Trying to see **what** happens to    huge text.
 
 
 
-### second-module
+### second-program
 
-*CALL "second-module".*
+*CALL "second-program".*
 
-The second module
+The second program
 
 
-### third-module
+### third-program
 
-*CALL "third-module".*
+*CALL "third-program".*
 
-The third module
+The third program
 
 
 ## Function Details
 
-### firstmodulefunction
+### firstprogramfunction
 
-*{PIC 9} firstmodulefunction(first-arg)*
+*{PIC 9} firstprogramfunction(first-arg)*
 
-first module function
+first program function
 
 
 #### Parameters
@@ -65,11 +65,11 @@ first module function
 
 > *{PIC 9}* First return
 
-### secondmodulefunction
+### secondprogramfunction
 
-*{PIC 9} secondmodulefunction(secondarg)*
+*{PIC 9} secondprogramfunction(secondarg)*
 
-second module function
+second program function
 
 
 #### Parameters
@@ -80,11 +80,11 @@ second module function
 
 > *{PIC 9}* Second return
 
-### thirdmodulefunction
+### thirdprogramfunction
 
-*{PIC 9} thirdmodulefunction(thirdarg)*
+*{PIC 9} thirdprogramfunction(thirdarg)*
 
-third module function
+third program function
 
 
 #### Parameters

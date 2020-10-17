@@ -96,8 +96,8 @@ COBOLDoc suports tag or MSDN annotations.
 ```
 *>>  <summary>Short sample function.</summary>
 *>>  <remarks>
-*>>      first module function accepts <paramref name=\"first-arg\"/> as an arg.
-*>>      <seealso cref=\"secondmodulefunction\"/>
+*>>      first program function accepts <paramref name=\"first-arg\"/> as an arg.
+*>>      <seealso cref=\"secondprogramfunction\"/>
 *>>  </remarks>
 ```
 
@@ -119,19 +119,19 @@ File comment block can be anywhere in the source file, but ideally it should be 
 *>**
 ```
 
-##### Module/Function Comment Block
-Anything that describes the next line module or function, will scanned in this kind of comment block, starting and ending with `*>*` and all internal line starting with `*> `.
+##### Program/Function Comment Block
+Anything that describes the next line program or function, will scanned in this kind of comment block, starting and ending with `*>*` and all internal line starting with `*> `.
 
-Module/Function comment blocks have to preceed a `FUNCTION-ID` or `PROGRAM-ID` definition.
+Program/Function comment blocks have to preceed a `FUNCTION-ID` or `PROGRAM-ID` definition.
 
 ```
 ...
 
 *>*
-*> The description of this module.
+*> The description of this program.
 *>*
 IDENTIFICATION DIVISION.
-PROGRAM-ID. anymodule.
+PROGRAM-ID. anyprogram.
 
 ...
 
@@ -210,7 +210,7 @@ license: LGPL-3.0 This library is free software; you can redistribute it and/or 
 ```
 
 ##### @param {type} \<param name>
-Defines the parameter or argument of function. This tag will be scanned in a Module/Function Comment Block.
+Defines the parameter or argument of function. This tag will be scanned in a Program/Function Comment Block.
 The type is not mandatory and accepts anything.
 
 Input:
@@ -229,7 +229,7 @@ Output in MD:
 ```
 
 ##### @return {type}
-Defines the return of function. This tag will be scanned in a Module/Function Comment Block.
+Defines the return of function. This tag will be scanned in a Program/Function Comment Block.
 The type is not mandatory and accepts anything.
 
 Input:
@@ -246,7 +246,7 @@ Output in MD:
 ```
 
 ##### @summary \<summary>
-If you need to add a short text into the Module or Function Summary tables, you can make use of this tag. When it is missing, the general description will be added into Summary table.
+If you need to add a short text into the Program or Function Summary tables, you can make use of this tag. When it is missing, the general description will be added into Summary table.
 
 Input:
 ```
@@ -281,7 +281,7 @@ COBOLDoc support HTML content. If you need any special formating, it should work
 Input:
 ```
 *>*
-*>  The KECCAK module, that uses the Keccak-f[1600] permutation.<br>
+*>  The KECCAK program, that uses the Keccak-f[1600] permutation.<br>
 *>
 *>  Date-Written: 2016-05-17<br>
 *>  Fields in LINKAGE SECTION:<br>
@@ -305,7 +305,7 @@ Input:
 Output in MD:
 
 ```
-The KECCAK module, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2016-05-17<br> Fields in LINKAGE SECTION:<br> <ul> <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation.</li> <li>LNK-KECCAK-CAPACITY: The value of the capacity c. The rate and capacity must have r+c=1600.</li> <li>LNK-KECCAK-INPUT: The input message. </li> <li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message.</li> <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain separation.</li> <li>LNK-KECCAK-OUTPUT: The buffer where to store the output. </li> <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li> </ul>
+The KECCAK program, that uses the Keccak-f[1600] permutation.<br> Date-Written: 2016-05-17<br> Fields in LINKAGE SECTION:<br> <ul> <li>LNK-KECCAK-RATE: The value of the rate r. The rate must be a multiple of 8 bits in this implementation.</li> <li>LNK-KECCAK-CAPACITY: The value of the capacity c. The rate and capacity must have r+c=1600.</li> <li>LNK-KECCAK-INPUT: The input message. </li> <li>LNK-KECCAK-INPUT-BYTE-LEN: The number of input bytes provided in the input message.</li> <li>LNK-KECCAK-DELIMITED-SUFFIX: Bits that will be automatically appended to the end of the input message, as in domain separation.</li> <li>LNK-KECCAK-OUTPUT: The buffer where to store the output. </li> <li>LNK-KECCAK-OUTPUT-BYTE-LEN: The number of output bytes desired.</li> </ul>
 ```
 
 #### Support for Markdown in-line content
@@ -314,7 +314,7 @@ COBOLDoc support Markdown content. If you need any special formating, it should 
 Input:
 ```
 *>*
-*>  The KECCAK module, that uses the Keccak-f[1600] permutation.  
+*>  The KECCAK program, that uses the Keccak-f[1600] permutation.  
 *>  Date-Written: 2016-05-17  
 *>  Fields in LINKAGE SECTION:  
 *>  - LNK-KECCAK-RATE: The value of the rate r. The rate must be
@@ -335,7 +335,7 @@ Input:
 Output in MD:
 
 ```
-The KECCAK module, that uses the Keccak-f[1600] permutation.  
+The KECCAK program, that uses the Keccak-f[1600] permutation.  
 Date-Written: 2016-05-17  
 Fields in LINKAGE SECTION:  
 - LNK-KECCAK-RATE: The value of the rate r. The rate must be
@@ -353,7 +353,7 @@ separation.
 ```
 
 #### Roadmap
-- List of paragraphs in the module/function details view;
+- List of paragraphs in the program/function details view;
 - Scan and display changelog (if present);
 - Support other structures in COBOL (entries, classes, interfaces...);
 
